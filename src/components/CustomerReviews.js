@@ -26,7 +26,7 @@ const reviews = [
     name: "shreya",
     role: "Real Estate Developer, Mumbai",
     rating: 5,
-    content: "We've partnered with them on three projects now. Consistent quality, on-time delivery, and transparent pricing make them our go-to construction partner.",
+    content: "We&apos;ve partnered with them on three projects now. Consistent quality, on-time delivery, and transparent pricing make them our go-to construction partner.",
     avatar: "/avatars/3.jpg"
   },
 ];
@@ -50,7 +50,7 @@ export default function LuxuryCustomerReviews() {
             What Our <span className="font-serif italic">Clients</span> Say
           </h2>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-            Hear from homeowners and businesses who've experienced our quality craftsmanship firsthand.
+            Hear from homeowners and businesses who&apos;ve experienced our quality craftsmanship firsthand.
           </p>
         </motion.div>
 

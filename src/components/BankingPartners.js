@@ -30,9 +30,10 @@ export default function BankingPartners() {
               Our <span className="text-[#F05A29]">Banking Partners</span>
             </h2>
             
-            <p className="text-lg text-gray-600 mb-8">
-              We collaborate with India's leading banks to help you secure construction loans with competitive rates and flexible terms.
-            </p>
+<p className="text-lg text-gray-600 mb-8">
+  We collaborate with India&apos;s leading banks to help you secure construction loans with competitive rates and flexible terms.
+</p>
+
             <motion.div
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}

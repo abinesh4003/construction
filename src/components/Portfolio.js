@@ -308,7 +308,7 @@ export default function LuxuryPortfolio() {
             OUR PORTFOLIO
           </span>
           <h2 className="text-4xl md:text-5xl font-light mb-6">
-            Building <span className="font-serif italic">India's</span> Future
+            Building <span className="font-serif italic">India&apos;s</span> Future
           </h2>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto">
             With a legacy of excellence across 10+ cities, we transform visions into landmark structures.
