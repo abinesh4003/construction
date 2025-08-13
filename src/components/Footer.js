@@ -1,6 +1,7 @@
 'use client';
 import { motion } from 'framer-motion';
 import { Facebook, Instagram, Twitter, Linkedin, Phone, Mail, MapPin, ArrowRight } from 'lucide-react';
+import Image from 'next/image';
 
 const LuxuryFooter = () => {
   const footerLinks = [
@@ -65,10 +66,14 @@ const LuxuryFooter = () => {
                 CONSTRUCTION
               </span>
             </div>
-            <p className="text-gray-400 mb-8 leading-relaxed">
-              Crafting exceptional spaces with precision and elegance since 2010. 
-              Your vision, our expertise - building dreams into reality.
-            </p>
+            <Image
+              src="/footer.jpg"
+              alt="Construction Logo"
+              width={200}
+              height={200}
+              className='mb-8  '
+            />
+           
             <div className="flex space-x-4">
               {socialIcons.map((item, index) => {
                 const Icon = item.icon;

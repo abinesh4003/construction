@@ -47,7 +47,7 @@ export default function LuxuryCustomerReviews() {
             CLIENT TESTIMONIALS
           </span>
           <h2 className="text-4xl md:text-5xl font-light mb-6">
-            What Our <span className="font-serif italic">Clients</span> Say
+           <span className="font-serif italic">Our </span> Happy Customers
           </h2>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto">
             Hear from homeowners and businesses who&apos;ve experienced our quality craftsmanship firsthand.

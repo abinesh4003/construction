@@ -52,7 +52,7 @@ const LuxuryContactUsSection = () => {
             CONTACT US
           </span>
           <h2 className="text-4xl md:text-5xl font-light mb-6">
-            <span className="font-serif italic">Connect</span> With Our Luxury Team
+            <span className="font-serif italic">Connect</span> With Our Team
           </h2>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto">
             Reach out to discuss your dream project with our expert consultants

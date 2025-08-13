@@ -2,6 +2,8 @@
 
 import { motion, useScroll, useMotionValueEvent } from "framer-motion";
 import { useState } from "react";
+import { useDialog } from "./DialogProvider";
+import { Button } from "./ui/button";
 import Link from "next/link";
 import { Menu, X, Phone } from "lucide-react";
 
@@ -19,13 +21,15 @@ export default function LuxuryNavbar() {
     }
   });
 
+  const { openDialog } = useDialog();
+
   const navItems = [
     { name: "Home", href: "#home" },
-    { name: "Why Choose Us", href: "#why-choose-us" },
-    { name: "Portfolio", href: "#portfolio" },
-    { name: "Reviews", href: "#reviews" },
+    { name: "Service", href: "#service" },
     { name: "Packages", href: "#packages" },
-    { name: "Contact", href: "#contact" },
+    { name: "Portfolio", href: "#portfolio" },
+    { name: "Partners", href: "#partners" },
+    
   ];
 
   return (
@@ -50,7 +54,7 @@ export default function LuxuryNavbar() {
               <span className="text-2xl font-serif italic font-medium tracking-tight">
                 VARGHESE
               </span>
-              <span className="block text-xs tracking-widest text-gray-500">
+              <span className="block text-xs tracking-widest text-[#F05A29]">
                 CONSTRUCTION
               </span>
             </motion.div>
@@ -79,13 +83,14 @@ export default function LuxuryNavbar() {
               animate={{ opacity: 1 }}
               transition={{ delay: 0.9 }}
             >
-              <Link
+              <Button
                 href="#contact"
-                className="flex items-center gap-2 bg-[#F05A29] text-white px-6 py-3 text-sm font-light tracking-wider hover:bg-[#e04a20] transition-colors"
-              >
+                className="flex items-center gap-2 bg-[#F05A29] text-white px-6 py-3 text-sm font-light tracking-wider hover:bg-[#e04a20] transition-colors rounded-none"
+                onClick={openDialog}
+             >
                 <Phone className="h-4 w-4" />
                 CONTACT US
-              </Link>
+              </Button>
             </motion.div>
           </div>
 
@@ -126,7 +131,8 @@ export default function LuxuryNavbar() {
               ))}
               <Link
                 href="#contact"
-                className="flex items-center justify-center gap-2 bg-[#F05A29] text-white px-6 py-3 text-sm font-light tracking-wider hover:bg-[#e04a20] transition-colors mt-4"
+                className="flex items-center justify-center gap-2 bg-[#F05A29] text-white px-6 py-3 text-sm font-light tracking-wider hover:bg-[#e04a20] transition-colors mt-4 rounded-none"
+                onClick={openDialog}
               >
                 <Phone className="h-4 w-4" />
                 CONTACT US

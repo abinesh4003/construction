@@ -2,6 +2,7 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { motion, AnimatePresence } from 'framer-motion';
+import {DialogProvider} from '@/components/DialogProvider'
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -30,7 +31,9 @@ export default function RootLayout({ children }) {
         exit={{ opacity: 0 }}
         transition={{ duration: 0.5 }}
       >
-        {children}
+       <DialogProvider>
+      {children}
+    </DialogProvider>
       </motion.div>
     </AnimatePresence>
       </body>

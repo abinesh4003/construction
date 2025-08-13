@@ -132,7 +132,7 @@ const LuxuryCompetitiveAdvantage = () => {
             size="lg"
             className="bg-white border border-[#F05A29] text-[#F05A29] hover:bg-[#e04a20] hover:text-white px-10 py-6 text-lg font-light tracking-wider group rounded-none "
           >
-            Begin Your Luxury Project
+            Begin Your Project
             <ArrowRight className="h-5 w-5 ml-2 transition-transform group-hover:translate-x-1" />
           </Button>
         </motion.div>
