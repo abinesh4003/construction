@@ -10,6 +10,8 @@ import NextLink from "next/link";
 const luxuryBackgrounds = [
   // Your high-end project image
   "/construction-hero-2.jpg",
+  "/construction-hero-3.jpg",
+  "/construction-hero-4.jpg",
 // Luxury interior detail
 ];
 
@@ -47,32 +49,32 @@ export default function LuxuryHero() {
         style={{ y: yBg }}
         className="absolute inset-0 -z-10"
       >
-        <AnimatePresence mode="wait">
-          {luxuryBackgrounds.map((src, index) => (
-            index === currentImageIndex && (
-              <motion.div
-                key={src}
-                initial={{ opacity: 0 }}
-                animate={{ 
-                  opacity: 1,
-                  transition: { duration: 1.5, ease: [0.6, 0.01, 0.05, 0.9] }
-                }}
-                exit={{ opacity: 0 }}
-                className="absolute inset-0"
-              >
-                <Image
-                  src={src}
-                  alt="Luxury construction"
-                  fill
-                  priority
-                  className="object-cover object-center"
-                  quality={100}
-                />
-                <div className="absolute inset-0 bg-black/30" />
-              </motion.div>
-            )
-          ))}
-        </AnimatePresence>
+  <AnimatePresence>
+  {luxuryBackgrounds.map((src, index) =>
+    index === currentImageIndex && (
+      <motion.div
+        key={src}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 1 }}
+        className="absolute inset-0"
+      >
+        <Image
+          src={src}
+          alt="Luxury construction"
+          fill
+          priority
+          quality={100}
+          className="object-cover object-center"
+          style={{ backgroundColor: "transparent" }} // prevent white bg
+        />
+        <div className="absolute inset-0 bg-black/30" />
+      </motion.div>
+    )
+  )}
+</AnimatePresence>
+
       </motion.div>
 
       {/* Content */}

@@ -8,7 +8,7 @@ import Image from 'next/image';
 const categories = [
   {
     name: "Home Construction",
-    image: "/construction-hero-1.jpg",
+    image: "/construction-hero.png",
     description: "Duplex Homes, Luxury Homes, Villas",
     services: [
       {

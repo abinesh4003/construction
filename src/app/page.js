@@ -11,6 +11,7 @@ import ContactDialog from "@/components/ContactDialog";
 import Footer from "@/components/Footer";
 import { useDialog } from "@/components/DialogProvider";
 import Services from "@/components/Services";
+import BankingPartners from "@/components/BankingPartners";
 export default function Home() {
     const { isDialogOpen, closeDialog } = useDialog();
 
@@ -24,6 +25,7 @@ export default function Home() {
         <Portfolio/>
          <ConstructionPackages/>
          <CustomerReviews/>
+         <BankingPartners/>
         <ContactUsSection/>
         <ContactDialog isOpen={isDialogOpen} onClose={closeDialog} />
       </main>
