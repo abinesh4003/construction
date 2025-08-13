@@ -76,11 +76,10 @@ export default function LuxuryCustomerReviews() {
                 </div>
                 <Quote className="h-8 w-8 text-[#F05A29] opacity-20" />
               </div>
-              
+
               <p className="text-gray-600 mb-8 italic relative pl-6 before:absolute before:left-0 before:top-0 before:h-full before:w-px before:bg-[#F05A29]">
-                "{review.content}"
+                &quot;{review.content}&quot;
               </p>
-              
               <div className="flex items-center">
                 <div className="relative h-14 w-14 rounded-full overflow-hidden mr-4 border-2 border-[#F05A29]">
                   <Image
