@@ -118,8 +118,8 @@ export default function LuxuryHero() {
             transition={{ delay: 1 }}
             className="flex items-center gap-2 mb-6"
           >
-            <div className="w-12 h-px bg-[#F05A29]" />
-            <span className="text-[#F05A29] tracking-widest ">VARGHESE CONSTRUCTION</span>
+            <div className="w-12 h-px bg-white  " />
+            <span className="text-white tracking-widest ">VARGHESE CONSTRUCTION</span>
           </motion.div>
 
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-light leading-tight mb-8 text-white">

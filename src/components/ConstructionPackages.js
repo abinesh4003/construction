@@ -92,10 +92,10 @@ export default function LuxuryPackages() {
               transition={{ }}
               whileHover={{ scale: 1.05 }}
               onClick={() => setSelectedPackage(pkg)}
-              className={`relative bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all cursor-pointer border ${pkg.popular ? 'border-[gold] border-2' : 'border-gray-100'}`}
+              className={`relative bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all cursor-pointer border ${pkg.popular ? 'border-[gold] border-4' : 'border-[#F05A29]'}`}
             >
               {pkg.popular && (
-                <div className="absolute top-4 right-4 bg-[#F05A29] text-white text-xs px-3 py-1 rounded-full font-medium tracking-wider z-10 flex items-center">
+                <div className="absolute top-4 right-4 bg-yellow-500 text-white text-xs px-3 py-1 rounded-full font-medium tracking-wider z-10 flex items-center">
                   <Star className="h-3 w-3 mr-1 fill-white" />
                   POPULAR
                 </div>
@@ -175,7 +175,7 @@ export default function LuxuryPackages() {
                   <p className="text-white/90 mt-1">{selectedPackage.description}</p>
                 </div>
                 {selectedPackage.popular && (
-                  <div className="absolute top-4 left-4 bg-[#F05A29] text-white text-sm px-3 py-1 rounded-full font-medium tracking-wider flex items-center">
+                  <div className="absolute top-4 left-4 bg-yellow-500 text-white text-sm px-3 py-1 rounded-full font-medium tracking-wider flex items-center">
                     <Star className="h-3 w-3 mr-1 fill-white" />
                     MOST POPULAR CHOICE
                   </div>
