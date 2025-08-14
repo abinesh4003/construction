@@ -23,10 +23,10 @@ const LuxuryContactUsSection = () => {
     {
       icon: Mail,
       title: "Email Us",
-      content: "sales.vargheseconstruction@gmail.com\nResponse within 24 hours",
+      content: "contact@vargheseconstruction.com\nResponse within 24 hours",
       color: "text-purple-500",
       bgColor: "bg-purple-50",
-      link: "mailto:sales.vargheseconstruction@gmail.com"
+      link: "mailto:contact@vargheseconstruction.com"
     },
 
   ];
@@ -130,7 +130,7 @@ const LuxuryContactUsSection = () => {
           style={{ border: 0 }}
           allowFullScreen
             loading="lazy" 
-            referrerpolicy="no-referrer-when-downgrade"></iframe>
+            referrerPolicy="no-referrer-when-downgrade"></iframe>
         </motion.div>
       </div>
     </section>

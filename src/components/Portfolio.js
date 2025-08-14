@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { Building, Users, Ruler, Layers } from "lucide-react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
+import { useDialog } from "./DialogProvider";
 
 const stats = [
   {
@@ -82,6 +83,7 @@ const cities = [
 ];
 
 export default function Portfolio() {
+  const { openDialog } = useDialog();
   return (
     <section className="py-20 bg-white" id="portfolio">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -163,14 +165,14 @@ export default function Portfolio() {
                       className="object-cover"
                     />
                   </div>
-                  <span className="text-sm font-medium">{city.name}</span>
+                  <span className="text-sm font-medium ">{city.name}</span>
                 </motion.div>
               ))}
             </div>
             <Button
               size="lg"
               className="bg-[#F05A29] hover:bg-[#e04a20] text-white px-8 py-6 text-lg shadow-lg hover:shadow-xl transition-all"
-            >
+             onClick={openDialog} >
               Start your project today
             </Button>
           </div>

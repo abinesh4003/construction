@@ -1,6 +1,6 @@
 'use client';
 import { useState } from 'react';
-import { X, ArrowRight, Phone, Mail, MapPin } from 'lucide-react';
+import { X, ArrowRight, Phone, Mail, MapPin, ChevronDown } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const ContactDialog = ({ isOpen, onClose }) => {
@@ -28,19 +28,20 @@ const ContactDialog = ({ isOpen, onClose }) => {
     {
       icon: Phone,
       title: "Call Us",
-      info: "+91 12345 67890",
-      action: "tel:+911234567890"
+      info: "+91 9629695979",
+      action: "tel:+919629695979"
     },
     {
       icon: Mail,
       title: "Email Us",
-      info: "contact@varghese.com",
-      action: "mailto:contact@varghese.com"
+      info: "contact@vargheseconstruction.com",
+      action: "mailto:contact@vargheseconstruction.com"
     },
     {
       icon: MapPin,
       title: "Visit Us",
-      info: "123 Avenue, Premium District"
+      info: "5C98+9M7, Thalavaipuram Rd, opposite Beski Auditorium, Thalavaipuram, Simon Nagar, Nagercoil, Tamil Nadu 629004",
+      action: "https://maps.google.com"
     }
   ];
 
@@ -51,32 +52,33 @@ const ContactDialog = ({ isOpen, onClose }) => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4"
+          className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4 overflow-y-auto"
           onClick={onClose}
         >
           <motion.div
-            initial={{ scale: 0.9, y: 50 }}
+            initial={{ scale: 0.95, y: 20 }}
             animate={{ scale: 1, y: 0 }}
-            exit={{ scale: 0.9, y: 50 }}
+            exit={{ scale: 0.95, y: 20 }}
             onClick={(e) => e.stopPropagation()}
-            className="bg-white rounded-xl shadow-2xl w-full max-w-4xl overflow-hidden"
+            className="bg-white rounded-xl shadow-2xl w-full max-w-4xl max-h-[90vh] overflow-y-auto"
           >
             <div className="grid grid-cols-1 lg:grid-cols-2">
               {/* Form Section */}
-              <div className="p-8 md:p-12">
-                <div className="flex justify-between items-start mb-8">
-                  <h2 className="text-2xl font-light">
+              <div className="p-6 sm:p-8 md:p-10">
+                <div className="flex justify-between items-start mb-6 sm:mb-8">
+                  <h2 className="text-xl sm:text-2xl font-light">
                     <span className="font-serif italic">Start</span> Your Project
                   </h2>
                   <button 
                     onClick={onClose}
-                    className="text-gray-400 hover:text-[#F05A29] transition-colors"
+                    className="text-gray-400 hover:text-[#F05A29] transition-colors p-1"
+                    aria-label="Close dialog"
                   >
-                    <X className="h-6 w-6" />
+                    <X className="h-5 w-5 sm:h-6 sm:w-6" />
                   </button>
                 </div>
 
-                <form onSubmit={handleSubmit} className="space-y-6">
+                <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
                   <div>
                     <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
                       Full Name*
@@ -87,12 +89,13 @@ const ContactDialog = ({ isOpen, onClose }) => {
                       name="name"
                       value={formData.name}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-sm focus:ring-2 focus:ring-[#F05A29] focus:border-[#F05A29]"
+                      className="w-full px-4 py-2.5 sm:py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-[#F05A29]/50 focus:border-[#F05A29] transition-all"
                       required
+                      placeholder="Enter your full name"
                     />
                   </div>
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                     <div>
                       <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">
                         Phone Number*
@@ -103,8 +106,9 @@ const ContactDialog = ({ isOpen, onClose }) => {
                         name="phone"
                         value={formData.phone}
                         onChange={handleChange}
-                        className="w-full px-4 py-3 border border-gray-300 rounded-sm focus:ring-2 focus:ring-[#F05A29] focus:border-[#F05A29]"
+                        className="w-full px-4 py-2.5 sm:py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-[#F05A29]/50 focus:border-[#F05A29] transition-all"
                         required
+                        placeholder="+91 98765 43210"
                       />
                     </div>
 
@@ -118,13 +122,14 @@ const ContactDialog = ({ isOpen, onClose }) => {
                         name="email"
                         value={formData.email}
                         onChange={handleChange}
-                        className="w-full px-4 py-3 border border-gray-300 rounded-sm focus:ring-2 focus:ring-[#F05A29] focus:border-[#F05A29]"
+                        className="w-full px-4 py-2.5 sm:py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-[#F05A29]/50 focus:border-[#F05A29] transition-all"
                         required
+                        placeholder="your@email.com"
                       />
                     </div>
                   </div>
 
-                  <div>
+                  <div className="relative">
                     <label htmlFor="projectType" className="block text-sm font-medium text-gray-700 mb-1">
                       Project Type*
                     </label>
@@ -133,7 +138,7 @@ const ContactDialog = ({ isOpen, onClose }) => {
                       name="projectType"
                       value={formData.projectType}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-sm focus:ring-2 focus:ring-[#F05A29] focus:border-[#F05A29]"
+                      className="w-full px-4 py-2.5 sm:py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-[#F05A29]/50 focus:border-[#F05A29] appearance-none transition-all"
                       required
                     >
                       <option value="">Select project type</option>
@@ -142,6 +147,7 @@ const ContactDialog = ({ isOpen, onClose }) => {
                       <option value="renovation">Renovation</option>
                       <option value="interior">Interior Design</option>
                     </select>
+                    <ChevronDown className="h-4 w-4 absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 pointer-events-none" />
                   </div>
 
                   <div>
@@ -154,45 +160,48 @@ const ContactDialog = ({ isOpen, onClose }) => {
                       rows="3"
                       value={formData.message}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-sm focus:ring-2 focus:ring-[#F05A29] focus:border-[#F05A29]"
+                      className="w-full px-4 py-2.5 sm:py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-[#F05A29]/50 focus:border-[#F05A29] transition-all"
+                      placeholder="Tell us about your project..."
                     ></textarea>
                   </div>
 
                   <button
                     type="submit"
-                    className="w-full py-4 px-6 bg-[#F05A29] hover:bg-[#e04a20] text-white font-medium rounded-sm transition-colors duration-300 flex items-center justify-center gap-2"
+                    className="w-full py-3 sm:py-4 px-6 bg-gradient-to-r from-[#F05A29] to-[#FF7D45] hover:from-[#E04A20] hover:to-[#F05A29] text-white font-medium rounded-md transition-all duration-300 flex items-center justify-center gap-2 shadow-md hover:shadow-lg"
                   >
                     Submit Request
-                    <ArrowRight className="h-5 w-5" />
+                    <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5" />
                   </button>
                 </form>
               </div>
 
               {/* Contact Info Section */}
-              <div className="bg-gray-50 p-8 md:p-12 border-l border-gray-200">
-                <h3 className="text-xl font-light mb-6">
+              <div className="bg-gray-50 p-6 sm:p-8 md:p-10 border-t lg:border-t-0 lg:border-l border-gray-200">
+                <h3 className="text-xl sm:text-2xl font-light mb-6">
                   <span className="font-serif italic">Other</span> Ways to Connect
                 </h3>
                 
-                <div className="space-y-6">
+                <div className="space-y-4 sm:space-y-6">
                   {contactMethods.map((method, index) => {
                     const Icon = method.icon;
                     return (
-                      <div key={index} className="flex items-start">
-                        <div className="bg-[#F05A29]/10 p-3 rounded-full mr-4">
-                          <Icon className="h-5 w-5 text-[#F05A29]" />
+                      <div key={index} className="flex items-start group">
+                        <div className="bg-[#F05A29]/10 p-2.5 sm:p-3 rounded-full mr-3 sm:mr-4 group-hover:bg-[#F05A29]/20 transition-colors">
+                          <Icon className="h-4 w-4 sm:h-5 sm:w-5 text-[#F05A29] group-hover:scale-110 transition-transform" />
                         </div>
                         <div>
-                          <h4 className="font-medium text-gray-900">{method.title}</h4>
+                          <h4 className="font-medium text-gray-900 text-sm sm:text-base">{method.title}</h4>
                           {method.action ? (
                             <a 
                               href={method.action} 
-                              className="text-gray-600 hover:text-[#F05A29] transition-colors"
+                              className="text-gray-600 hover:text-[#F05A29] transition-colors text-sm sm:text-base"
+                              target="_blank"
+                              rel="noopener noreferrer"
                             >
                               {method.info}
                             </a>
                           ) : (
-                            <p className="text-gray-600">{method.info}</p>
+                            <p className="text-gray-600 text-sm sm:text-base">{method.info}</p>
                           )}
                         </div>
                       </div>
@@ -200,9 +209,9 @@ const ContactDialog = ({ isOpen, onClose }) => {
                   })}
                 </div>
 
-                <div className="mt-12 pt-8 border-t border-gray-200">
-                  <h4 className="font-medium text-gray-900 mb-4">Our Commitment</h4>
-                  <p className="text-gray-600 text-sm">
+                <div className="mt-8 sm:mt-12 pt-6 sm:pt-8 border-t border-gray-200">
+                  <h4 className="font-medium text-gray-900 mb-2 sm:mb-4 text-sm sm:text-base">Our Commitment</h4>
+                  <p className="text-gray-600 text-xs sm:text-sm">
                     We respect your privacy and guarantee that your information will 
                     only be used to contact you about your project inquiry.
                   </p>

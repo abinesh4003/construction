@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import { X, Star, Check, ArrowRight } from 'lucide-react';
+import { useDialog } from './DialogProvider';
 
 const packages = [
   {
@@ -66,6 +67,7 @@ const packages = [
 
 export default function LuxuryPackages() {
   const [selectedPackage, setSelectedPackage] = useState(null);
+  const { openDialog } = useDialog();
 
   return (
     <section className="py-28 bg-gray-50" id="package">
@@ -228,8 +230,13 @@ export default function LuxuryPackages() {
                         {selectedPackage.price}
                       </p>
                     </div>
-                    <button className="w-full md:w-auto bg-[#F05A29] hover:bg-[#e04a20] text-white px-8 py-3 rounded-lg transition-colors flex items-center justify-center gap-2">
-                      Get This Package
+                    <button className="w-full md:w-auto bg-[#F05A29] hover:bg-[#e04a20] text-white px-8 py-3 rounded-lg transition-colors flex items-center justify-center gap-2"
+                   onClick={()=>{
+                    openDialog();
+                    setSelectedPackage(null);
+                   }}
+                    >
+                      Free Consulting
                       <ArrowRight className="h-5 w-5" />
                     </button>
                   </div>

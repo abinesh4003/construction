@@ -37,13 +37,13 @@ const LuxuryFooter = () => {
   const contactInfo = [
     { icon: MapPin, text: "5C98+9M7, Thalavaipuram Rd, opposite Beski Auditorium, Thalavaipuram, Simon Nagar, Nagercoil, Tamil Nadu 629004" },
     { icon: Phone, text: "+91 9629695979", href: "tel:+919629695979" },
-    { icon: Mail, text: "sales.vargheseconstruction@gmail.com", href: "mailto:sales.vargheseconstruction@gmail.com" }
+    { icon: Mail, text: "contact@vargheseconstruction.com", href: "mailto:contact@vargheseconstruction.com" }
   ];
 
   const legalLinks = [
-    { name: "Privacy Policy", href: "/privacy-policy" },
-    { name: "Terms of Service", href: "/terms" },
-    { name: "Sitemap", href: "/sitemap" }
+    { name: "Privacy Policy", href: "#" },
+    { name: "Terms of Service", href: "#" },
+    { name: "Sitemap", href: "#" }
   ];
 
   return (
