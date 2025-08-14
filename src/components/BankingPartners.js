@@ -4,8 +4,8 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 
 const banks = [
-  { name: "Bajaj Finserv", logo: "/bank-logos/bajaj.png" },
-  { name: "BASIC", logo: "/bank-logos/basic.png" },
+  { name: "Bajaj Finserv", logo: "/bank-logos/bajaj.jpg" },
+  { name: "ICICI", logo: "/bank-logos/icici.png" },
   { name: "Godrej Housing Finance", logo: "/bank-logos/godrej.png" },
   { name: "HDFC Home Loans", logo: "/bank-logos/hdfc.png" },
   { name: "Housing.com", logo: "/bank-logos/housing.png" },
