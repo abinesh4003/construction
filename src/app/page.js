@@ -18,7 +18,7 @@ export default function Home() {
   return (
     <div className="max-w-screen relative overflow-hidden">
       <Navbar/>
-      <main className="">
+      <main className="">   
         <Hero/>
         <Services/>
         <WhyChooseUs/>

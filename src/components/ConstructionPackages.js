@@ -72,11 +72,9 @@ export default function LuxuryPackages() {
       <div className="container mx-auto px-6">
         {/* Header */}
         <div className="text-center mb-20" >
-          <span className="inline-block text-[#F05A29] px-4 py-2 text-sm font-medium mb-6 tracking-wider">
-            OUR PACKAGES
-          </span>
+       
           <h2 className="text-4xl md:text-5xl font-light mb-6">
-            <span className="font-serif italic">Construction</span> Excellence
+            <span className="font-serif italic">Construction</span> Packages
           </h2>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto">
             Tailored solutions to match your vision and budget
@@ -94,7 +92,7 @@ export default function LuxuryPackages() {
               transition={{ }}
               whileHover={{ scale: 1.05 }}
               onClick={() => setSelectedPackage(pkg)}
-              className={`relative bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all cursor-pointer border ${pkg.popular ? 'border-[#F05A29]' : 'border-gray-100'}`}
+              className={`relative bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all cursor-pointer border ${pkg.popular ? 'border-[gold] border-2' : 'border-gray-100'}`}
             >
               {pkg.popular && (
                 <div className="absolute top-4 right-4 bg-[#F05A29] text-white text-xs px-3 py-1 rounded-full font-medium tracking-wider z-10 flex items-center">

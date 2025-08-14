@@ -8,11 +8,27 @@ import { useDialog } from "./DialogProvider";
 import NextLink from "next/link";
 
 const luxuryBackgrounds = [
-  // Your high-end project image
-  "/construction-hero-2.jpg",
-  "/construction-hero-3.jpg",
-  "/construction-hero-4.jpg",
-// Luxury interior detail
+  {
+    desk: "/hero/desktop1.jpg",
+    mobile:"/hero/mobile1.jpg",
+  },
+  {
+     desk: "/hero/desktop2.jpg",
+    mobile:"/hero/mobile2.jpg",
+  },
+    {
+    desk: "/hero/desktop3.jpg",
+    mobile:"/hero/mobile3.jpg",
+  },
+  {
+     desk: "/hero/desktop4.jpg",
+    mobile:"/hero/mobile2.jpg",
+  },
+    {
+    desk: "/hero/desktop5.jpg",
+    mobile:"/hero/mobile3.jpg",
+  }
+
 ];
 
 export default function LuxuryHero() {
@@ -53,22 +69,33 @@ export default function LuxuryHero() {
   {luxuryBackgrounds.map((src, index) =>
     index === currentImageIndex && (
       <motion.div
-        key={src}
+        key={index}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         transition={{ duration: 1 }}
         className="absolute inset-0"
+
       >
-        <Image
-          src={src}
-          alt="Luxury construction"
-          fill
-          priority
-          quality={100}
-          className="object-cover object-center"
-          style={{ backgroundColor: "transparent" }} // prevent white bg
-        />
+        {/* Desktop */}
+  <Image
+    src={src.desk}
+    alt="Luxury construction"
+    fill
+    priority
+    quality={100}
+    className="hidden sm:block object-cover object-center"
+  />
+
+  {/* Mobile */}
+  <Image
+    src={src.mobile}
+    alt="Luxury construction mobile"
+    fill
+    priority
+    quality={100}
+    className="block sm:hidden object-cover object-center"
+  />
         <div className="absolute inset-0 bg-black/30" />
       </motion.div>
     )
@@ -134,9 +161,9 @@ export default function LuxuryHero() {
               Get a Quote
               <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
             </button>
-            <NextLink href="#projects">
+            <NextLink href="#service">
               <button className="bg-transparent border border-white/30 hover:border-white/60 text-white px-8 py-4 rounded-sm text-lg font-medium transition-all group flex items-center gap-2">
-                View Projects 
+                View Services 
               </button>
             </NextLink>
           

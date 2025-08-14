@@ -8,7 +8,7 @@ import Image from 'next/image';
 const categories = [
   {
     name: "Home Construction",
-    image: "/construction-hero.png",
+    image: "/homeservice.png",
     description: "Duplex Homes, Luxury Homes, Villas",
     services: [
       {
@@ -30,7 +30,7 @@ const categories = [
   },
   {
     name: "Commercial Construction",
-    image: "/construction-hero-3.jpg",
+    image: "/commecialservice.jpg",
     description: "PG/Rental, Schools, Shops, Hotels, Offices, Warehousing, Hospital",
     services: [
       {
@@ -61,9 +61,7 @@ export default function ServicesSection() {
       <div className="container mx-auto px-6">
        
         <h2 className="text-4xl font-light text-center mb-12">
-           <span className="block text-[#F05A29] px-4 py-2  text-sm font-medium mb-6 tracking-wider">
-           SERVICES
-          </span>
+          
           <span className="font-serif italic">Our Construction</span> Services
         </h2>
 

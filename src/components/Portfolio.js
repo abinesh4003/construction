@@ -31,43 +31,43 @@ const stats = [
 const cities = [
   {
     name: "Kanyakumari",
-    image: "https://images.pexels.com/photos/1371360/pexels-photo-1371360.jpeg",
+    image: "/cities/kanyakumari.jpg",
   },
   {
     name: "Kavalkinaru",
-    image: "https://images.pexels.com/photos/259588/pexels-photo-259588.jpeg",
+    image: "/cities/kavalkinaru.jpg",
   },
   {
     name: "Nagercoil",
-    image: "https://images.pexels.com/photos/358532/pexels-photo-358532.jpeg",
+    image: "/cities/nagercoil.jpg",
   },
   {
     name: "Boothapandi",
-    image: "https://images.pexels.com/photos/247599/pexels-photo-247599.jpeg",
+    image: "/cities/boothapandi.jpg",
   },
   {
     name: "Rajakkamangalam",
-    image: "https://images.pexels.com/photos/189296/pexels-photo-189296.jpeg",
+    image: "/cities/Rajakkamangalam.jpg",
   },
   {
     name: "Muttom",
-    image: "https://images.pexels.com/photos/2832036/pexels-photo-2832036.jpeg",
+    image: "/cities/muttom.jpg",
   },
   {
     name: "Colachal",
-    image: "https://images.pexels.com/photos/296282/pexels-photo-296282.jpeg",
+    image: "/cities/colachel.jpg",
   },
   {
     name: "Thukaly",
-    image: "https://images.pexels.com/photos/235734/pexels-photo-235734.jpeg",
+    image: "/cities/thuckalay.jpg",
   },
   {
     name: "Marthandam",
-    image: "https://images.pexels.com/photos/373290/pexels-photo-373290.jpeg",
+    image: "/cities/marthandam.jpg",
   },
   {
     name: "Thiruvananthapuram",
-    image: "https://images.pexels.com/photos/427679/pexels-photo-427679.jpeg",
+    image: "/cities/Thiruvananthapuram.jpg",
   },
 ];
 
@@ -84,9 +84,7 @@ export default function Portfolio() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            <span className="block text-[#F05A29] px-4 py-2  text-sm font-medium mb-6 tracking-wider">
-           PORTFOLIO
-          </span>
+         
             You Made the <span className="text-[#F05A29]">Right Choice</span>
           </h2>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto">
@@ -147,7 +145,7 @@ export default function Portfolio() {
                   transition={{ duration: 0.3, delay: index * 0.05 }}
                   className="flex flex-col items-center"
                 >
-                  <div className="relative w-20 h-20 rounded-full overflow-hidden mb-2 border-2 border-[#F05A29]">
+                  <div className="relative w-32 h-32 rounded-full overflow-hidden mb-2 border-2 border-[#F05A29]">
                     <Image
                       src={city.image}
                       alt={city.name}
@@ -163,7 +161,7 @@ export default function Portfolio() {
               size="lg"
               className="bg-[#F05A29] hover:bg-[#e04a20] text-white px-8 py-6 text-lg shadow-lg hover:shadow-xl transition-all"
             >
-              View All Projects
+              Start your project today
             </Button>
           </div>
         </motion.div>

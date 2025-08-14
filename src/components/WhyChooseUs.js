@@ -61,10 +61,8 @@ export default function LuxuryWhyChooseUs() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <span className="block text-[#F05A29] px-4 py-2  text-sm font-medium mb-6 tracking-wider">
-          WHY CHOOSE US
-          </span>
-          Why Choose Us for <span className="font-serif italic">Building Construction?</span>
+         
+          Why Choose Us for <span className="font-serif italic">Building Constructions</span>
         </motion.h2>
 
         {/* Features Grid */}

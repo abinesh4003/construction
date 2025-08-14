@@ -8,33 +8,27 @@ const LuxuryContactUsSection = () => {
     {
       icon: MapPin,
       title: "Our Office",
-      content: "123 Luxury Avenue\nPremium District, TN 600001",
+      content: "5C98+9M7, Thalavaipuram Rd, opposite Beski Auditorium, Thalavaipuram, Simon Nagar, Nagercoil, Tamil Nadu 6290041",
       color: "text-emerald-500",
       bgColor: "bg-emerald-50"
     },
     {
       icon: Phone,
       title: "Call Us",
-      content: "+91 12345 67890\nMon-Sat: 9AM - 7PM",
+      content: "+91 96296 95979\nMon-Sat: 9AM - 7PM",
       color: "text-blue-500",
       bgColor: "bg-blue-50",
-      link: "tel:+911234567890"
+      link: "tel:+9196296 95979"
     },
     {
       icon: Mail,
       title: "Email Us",
-      content: "contact@luxurybuilders.com\nResponse within 24 hours",
+      content: "sales.vargheseconstruction@gmail.com\nResponse within 24 hours",
       color: "text-purple-500",
       bgColor: "bg-purple-50",
-      link: "mailto:contact@luxurybuilders.com"
+      link: "mailto:sales.vargheseconstruction@gmail.com"
     },
-    {
-      icon: Clock,
-      title: "Office Hours",
-      content: "Monday - Friday: 9AM - 6PM\nSaturday: 10AM - 4PM\nSunday: Closed",
-      color: "text-amber-500",
-      bgColor: "bg-amber-50"
-    }
+
   ];
 
   return (
@@ -48,9 +42,7 @@ const LuxuryContactUsSection = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-20"
         >
-          <span className="inline-block text-[#F05A29] px-4 py-2 text-sm font-medium mb-6 tracking-wider">
-            CONTACT US
-          </span>
+
           <h2 className="text-4xl md:text-5xl font-light mb-6">
             <span className="font-serif italic">Connect</span> With Our Team
           </h2>
@@ -88,8 +80,8 @@ const LuxuryContactUsSection = () => {
                         ))}
                       </p>
                       {card.link && (
-                        <a 
-                          href={card.link} 
+                        <a
+                          href={card.link}
                           className="mt-3 inline-flex items-center text-sm font-medium text-[#F05A29] hover:underline"
                         >
                           Contact now
@@ -131,15 +123,14 @@ const LuxuryContactUsSection = () => {
           transition={{ duration: 0.6 }}
           className="bg-white border border-gray-100 shadow-lg overflow-hidden"
         >
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15758.80463093945!2d76.9184544!3d8.7139128!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b05e9b600093a0d%3A0x9b4b1a8b825a9347!2sKanyakumari%2C%20Tamil%20Nadu!5e0!3m2!1sen!2sin!4v1710000000000!5m2!1sen!2sin"
-            width="100%"
-            height="450"
-            style={{ border: 0 }}
-            allowFullScreen
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-          ></iframe>
+         
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3949.3405481714053!2d77.41666150000002!3d8.168404299999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b04f18b6b099351%3A0x354f907f00a899e7!2sVARGHESE%20CONSTRUCTION!5e0!3m2!1sen!2sin!4v1755162094198!5m2!1sen!2sin"
+          width="100%"
+            height="250" 
+          style={{ border: 0 }}
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade"></iframe>
         </motion.div>
       </div>
     </section>

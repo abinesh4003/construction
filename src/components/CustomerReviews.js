@@ -8,32 +8,32 @@ const reviews = [
   {
     id: 1,
     name: "Monica",
-    role: "Homeowner, Bangalore",
+    role: "Homeowner, Kanyakumari",
     rating: 5,
     content: "The team delivered our dream home ahead of schedule with exceptional quality. Their attention to detail was impressive throughout the construction process.",
     avatar: "/avatars/1.jpg"
   },
   {
     id: 2,
-    name: "Priya Sharma",
-    role: "Business Owner, Delhi",
+    name: "Priya ",
+    role: "Business Owner, Thiruvananthapuram",
     rating: 4,
     content: "Our commercial space was built exactly to specifications. The project management was professional and they handled all municipal approvals seamlessly.",
     avatar: "/avatars/2.jpg"
   },
   {
     id: 3,
-    name: "shreya",
-    role: "Real Estate Developer, Mumbai",
+    name: "Rajeshwari",
+    role: "Homeowner, Nagercoil",
     rating: 5,
-    content: "We&apos;ve partnered with them on three projects now. Consistent quality, on-time delivery, and transparent pricing make them our go-to construction partner.",
+    content: "We have partnered with them on three projects now. Consistent quality, on-time delivery, and transparent pricing make them our go-to construction partner.",
     avatar: "/avatars/3.jpg"
   },
 ];
 
 export default function LuxuryCustomerReviews() {
   return (
-    <section id="reviews" className="py-28 bg-white">
+    <section id="reviews" className="py-28 bg-white" >
       <div className="container mx-auto px-6">
         {/* Header */}
         <motion.div
@@ -43,9 +43,7 @@ export default function LuxuryCustomerReviews() {
           transition={{ duration: 0.6 }}
           className="text-center mb-20"
         >
-          <span className="inline-block text-[#F05A29] px-4 py-2 text-sm font-medium mb-6">
-            CLIENT TESTIMONIALS
-          </span>
+         
           <h2 className="text-4xl md:text-5xl font-light mb-6">
            <span className="font-serif italic">Our </span> Happy Customers
           </h2>

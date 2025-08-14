@@ -8,21 +8,21 @@ const LuxuryFooter = () => {
     {
       title: "Quick Links",
       links: [
-        { name: "About Us", href: "/about" },
-        { name: "Our Services", href: "/services" },
-        { name: "Projects", href: "/projects" },
-        { name: "Testimonials", href: "/testimonials" },
-        { name: "Blog", href: "/blog" },
+        { name: "About Us", href: "#portfolio" },
+        { name: "Our Services", href: "#service" },
+        { name: "Projects", href: "#service" },
+        { name: "Testimonials", href: "#reviews" },
+   
       ]
     },
     {
       title: "Our Services",
       links: [
-        { name: "Luxury Homes", href: "/services/luxury-homes" },
-        { name: "Villas", href: "/services/villas" },
-        { name: "Commercial Spaces", href: "/services/commercial" },
-        { name: "Renovation", href: "/services/renovation" },
-        { name: "Interior Design", href: "/services/interior" },
+        { name: "Luxury Homes", href: "#" },
+        { name: "Villas", href: "#" },
+        { name: "Commercial Spaces", href: "#" },
+        { name: "Renovation", href: "#" },
+        { name: "Interior Design", href: "#" },
       ]
     }
   ];
@@ -35,9 +35,9 @@ const LuxuryFooter = () => {
   ];
 
   const contactInfo = [
-    { icon: MapPin, text: "123 Premium Avenue, Luxury District, TN 600001" },
-    { icon: Phone, text: "+91 12345 67890", href: "tel:+911234567890" },
-    { icon: Mail, text: "contact@luxurybuild.com", href: "mailto:contact@luxurybuild.com" }
+    { icon: MapPin, text: "5C98+9M7, Thalavaipuram Rd, opposite Beski Auditorium, Thalavaipuram, Simon Nagar, Nagercoil, Tamil Nadu 629004" },
+    { icon: Phone, text: "+91 9629695979", href: "tel:+919629695979" },
+    { icon: Mail, text: "sales.vargheseconstruction@gmail.com", href: "mailto:sales.vargheseconstruction@gmail.com" }
   ];
 
   const legalLinks = [
@@ -59,20 +59,14 @@ const LuxuryFooter = () => {
             transition={{ duration: 0.6 }}
           >
             <div className="mb-8">
-              <span className="text-2xl font-serif italic font-medium tracking-tight text-white">
+              <span className="text-4xl font-serif italic font-medium tracking-tight text-white">
                 VARGHESE
               </span>
               <span className="block text-xs tracking-widest text-[#F05A29]">
                 CONSTRUCTION
               </span>
             </div>
-            <Image
-              src="/footer.jpg"
-              alt="Construction Logo"
-              width={200}
-              height={200}
-              className='mb-8  '
-            />
+            
            
             <div className="flex space-x-4">
               {socialIcons.map((item, index) => {

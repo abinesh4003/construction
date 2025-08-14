@@ -25,9 +25,7 @@ export default function BankingPartners() {
           transition={{ duration: 0.6 }}
           className="text-3xl md:text-4xl font-bold mb-3"
         >
-          <span className="block text-[#F05A29] px-4 py-2  text-sm font-medium mb-6 tracking-wider">
-          PARTNERS
-          </span>
+         
           Our Banking Partners
         </motion.h2>
 
