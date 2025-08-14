@@ -84,6 +84,9 @@ export default function Portfolio() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
+            <span className="block text-[#F05A29] px-4 py-2  text-sm font-medium mb-6 tracking-wider">
+           PORTFOLIO
+          </span>
             You Made the <span className="text-[#F05A29]">Right Choice</span>
           </h2>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto">

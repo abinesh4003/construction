@@ -26,7 +26,7 @@ export default function LuxuryNavbar() {
   const navItems = [
     { name: "Home", href: "#home" },
     { name: "Service", href: "#service" },
-    { name: "Packages", href: "#packages" },
+    { name: "Packages", href: "#package" },
     { name: "Portfolio", href: "#portfolio" },
     { name: "Partners", href: "#partners" },
     

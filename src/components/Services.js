@@ -59,7 +59,11 @@ export default function ServicesSection() {
   return (
     <section className="py-20 bg-white"  id='service'>
       <div className="container mx-auto px-6">
+       
         <h2 className="text-4xl font-light text-center mb-12">
+           <span className="block text-[#F05A29] px-4 py-2  text-sm font-medium mb-6 tracking-wider">
+           SERVICES
+          </span>
           <span className="font-serif italic">Our Construction</span> Services
         </h2>
 

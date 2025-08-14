@@ -16,7 +16,7 @@ const packages = [
       "Tractor Emulsion finish",
       "Essential kitchen & bath fittings"
     ],
-    brands: ["/sunmic.png", "/dalmia.png", "/cera.png"],
+    brands: ["/brands/sunmic.png", "/brands/dalmia.png", "/brands/cera.png"],
     image: "/house/17.jpeg"
   },
   {
@@ -30,7 +30,7 @@ const packages = [
       "Tractor Shyne Emulsion",
       "Stylish kitchen & bath fixtures"
     ],
-    brands: ["/jsw.png", "/dalmia.png", "/hindware.png"],
+    brands: ["/brands/jsw.png", "/brands/dalmia.png", "/brands/hindware.png"],
     popular: true,
      image: "/house/18.jpeg"
   },
@@ -45,7 +45,7 @@ const packages = [
       "Apcolite Premium paint",
       "Upgraded kitchen & bath"
     ],
-    brands: ["/ultratech.png", "/asianpaints.png", "/jaquar.png"],
+    brands: ["/brands/ultratech.png", "/brands/asianpaints.png", "/brands/jaquar.png"],
    image: "/house/19.jpeg"
   },
   {
@@ -59,7 +59,7 @@ const packages = [
       "Apex Ultima exterior finish",
       "Luxury kitchen & bath fittings"
     ],
-    brands: ["/jsw.png", "/asianpaints.png", "/kohler.png"],
+    brands: ["/brands/jsw.png", "/brands/asianpaints.png", "/brands/kohler.png"],
     image: "/house/20.jpeg"
   }
 ];
@@ -68,10 +68,10 @@ export default function LuxuryPackages() {
   const [selectedPackage, setSelectedPackage] = useState(null);
 
   return (
-    <section className="py-28 bg-gray-50">
+    <section className="py-28 bg-gray-50" id="package">
       <div className="container mx-auto px-6">
         {/* Header */}
-        <div className="text-center mb-20">
+        <div className="text-center mb-20" >
           <span className="inline-block text-[#F05A29] px-4 py-2 text-sm font-medium mb-6 tracking-wider">
             OUR PACKAGES
           </span>
