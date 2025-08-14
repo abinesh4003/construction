@@ -1,8 +1,8 @@
 'use client';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
-import PhoneInput from './PhoneInput';
 import { ArrowRight } from 'lucide-react';
+import { showToast } from '@/components/ui/toast';
 
 const LuxuryContactForm = () => {
   const [formData, setFormData] = useState({
@@ -12,18 +12,95 @@ const LuxuryContactForm = () => {
     timeframe: 'immediately',
   });
 
-  const handleSubmit = (e) => {
+  const [errors, setErrors] = useState({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const validateForm = () => {
+    const newErrors = {};
+    const phoneRegex = /^[0-9]{10}$/;
+
+    if (!formData.name.trim()) {
+      newErrors.name = 'Name is required';
+    } else if (formData.name.trim().length < 2) {
+      newErrors.name = 'Name must be at least 2 characters';
+    }
+
+    if (!formData.phone.trim()) {
+      newErrors.phone = 'Phone number is required';
+    } else if (!phoneRegex.test(formData.phone.trim())) {
+      newErrors.phone = 'Please enter a valid 10-digit phone number';
+    }
+
+    if (!formData.location.trim()) {
+      newErrors.location = 'Location is required';
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
+    
+    if (!validateForm()) {
+      showToast('error', 'Please fix the errors in the form');
+      return;
+    }
+
+    setIsSubmitting(true);
+    
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(formData)
+      });
+
+      if (!response.ok) {
+        let errorData;
+        try {
+          errorData = await response.json();
+        } catch (jsonError) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        throw new Error(errorData.error || 'Failed to send message');
+      }
+
+      const data = await response.json();
+      
+      // Reset form on success
+      setFormData({
+        name: '',
+        phone: '',
+        location: '',
+        timeframe: 'immediately',
+      });
+      setErrors({});
+
+      showToast('success', 'Your consultation request has been sent successfully! We will contact you soon.');
+    } catch (error) {
+      console.error('Submission error:', error);
+      showToast('error', error.message || 'An unexpected error occurred. Please try again later.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
+    
+    // Clear error when user starts typing
+    if (errors[name]) {
+      setErrors(prev => ({ ...prev, [name]: '' }));
+    }
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6">
+    <form onSubmit={handleSubmit} className="space-y-6" noValidate>
       {/* Name */}
       <motion.div
         initial={{ opacity: 0, x: -20 }}
@@ -40,10 +117,13 @@ const LuxuryContactForm = () => {
           name="name"
           value={formData.name}
           onChange={handleChange}
-          className="w-full px-4 py-3 border border-gray-300 rounded-sm focus:ring-2 focus:ring-[#F05A29] focus:border-[#F05A29]"
+          className={`w-full px-4 py-3 border ${errors.name ? 'border-red-500' : 'border-gray-300'} rounded-sm focus:ring-2 focus:ring-[#F05A29] focus:border-[#F05A29]`}
           placeholder="John Doe"
           required
         />
+        {errors.name && (
+          <p className="mt-1 text-sm text-red-600">{errors.name}</p>
+        )}
       </motion.div>
 
       {/* Phone */}
@@ -56,11 +136,19 @@ const LuxuryContactForm = () => {
         <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
           Phone Number*
         </label>
-        <PhoneInput
+        <input
+          type="tel"
+          id="phone"
+          name="phone"
           value={formData.phone}
-          onChange={(value) => setFormData(prev => ({ ...prev, phone: value }))}
-          className="w-full px-4 py-3 border border-gray-300 rounded-sm focus:ring-2 focus:ring-[#F05A29] focus:border-[#F05A29]"
+          onChange={handleChange}
+          className={`w-full px-4 py-3 border ${errors.phone ? 'border-red-500' : 'border-gray-300'} rounded-sm focus:ring-2 focus:ring-[#F05A29] focus:border-[#F05A29]`}
+          placeholder="9876543210"
+          required
         />
+        {errors.phone && (
+          <p className="mt-1 text-sm text-red-600">{errors.phone}</p>
+        )}
       </motion.div>
 
       {/* Location */}
@@ -79,10 +167,13 @@ const LuxuryContactForm = () => {
           name="location"
           value={formData.location}
           onChange={handleChange}
-          className="w-full px-4 py-3 border border-gray-300 rounded-sm focus:ring-2 focus:ring-[#F05A29] focus:border-[#F05A29]"
+          className={`w-full px-4 py-3 border ${errors.location ? 'border-red-500' : 'border-gray-300'} rounded-sm focus:ring-2 focus:ring-[#F05A29] focus:border-[#F05A29]`}
           placeholder="Enter your location"
           required
         />
+        {errors.location && (
+          <p className="mt-1 text-sm text-red-600">{errors.location}</p>
+        )}
       </motion.div>
 
       {/* Timeline */}
@@ -119,10 +210,22 @@ const LuxuryContactForm = () => {
       >
         <button
           type="submit"
-          className="w-full py-4 px-6 bg-[#F05A29] hover:bg-[#e04a20] text-white font-medium rounded-sm transition-colors duration-300 flex items-center justify-center gap-2"
+          disabled={isSubmitting}
+          className={`w-full py-4 px-6 bg-[#F05A29] hover:bg-[#e04a20] text-white font-medium rounded-sm transition-colors duration-300 flex items-center justify-center gap-2 ${
+            isSubmitting ? 'opacity-70 cursor-not-allowed' : ''
+          }`}
         >
-          Request Free Consultation
-          <ArrowRight className="h-5 w-5" />
+          {isSubmitting ? (
+            <>
+              <span className="animate-spin h-5 w-5 border-2 border-white border-t-transparent rounded-full"></span>
+              <span>Processing...</span>
+            </>
+          ) : (
+            <>
+              <span>Request Free Consultation</span>
+              <ArrowRight className="h-5 w-5" />
+            </>
+          )}
         </button>
       </motion.div>
 

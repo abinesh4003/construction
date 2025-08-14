@@ -71,7 +71,7 @@ const cities = [
   {
     name: "Thukaly",
     image: "/cities/thuckalay.jpg",
-  },
+  }, 
   {
     name: "Marthandam",
     image: "/cities/marthandam.jpg",
@@ -157,7 +157,7 @@ export default function Portfolio() {
                   transition={{ duration: 0.3, delay: index * 0.05 }}
                   className="flex flex-col items-center"
                 >
-                  <div className="relative w-32 h-32 rounded-full overflow-hidden mb-2 border-2 border-[#F05A29]">
+                  <div className="relative w-32 h-32 overflow-hidden mb-2">
                     <Image
                       src={city.image}
                       alt={city.name}
@@ -165,7 +165,7 @@ export default function Portfolio() {
                       className="object-cover"
                     />
                   </div>
-                  <span className="text-sm font-medium ">{city.name}</span>
+                  <span className="text-sm font-medium font-semibold ">{city.name}</span>
                 </motion.div>
               ))}
             </div>

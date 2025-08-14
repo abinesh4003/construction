@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import { X, ArrowRight, Phone, Mail, MapPin, ChevronDown } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { showToast } from '@/components/ui/toast';
 
 const ContactDialog = ({ isOpen, onClose }) => {
   const [formData, setFormData] = useState({
@@ -11,17 +12,101 @@ const ContactDialog = ({ isOpen, onClose }) => {
     projectType: '',
     message: ''
   });
+  const [errors, setErrors] = useState({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e) => {
+  // Validation function
+  const validateForm = () => {
+    const newErrors = {};
+    const phoneRegex = /^[0-9]{10}$/;
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!formData.name.trim()) {
+      newErrors.name = 'Name is required';
+    } else if (formData.name.trim().length < 2) {
+      newErrors.name = 'Name must be at least 2 characters';
+    }
+
+    if (!formData.phone.trim()) {
+      newErrors.phone = 'Phone number is required';
+    } else if (!phoneRegex.test(formData.phone.trim())) {
+      newErrors.phone = 'Please enter a valid 10-digit phone number';
+    }
+
+    if (!formData.email.trim()) {
+      newErrors.email = 'Email is required';
+    } else if (!emailRegex.test(formData.email.trim())) {
+      newErrors.email = 'Please enter a valid email address';
+    }
+
+    if (!formData.projectType) {
+      newErrors.projectType = 'Project type is required';
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
-    // Add your form submission logic here
-    onClose();
+    
+    if (!validateForm()) {
+      showToast('error', 'Please fix the errors in the form', 'error');
+      return;
+    }
+
+    setIsSubmitting(true);
+    
+    try {
+      const response = await fetch('/api/email', {
+        method: 'POST',
+        headers: { 
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(formData)
+      });
+
+      if (!response.ok) {
+        let errorData;
+        try {
+          errorData = await response.json();
+        } catch (jsonError) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        throw new Error(errorData.error || 'Failed to send message');
+      }
+
+      const data = await response.json();
+      
+      // Reset form on success
+      setFormData({
+        name: '',
+        phone: '',
+        email: '',
+        projectType: '',
+        message: ''
+      });
+      setErrors({});
+
+      showToast('success', 'Your message has been sent successfully! We will get back to you soon.');
+      onClose();
+    } catch (error) {
+      console.error('Submission error:', error);
+      showToast('error', error.message || 'An unexpected error occurred. Please try again later.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
+    
+    // Clear error when user starts typing
+    if (errors[name]) {
+      setErrors(prev => ({ ...prev, [name]: '' }));
+    }
   };
 
   const contactMethods = [
@@ -78,7 +163,7 @@ const ContactDialog = ({ isOpen, onClose }) => {
                   </button>
                 </div>
 
-                <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
+                <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6" noValidate>
                   <div>
                     <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
                       Full Name*
@@ -89,10 +174,13 @@ const ContactDialog = ({ isOpen, onClose }) => {
                       name="name"
                       value={formData.name}
                       onChange={handleChange}
-                      className="w-full px-4 py-2.5 sm:py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-[#F05A29]/50 focus:border-[#F05A29] transition-all"
+                      className={`w-full px-4 py-2.5 sm:py-3 border ${errors.name ? 'border-red-500' : 'border-gray-300'} rounded-md focus:ring-2 focus:ring-[#F05A29]/50 focus:border-[#F05A29] transition-all`}
                       required
                       placeholder="Enter your full name"
                     />
+                    {errors.name && (
+                      <p className="mt-1 text-sm text-red-600">{errors.name}</p>
+                    )}
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
@@ -106,10 +194,13 @@ const ContactDialog = ({ isOpen, onClose }) => {
                         name="phone"
                         value={formData.phone}
                         onChange={handleChange}
-                        className="w-full px-4 py-2.5 sm:py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-[#F05A29]/50 focus:border-[#F05A29] transition-all"
+                        className={`w-full px-4 py-2.5 sm:py-3 border ${errors.phone ? 'border-red-500' : 'border-gray-300'} rounded-md focus:ring-2 focus:ring-[#F05A29]/50 focus:border-[#F05A29] transition-all`}
                         required
-                        placeholder="+91 98765 43210"
+                        placeholder="9876543210"
                       />
+                      {errors.phone && (
+                        <p className="mt-1 text-sm text-red-600">{errors.phone}</p>
+                      )}
                     </div>
 
                     <div>
@@ -122,10 +213,13 @@ const ContactDialog = ({ isOpen, onClose }) => {
                         name="email"
                         value={formData.email}
                         onChange={handleChange}
-                        className="w-full px-4 py-2.5 sm:py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-[#F05A29]/50 focus:border-[#F05A29] transition-all"
+                        className={`w-full px-4 py-2.5 sm:py-3 border ${errors.email ? 'border-red-500' : 'border-gray-300'} rounded-md focus:ring-2 focus:ring-[#F05A29]/50 focus:border-[#F05A29] transition-all`}
                         required
                         placeholder="your@email.com"
                       />
+                      {errors.email && (
+                        <p className="mt-1 text-sm text-red-600">{errors.email}</p>
+                      )}
                     </div>
                   </div>
 
@@ -138,7 +232,7 @@ const ContactDialog = ({ isOpen, onClose }) => {
                       name="projectType"
                       value={formData.projectType}
                       onChange={handleChange}
-                      className="w-full px-4 py-2.5 sm:py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-[#F05A29]/50 focus:border-[#F05A29] appearance-none transition-all"
+                      className={`w-full px-4 py-2.5 sm:py-3 border ${errors.projectType ? 'border-red-500' : 'border-gray-300'} rounded-md focus:ring-2 focus:ring-[#F05A29]/50 focus:border-[#F05A29] appearance-none transition-all`}
                       required
                     >
                       <option value="">Select project type</option>
@@ -148,6 +242,9 @@ const ContactDialog = ({ isOpen, onClose }) => {
                       <option value="interior">Interior Design</option>
                     </select>
                     <ChevronDown className="h-4 w-4 absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 pointer-events-none" />
+                    {errors.projectType && (
+                      <p className="mt-1 text-sm text-red-600">{errors.projectType}</p>
+                    )}
                   </div>
 
                   <div>
@@ -167,10 +264,20 @@ const ContactDialog = ({ isOpen, onClose }) => {
 
                   <button
                     type="submit"
-                    className="w-full py-3 sm:py-4 px-6 bg-gradient-to-r from-[#F05A29] to-[#FF7D45] hover:from-[#E04A20] hover:to-[#F05A29] text-white font-medium rounded-md transition-all duration-300 flex items-center justify-center gap-2 shadow-md hover:shadow-lg"
+                    disabled={isSubmitting}
+                    className="w-full py-3 sm:py-4 px-6 bg-gradient-to-r from-[#F05A29] to-[#FF7D45] hover:from-[#E04A20] hover:to-[#F05A29] text-white font-medium rounded-md transition-all duration-300 flex items-center justify-center gap-2 shadow-md hover:shadow-lg disabled:opacity-70 disabled:cursor-not-allowed"
                   >
-                    Submit Request
-                    <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5" />
+                    {isSubmitting ? (
+                      <>
+                        <span className="animate-spin h-5 w-5 border-2 border-white border-t-transparent rounded-full"></span>
+                        <span>Sending...</span>
+                      </>
+                    ) : (
+                      <>
+                        <span>Submit Request</span>
+                        <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5" />
+                      </>
+                    )}
                   </button>
                 </form>
               </div>

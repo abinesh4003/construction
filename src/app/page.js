@@ -12,6 +12,7 @@ import Footer from "@/components/Footer";
 import { useDialog } from "@/components/DialogProvider";
 import Services from "@/components/Services";
 import BankingPartners from "@/components/BankingPartners";
+import { Toast } from "@/components/ui/toast";
 export default function Home() {
     const { isDialogOpen, closeDialog } = useDialog();
 
@@ -28,6 +29,7 @@ export default function Home() {
          <BankingPartners/>
         <ContactUsSection/>
         <ContactDialog isOpen={isDialogOpen} onClose={closeDialog} />
+        <Toast />
       </main>
       <Footer/>
     </div>

@@ -2,8 +2,10 @@
 import { motion } from 'framer-motion';
 import { Facebook, Instagram, Twitter, Linkedin, Phone, Mail, MapPin, ArrowRight } from 'lucide-react';
 import Image from 'next/image';
+import { useDialog } from './DialogProvider';
 
 const LuxuryFooter = () => {
+  const { openDialog } = useDialog();
   const footerLinks = [
     {
       title: "Quick Links",
@@ -18,11 +20,11 @@ const LuxuryFooter = () => {
     {
       title: "Our Services",
       links: [
-        { name: "Luxury Homes", href: "#" },
-        { name: "Villas", href: "#" },
-        { name: "Commercial Spaces", href: "#" },
-        { name: "Renovation", href: "#" },
-        { name: "Interior Design", href: "#" },
+        { name: "Luxury Homes", href: "#",onclick:"openDialog" },
+        { name: "Villas", href: "#",onclick:"openDialog" },
+        { name: "Commercial Spaces", href: "#",onclick:"openDialog" },
+        { name: "Renovation", href: "#",onclick:"openDialog" },
+        { name: "Interior Design", href: "#",onclick:"openDialog" },
       ]
     }
   ];
@@ -106,6 +108,7 @@ const LuxuryFooter = () => {
                       transition={{ duration: 0.2 }}
                       href={link.href}
                       className="flex items-center text-gray-400 hover:text-[#F05A29] transition-colors group"
+                      onClick={link.onclick ? openDialog : null}
                     >
                       <ArrowRight className="h-4 w-4 mr-2 text-[#F05A29] opacity-0 group-hover:opacity-100 transition-opacity" />
                       {link.name}
