@@ -26,6 +26,16 @@ const stats = [
     value: "5,00,000",
     label: "sqft Total Build-up",
   },
+  {
+    icon:  Building,
+    value: "10+",
+    label: "Years of Experience",
+  },
+  {
+    icon: Users,
+    value: "300+",
+    label: "Happy Clients",
+  }
 ];
 
 const cities = [
@@ -98,7 +108,7 @@ export default function Portfolio() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, staggerChildren: 0.1 }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-20"
+          className="grid grid-cols-2 md:grid-cols-3 gap-6 mb-20"
         >
           {stats.map((stat, index) => {
             const Icon = stat.icon;
