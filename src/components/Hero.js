@@ -10,7 +10,7 @@ import NextLink from "next/link";
 const luxuryBackgrounds = [
   {
     desk: "/hero/desktop1.jpg",
-    mobile:"/hero/mobile1.jpg",
+    mobile:"/hero/mobile4.jpg",
   },
   {
      desk: "/hero/desktop2.jpg",
@@ -22,11 +22,11 @@ const luxuryBackgrounds = [
   },
   {
      desk: "/hero/desktop4.jpg",
-    mobile:"/hero/mobile2.jpg",
+    mobile:"/hero/mobile1.jpg",
   },
     {
     desk: "/hero/desktop5.jpg",
-    mobile:"/hero/mobile3.jpg",
+    mobile:"/hero/mobile5.jpg",
   }
 
 ];
