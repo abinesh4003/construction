@@ -18,7 +18,7 @@ export async function POST(request) {
    name,
     phone,
     location,
-    timeframe,
+    ProjectType: timeframe = 'Residential',
     } = formData;
 
     // Validate required fields
@@ -57,14 +57,14 @@ export async function POST(request) {
         Name: ${name}
         Phone: ${phone}
         Location: ${location}
-        Timeframe: ${timeframe}
+        ProjectType: ${timeframe}
       `,
       html: `
         <h1>Contact Form Submission</h1>
         <p><strong>Name:</strong> ${name}</p>
         <p><strong>Phone:</strong> ${phone}</p>
         <p><strong>Location:</strong> ${location}</p>
-        <p><strong>Timeframe:</strong> ${timeframe}</p>
+        <p><strong>ProjectType:</strong> ${timeframe}</p>
       `
     };
 

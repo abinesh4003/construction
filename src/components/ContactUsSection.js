@@ -8,7 +8,7 @@ const LuxuryContactUsSection = () => {
     {
       icon: MapPin,
       title: "Our Office",
-      content: "5C98+9M7, Thalavaipuram Rd, opposite Beski Auditorium, Thalavaipuram, Simon Nagar, Nagercoil, Tamil Nadu 6290041",
+      content: "Varghese Construction, Thalavaipuram Main Road, opposite Beski Auditorium, Thalavaipuram, Simon Nagar, Nagercoil, Tamil Nadu 629004",
       color: "text-emerald-500",
       bgColor: "bg-emerald-50"
     },

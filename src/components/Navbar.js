@@ -52,10 +52,12 @@ export default function LuxuryNavbar() {
     transition={{ delay: 0.2 }}
     className="flex flex-col items-start justify-center space-x-2"
   >
-    <span className="text-3xl font-serif italic font-semibold tracking-widest">
+    <span className="text-3xl font-playfair italic font-bold tracking-tight 
+                     group-hover:text-[#F05A29] transition-colors duration-300">
       VARGHESE
     </span>
-    <span className="block text-xs tracking-[0.30em] font-bold text-[#F05A29]">
+    <span className="text-xs font-montserrat font-bold uppercase tracking-[0.35em] 
+                    text-[#F05A29] mt-1">
       CONSTRUCTION
     </span>
   </motion.div>

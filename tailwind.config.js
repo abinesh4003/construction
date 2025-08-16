@@ -8,6 +8,15 @@ module.exports = {
   ],
   theme: {
   	extend: {
+       fontFamily: {
+        playfair: ['var(--font-playfair)'],
+        montserrat: ['var(--font-montserrat)'],
+        bebas: ['var(--font-bebas)'],
+        roboto: ['var(--font-roboto)'],
+        cormorant: ['var(--font-cormorant)'],
+        raleway: ['var(--font-raleway)'],
+      },
+		
   		colors: {
   			primary: {
   				DEFAULT: 'hsl(var(--primary))',

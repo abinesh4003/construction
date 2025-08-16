@@ -85,8 +85,8 @@ const cities = [
 export default function Portfolio() {
   const { openDialog } = useDialog();
   return (
-    <section className="py-20 bg-white" id="portfolio">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-20 w-screen bg-white" id="portfolio">
+      <div className=" w-full mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -140,14 +140,14 @@ export default function Portfolio() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="bg-gray-50 rounded-2xl p-8 md:p-12"
+          className="bg-gray-50 rounded-2xl p-8 md:p-12 w-full mx-auto"
         >
-          <div className="max-w-4xl mx-auto text-center">
+          <div className="w-full mx-auto text-center ">
             <h3 className="text-2xl md:text-3xl font-bold mb-6">
               We&apos;re Building Across{" "}
               <span className="text-[#F05A29]">10+ Cities</span>
             </h3>
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 mb-8">
+            <div className="grid grid-cols-2 md:grid-cols-5 lg:grid-cols-10 gap-8 py-12">
               {cities.map((city, index) => (
                 <motion.div
                   key={city.name}
@@ -157,7 +157,7 @@ export default function Portfolio() {
                   transition={{ duration: 0.3, delay: index * 0.05 }}
                   className="flex flex-col items-center"
                 >
-                  <div className="relative w-32 h-32 overflow-hidden mb-2">
+                  <div className="relative w-16 h-16 overflow-hidden mb-2">
                     <Image
                       src={city.image}
                       alt={city.name}
@@ -165,7 +165,7 @@ export default function Portfolio() {
                       className="object-cover"
                     />
                   </div>
-                  <span className="text-sm font-medium font-semibold ">{city.name}</span>
+                  <span className="text-md font-medium font-semibold ">{city.name}</span>
                 </motion.div>
               ))}
             </div>

@@ -9,7 +9,7 @@ const LuxuryContactForm = () => {
     name: '',
     phone: '',
     location: '',
-    timeframe: 'immediately',
+    timeframe: 'residential',
   });
 
   const [errors, setErrors] = useState({});
@@ -76,7 +76,7 @@ const LuxuryContactForm = () => {
         name: '',
         phone: '',
         location: '',
-        timeframe: 'immediately',
+        timeframe: 'Residential',
       });
       setErrors({});
 
@@ -143,7 +143,7 @@ const LuxuryContactForm = () => {
           value={formData.phone}
           onChange={handleChange}
           className={`w-full px-4 py-3 border ${errors.phone ? 'border-red-500' : 'border-gray-300'} rounded-sm focus:ring-2 focus:ring-[#F05A29] focus:border-[#F05A29]`}
-          placeholder="9876543210"
+          placeholder="Enter your phone number"
           required
         />
         {errors.phone && (
@@ -184,7 +184,7 @@ const LuxuryContactForm = () => {
         transition={{ duration: 0.4, delay: 0.3 }}
       >
         <label htmlFor="timeframe" className="block text-sm font-medium text-gray-700 mb-2">
-          Project Start Timeline*
+         Project Type*
         </label>
         <select
           id="timeframe"
@@ -194,10 +194,10 @@ const LuxuryContactForm = () => {
           className="w-full px-4 py-3 border border-gray-300 rounded-sm focus:ring-2 focus:ring-[#F05A29] focus:border-[#F05A29]"
           required
         >
-          <option value="immediately">Immediately</option>
-          <option value="within-3-months">Within 3 Months</option>
-          <option value="within-6-months">Within 6 Months</option>
-          <option value="after-6-months">After 6 Months</option>
+          <option value="residential">Residential</option>
+          <option value="commercial">Commercial</option>
+          <option value="renovation">Renovation</option>
+          <option value="interior design">Inerior Design</option>
         </select>
       </motion.div>
 

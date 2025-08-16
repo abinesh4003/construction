@@ -16,36 +16,35 @@ const ContactDialog = ({ isOpen, onClose }) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   // Validation function
-  const validateForm = () => {
-    const newErrors = {};
-    const phoneRegex = /^[0-9]{10}$/;
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+ const validateForm = () => {
+  const newErrors = {};
+  const phoneRegex = /^[0-9]{10}$/;
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    if (!formData.name.trim()) {
-      newErrors.name = 'Name is required';
-    } else if (formData.name.trim().length < 2) {
-      newErrors.name = 'Name must be at least 2 characters';
-    }
+  if (!formData.name.trim()) {
+    newErrors.name = 'Name is required';
+  } else if (formData.name.trim().length < 2) {
+    newErrors.name = 'Name must be at least 2 characters';
+  }
 
-    if (!formData.phone.trim()) {
-      newErrors.phone = 'Phone number is required';
-    } else if (!phoneRegex.test(formData.phone.trim())) {
-      newErrors.phone = 'Please enter a valid 10-digit phone number';
-    }
+  if (!formData.phone.trim()) {
+    newErrors.phone = 'Phone number is required';
+  } else if (!phoneRegex.test(formData.phone.trim())) {
+    newErrors.phone = 'Please enter a valid 10-digit phone number';
+  }
 
-    if (!formData.email.trim()) {
-      newErrors.email = 'Email is required';
-    } else if (!emailRegex.test(formData.email.trim())) {
-      newErrors.email = 'Please enter a valid email address';
-    }
+  // Only validate email if it's provided
+  if (formData.email.trim() && !emailRegex.test(formData.email.trim())) {
+    newErrors.email = 'Please enter a valid email address';
+  }
 
-    if (!formData.projectType) {
-      newErrors.projectType = 'Project type is required';
-    }
+  if (!formData.projectType) {
+    newErrors.projectType = 'Project type is required';
+  }
 
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
-  };
+  setErrors(newErrors);
+  return Object.keys(newErrors).length === 0;
+};
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -125,7 +124,7 @@ const ContactDialog = ({ isOpen, onClose }) => {
     {
       icon: MapPin,
       title: "Visit Us",
-      info: "5C98+9M7, Thalavaipuram Rd, opposite Beski Auditorium, Thalavaipuram, Simon Nagar, Nagercoil, Tamil Nadu 629004",
+      info: "Varghese Construction, Thalavaipuram Main Road, opposite Beski Auditorium, Thalavaipuram, Simon Nagar, Nagercoil, Tamil Nadu 629004",
       action: "https://maps.google.com"
     }
   ];
@@ -196,7 +195,7 @@ const ContactDialog = ({ isOpen, onClose }) => {
                         onChange={handleChange}
                         className={`w-full px-4 py-2.5 sm:py-3 border ${errors.phone ? 'border-red-500' : 'border-gray-300'} rounded-md focus:ring-2 focus:ring-[#F05A29]/50 focus:border-[#F05A29] transition-all`}
                         required
-                        placeholder="9876543210"
+                        placeholder="Enter your phone number"
                       />
                       {errors.phone && (
                         <p className="mt-1 text-sm text-red-600">{errors.phone}</p>
@@ -205,7 +204,7 @@ const ContactDialog = ({ isOpen, onClose }) => {
 
                     <div>
                       <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
-                        Email Address*
+                        Email Address
                       </label>
                       <input
                         type="email"
@@ -214,7 +213,6 @@ const ContactDialog = ({ isOpen, onClose }) => {
                         value={formData.email}
                         onChange={handleChange}
                         className={`w-full px-4 py-2.5 sm:py-3 border ${errors.email ? 'border-red-500' : 'border-gray-300'} rounded-md focus:ring-2 focus:ring-[#F05A29]/50 focus:border-[#F05A29] transition-all`}
-                        required
                         placeholder="your@email.com"
                       />
                       {errors.email && (

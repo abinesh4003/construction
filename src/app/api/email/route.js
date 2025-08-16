@@ -23,7 +23,7 @@ export async function POST(request) {
     } = formData;
 
     // Validate required fields
-    if (!name || !email || !phone || !projectType) {
+    if (!name || !phone || !projectType) {
       return NextResponse.json(
         { error: "Missing required fields (name, email, phone, projectType)" },
         { status: 400 }
@@ -31,12 +31,7 @@ export async function POST(request) {
     }
 
     // Validate email format
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      return NextResponse.json(
-        { error: "Invalid email format" },
-        { status: 400 }
-      );
-    }
+   
 
     // Configure SMTP transporter
     const transporter = nodemailer.createTransport({
