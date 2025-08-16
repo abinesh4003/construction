@@ -7,7 +7,7 @@ import Image from "next/image";
 const reviews = [
   {
     id: 1,
-    name: "Monica",
+    name: "Rajesh",
     role: "Homeowner, Kanyakumari",
     rating: 5,
     content: "The team delivered our dream home ahead of schedule with exceptional quality. Their attention to detail was impressive throughout the construction process.",
@@ -15,7 +15,7 @@ const reviews = [
   },
   {
     id: 2,
-    name: "Priya ",
+    name: "Suresh ",
     role: "Business Owner, Thiruvananthapuram",
     rating: 4,
     content: "Our commercial space was built exactly to specifications. The project management was professional and they handled all municipal approvals seamlessly.",
@@ -23,7 +23,7 @@ const reviews = [
   },
   {
     id: 3,
-    name: "Rajeshwari",
+    name: "Manikandan",
     role: "Homeowner, Nagercoil",
     rating: 5,
     content: "We have partnered with them on three projects now. Consistent quality, on-time delivery, and transparent pricing make them our go-to construction partner.",

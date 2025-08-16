@@ -45,21 +45,21 @@ export default function LuxuryNavbar() {
       <div className="container mx-auto px-6 py-4">
         <div className="flex justify-between items-center">
           {/* Logo */}
-          <Link href="#home" className="flex items-center">
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.2 }}
-            >
-              <span className="text-2xl font-serif italic font-medium tracking-tight">
-                VARGHESE
-              </span>
-              <span className="block text-xs tracking-widest text-[#F05A29]">
-                CONSTRUCTION
-              </span>
-            </motion.div>
-          </Link>
-
+        <Link href="#home" className="flex items-center">
+  <motion.div
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    transition={{ delay: 0.2 }}
+    className="flex flex-col items-start justify-center space-x-2"
+  >
+    <span className="text-3xl font-serif italic font-semibold tracking-widest">
+      VARGHESE
+    </span>
+    <span className="block text-xs tracking-[0.30em] font-bold text-[#F05A29] mt-[-4px]">
+      CONSTRUCTION
+    </span>
+  </motion.div>
+</Link>
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center space-x-8">
             {navItems.map((item, index) => (
