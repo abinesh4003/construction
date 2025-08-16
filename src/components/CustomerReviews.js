@@ -121,7 +121,7 @@ export default function LuxuryCustomerReviews() {
         <span className="font-serif italic">Our</span> Happy Customers
       </h2>
       <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-        Hear from homeowners and businesses who've experienced our quality craftsmanship firsthand.
+        Hear from homeowners and businesses who have experienced our quality craftsmanship firsthand.
       </p>
     </motion.div>
 
