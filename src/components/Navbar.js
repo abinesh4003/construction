@@ -55,7 +55,7 @@ export default function LuxuryNavbar() {
     <span className="text-3xl font-serif italic font-semibold tracking-widest">
       VARGHESE
     </span>
-    <span className="block text-xs tracking-[0.30em] font-bold text-[#F05A29] mt-[-4px]">
+    <span className="block text-xs tracking-[0.30em] font-bold text-[#F05A29]">
       CONSTRUCTION
     </span>
   </motion.div>

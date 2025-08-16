@@ -1,37 +1,45 @@
-"use client"
-import Hero from "@/components/Hero";
-import Navbar from "@/components/Navbar";
-import Portfolio from "@/components/Portfolio";
-import WhyChooseUs from "@/components/WhyChooseUs";
-import CustomerReviews from "@/components/CustomerReviews";
-import ConstructionPackages from "@/components/ConstructionPackages";
-import CompetitiveAdvantage from "@/components/competitiveAdvantage";
-import ContactUsSection from "@/components/ContactUsSection";
-import ContactDialog from "@/components/ContactDialog";
-import Footer from "@/components/Footer";
-import { useDialog } from "@/components/DialogProvider";
-import Services from "@/components/Services";
-import BankingPartners from "@/components/BankingPartners";
-import { Toast } from "@/components/ui/toast";
-export default function Home() {
-    const { isDialogOpen, closeDialog } = useDialog();
+// app/page.js (server component by default)
+import Home from './Home';
 
-  return (
-    <div className="max-w-screen relative overflow-hidden">
-      <Navbar/>
-      <main className="">   
-        <Hero/>
-        <Services/>
-        <WhyChooseUs/>
-        <Portfolio/>
-         <ConstructionPackages/>
-         <CustomerReviews/>
-         <BankingPartners/>
-        <ContactUsSection/>
-        <ContactDialog isOpen={isDialogOpen} onClose={closeDialog} />
-        <Toast />
-      </main>
-      <Footer/>
-    </div>
-  );
+export const metadata = {
+  title: "Varghese Construction | Best Luxury Home & Villa Builders in Kanyakumari & Nagercoil",
+  description: "Varghese Construction is the top-rated construction company in South Tamil Nadu. We specialize in luxury homes, premium villas, and commercial building projects with 10+ years of trusted experience in Kanyakumari & Nagercoil.",
+  keywords: [
+    "Luxury home builders Kanyakumari",
+    "Construction company in Nagercoil",
+    "Villa builders Kanyakumari",
+    "Best construction company South Tamil Nadu",
+    "Commercial building contractors Nagercoil",
+    "Residential construction Kanyakumari",
+  ],
+  metadataBase: new URL("https://vargheseconstruction.com"),
+  alternates: {
+    canonical: "https://vargheseconstruction.com/",
+  },
+  openGraph: {
+    title: "Varghese Construction | Best Luxury Home & Villa Builders in Kanyakumari & Nagercoil",
+    description: "Trusted construction company for luxury homes, premium villas, and commercial buildings in Kanyakumari, Nagercoil & South Tamil Nadu.",
+    url: "https://vargheseconstruction.com/",
+    siteName: "Varghese Construction",
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Varghese Construction - Luxury Home Builders",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Varghese Construction | Luxury Home & Villa Builders in Kanyakumari",
+    description: "Top-rated construction services for premium villas, luxury homes & commercial spaces in Kanyakumari & Nagercoil.",
+    images: ["/twitter-image.jpg"],
+  },
+};
+ 
+export default function Page() {
+  return <Home />;
 }
