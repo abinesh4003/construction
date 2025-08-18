@@ -94,9 +94,9 @@ export default function LuxuryHero() {
     fill
     priority
     quality={100}
-    className="block sm:hidden object-cover object-center"
+    className="block sm:hidden object-[center center] object-center"
   />
-        <div className="absolute inset-0 bg-black/30" />
+        <div className="absolute inset-0 bg-black/10" />
       </motion.div>
     )
   )}
@@ -112,16 +112,7 @@ export default function LuxuryHero() {
           transition={{ duration: 1, delay: 0.5 }}
           className="max-w-3xl"
         >
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1 }}
-            className="flex items-center gap-2 mb-6"
-          >
-            <div className="w-12 h-px bg-white  " />
-            <span className="text-white tracking-widest ">VARGHESE CONSTRUCTION</span>
-          </motion.div>
-
+  
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-light leading-tight mb-8 text-white">
             <motion.span 
               className="block"

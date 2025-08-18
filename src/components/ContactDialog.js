@@ -4,6 +4,117 @@ import { X, ArrowRight, Phone, Mail, MapPin, ChevronDown } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { showToast } from '@/components/ui/toast';
 
+const countryList = [
+  { code: '+91', flag: '🇮🇳', name: 'India' },
+  { code: '+1', flag: '🇺🇸', name: 'United States' },
+  { code: '+44', flag: '🇬🇧', name: 'United Kingdom' },
+  { code: '+971', flag: '🇦🇪', name: 'United Arab Emirates' },
+  { code: '+61', flag: '🇦🇺', name: 'Australia' },
+  { code: '+81', flag: '🇯🇵', name: 'Japan' },
+  { code: '+49', flag: '🇩🇪', name: 'Germany' },
+  { code: '+33', flag: '🇫🇷', name: 'France' },
+  { code: '+39', flag: '🇮🇹', name: 'Italy' },
+  { code: '+86', flag: '🇨🇳', name: 'China' },
+  { code: '+7', flag: '🇷🇺', name: 'Russia' },
+  { code: '+55', flag: '🇧🇷', name: 'Brazil' },
+  { code: '+27', flag: '🇿🇦', name: 'South Africa' },
+];
+
+const PhoneInput = ({ value, onChange, className = '', error }) => {
+  const [countryCode, setCountryCode] = useState('+91');
+  const [phoneNumber, setPhoneNumber] = useState('');
+  const [search, setSearch] = useState('');
+  const [open, setOpen] = useState(false);
+
+  // Initialize with current value
+  useState(() => {
+    if (value) {
+      if (value.startsWith('+')) {
+        const code = countryList.find(c => value.startsWith(c.code))?.code || '+91';
+        const number = value.replace(code, '');
+        setCountryCode(code);
+        setPhoneNumber(number);
+      } else {
+        setPhoneNumber(value);
+      }
+    }
+  }, [value]);
+
+  const handlePhoneChange = (e) => {
+    const num = e.target.value.replace(/\D/g, '');
+    setPhoneNumber(num);
+    onChange(`${countryCode}${num}`);
+  };
+
+  const filteredCountries = countryList.filter(
+    (c) =>
+      c.name.toLowerCase().includes(search.toLowerCase()) ||
+      c.code.includes(search)
+  );
+
+  return (
+ <div className={`flex ${className}`}>
+       <div className="relative">
+         <button
+           type="button"
+           onClick={() => setOpen(!open)}
+           className={`px-1 py-1.5 border ${error ? 'border-red-500' : 'border-gray-300'} rounded-l-lg bg-gray-100 flex items-center gap-1 hover:bg-gray-200 transition-colors`}
+         >
+           <span>{countryList.find(c => c.code === countryCode)?.flag}</span>
+           <span>{countryCode}</span>
+           <ChevronDown className="h-4 w-4 ml-1" />
+         </button>
+ 
+         {open && (
+           <div className="absolute z-10 bg-white border border-gray-200 shadow-lg rounded-lg mt-1 w-56 max-h-32 overflow-y-auto">
+             <div className="p-2 sticky top-0 bg-white">
+               <input
+                 type="text"
+                 value={search}
+                 onChange={(e) => setSearch(e.target.value)}
+                 placeholder="Search country"
+                 className=" px-2 py-1 border border-gray-300 rounded-md text-sm focus:ring-2 focus:ring-[#F05A29]/50 focus:border-[#F05A29] "
+                 autoFocus
+               />
+             </div>
+             {filteredCountries.length > 0 ? (
+               filteredCountries.map((country) => (
+                 <div
+                   key={country.code}
+                   onClick={() => {
+                     setCountryCode(country.code);
+                     onChange(`${country.code}${phoneNumber}`);
+                     setOpen(false);
+                     setSearch('');
+                   }}
+                   className="px-3 py-1 flex items-center gap-2 hover:bg-gray-100 cursor-pointer text-sm"
+                 >
+                   <span className="text-lg">{country.flag}</span>
+                   <span className="flex-1">{country.name}</span>
+                   <span className="text-gray-500">{country.code}</span>
+                 </div>
+               ))
+             ) : (
+               <div className="px-3 py-1 text-sm text-gray-500">No countries found</div>
+             )}
+           </div>
+         )}
+       </div>
+ 
+       <input
+         type="tel"
+         value={phoneNumber}
+         onChange={handlePhoneChange}
+         className={`w-full px-2 py-1.5 border ${error ? 'border-red-500' : 'border-gray-300'} rounded-r-lg focus:ring-2 focus:ring-[#F05A29]/50 focus:border-[#F05A29] transition-all`}
+         placeholder="9876543210"
+         required
+         maxLength={15}
+       />
+     </div>
+  );
+};
+
+
 const ContactDialog = ({ isOpen, onClose }) => {
   const [formData, setFormData] = useState({
     name: '',
@@ -15,36 +126,33 @@ const ContactDialog = ({ isOpen, onClose }) => {
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  // Validation function
- const validateForm = () => {
-  const newErrors = {};
-  const phoneRegex = /^[0-9]{10}$/;
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const validateForm = () => {
+    const newErrors = {};
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-  if (!formData.name.trim()) {
-    newErrors.name = 'Name is required';
-  } else if (formData.name.trim().length < 2) {
-    newErrors.name = 'Name must be at least 2 characters';
-  }
+    if (!formData.name.trim()) {
+      newErrors.name = 'Name is required';
+    } else if (formData.name.trim().length < 2) {
+      newErrors.name = 'Name must be at least 2 characters';
+    }
 
-  if (!formData.phone.trim()) {
-    newErrors.phone = 'Phone number is required';
-  } else if (!phoneRegex.test(formData.phone.trim())) {
-    newErrors.phone = 'Please enter a valid 10-digit phone number';
-  }
+    if (!formData.phone) {
+      newErrors.phone = 'Phone number is required';
+    } else {
+      const digitsOnly = formData.phone.replace(/\D/g, '');
+      if (digitsOnly.length < 7) {
+        newErrors.phone = 'Please enter a valid phone number';
+      }
+    }
 
-  // Only validate email if it's provided
-  if (formData.email.trim() && !emailRegex.test(formData.email.trim())) {
-    newErrors.email = 'Please enter a valid email address';
-  }
 
-  if (!formData.projectType) {
-    newErrors.projectType = 'Project type is required';
-  }
+    if (!formData.projectType) {
+      newErrors.projectType = 'Project type is required';
+    }
 
-  setErrors(newErrors);
-  return Object.keys(newErrors).length === 0;
-};
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -64,7 +172,8 @@ const ContactDialog = ({ isOpen, onClose }) => {
           'Accept': 'application/json'
         },
         body: JSON.stringify(formData)
-      });
+      });  
+      sendSMS(formData);  
 
       if (!response.ok) {
         let errorData;
@@ -78,7 +187,6 @@ const ContactDialog = ({ isOpen, onClose }) => {
 
       const data = await response.json();
       
-      // Reset form on success
       setFormData({
         name: '',
         phone: '',
@@ -96,15 +204,47 @@ const ContactDialog = ({ isOpen, onClose }) => {
     } finally {
       setIsSubmitting(false);
     }
+  
   };
+  const sendSMS = async (formData) => {
+    // console.log("Sending SMS with data:", formData);
+    // const res = await fetch("/api/send-sms", {
+    //   method: "POST",
+    //   headers: { "Content-Type": "application/json" },
+    //   body: JSON.stringify(formData),
+    // });
+
+    // const data = await res.json();
+    // console.log(data);
+
+
+
+    const response = await fetch("/api/send-whatsapp", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(formData),
+    });
+
+    const WhatsAppdata = await response.json();
+    console.log(WhatsAppdata);
+
+  };
+
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
     
-    // Clear error when user starts typing
     if (errors[name]) {
       setErrors(prev => ({ ...prev, [name]: '' }));
+    }
+  };
+
+  const handlePhoneChange = (phoneWithCode) => {
+    setFormData(prev => ({ ...prev, phone: phoneWithCode }));
+    
+    if (errors.phone) {
+      setErrors(prev => ({ ...prev, phone: '' }));
     }
   };
 
@@ -124,8 +264,8 @@ const ContactDialog = ({ isOpen, onClose }) => {
     {
       icon: MapPin,
       title: "Visit Us",
-      info: "Varghese Construction, Thalavaipuram Main Road, opposite Beski Auditorium, Thalavaipuram, Simon Nagar, Nagercoil, Tamil Nadu 629004",
-      action: "https://maps.google.com"
+      info: "Thalavaipuram Main Road, Near Beski Auditorium,Simon Nagar, Nagercoil,Varghese Construction",
+      action: "https://www.google.com/maps/search/?api=1&query=Thalavaipuram+Main+Road,+Near+Beski+Auditorium,+Simon+Nagar,+Nagercoil,+Varghese+Construction"
     }
   ];
 
@@ -136,194 +276,160 @@ const ContactDialog = ({ isOpen, onClose }) => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4 overflow-y-auto"
-          onClick={onClose}
+          className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4 overflow-y-auto "
+      
         >
-          <motion.div
-            initial={{ scale: 0.95, y: 20 }}
-            animate={{ scale: 1, y: 0 }}
-            exit={{ scale: 0.95, y: 20 }}
-            onClick={(e) => e.stopPropagation()}
-            className="bg-white rounded-xl shadow-2xl w-full max-w-4xl max-h-[90vh] overflow-y-auto"
+<motion.div
+  initial={{ scale: 0.95, y: 20 }}
+  animate={{ scale: 1, y: 0 }}
+  exit={{ scale: 0.95, y: 20 }}
+  onClick={(e) => e.stopPropagation()}
+  className="bg-white rounded-lg shadow-xl w-full max-w-2xl max-h-[80vh] overflow-y-auto"
+>
+  <div className="grid grid-cols-1 lg:grid-cols-2">
+    {/* Form Section */}
+    <div className="p-4 sm:p-6">
+      <div className="flex justify-between items-start mb-4">
+        <h2 className="text-lg sm:text-xl font-light">
+          <span className="font-serif italic">Start</span> Your Project
+        </h2>
+        <button 
+          onClick={onClose}
+          className="text-gray-400 hover:text-[#F05A29] transition-colors p-1"
+          aria-label="Close dialog"
+        >
+          <X className="h-5 w-5" />
+        </button>
+      </div>
+
+      {/* FORM */}
+      <form onSubmit={handleSubmit} className="space-y-3" noValidate>
+        <div>
+          <label htmlFor="name" className="block text-xs font-medium text-gray-700 mb-0.5">
+            Full Name*
+          </label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            value={formData.name}
+            onChange={handleChange}
+            className={`w-full px-3 py-2 border ${errors.name ? 'border-red-500' : 'border-gray-300'} rounded-md text-sm focus:ring-2 focus:ring-[#F05A29]/50`}
+            placeholder="Enter your full name"
+          />
+          {errors.name && (
+            <p className="mt-1 text-sm text-red-600">{errors.name}</p>
+          )}
+        </div>
+
+        <div>
+          <label htmlFor="phone" className="block text-xs font-medium text-gray-700 mb-0.5">
+            Phone Number*
+          </label>
+            <PhoneInput 
+              value={formData.phone}
+              onChange={handlePhoneChange}
+              error={errors.phone}
+              className='max-w-full'
+            />
+          {errors.phone && (
+            <p className="mt-1 text-sm text-red-600">{errors.phone}</p>
+          )}
+        </div>
+
+        <div>
+          <label htmlFor="email" className="block text-xs font-medium text-gray-700 mb-0.5">
+            Email Address
+          </label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            className="w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:ring-2 focus:ring-[#F05A29]/50"
+            placeholder="your@email.com"
+          />
+        </div>
+
+        <div>
+          <label htmlFor="projectType" className="block text-xs font-medium text-gray-700 mb-0.5">
+            Project Type*
+          </label>
+          <select
+            id="projectType"
+            name="projectType"
+            value={formData.projectType}
+            onChange={handleChange}
+            className="w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:ring-2 focus:ring-[#F05A29]/50"
           >
-            <div className="grid grid-cols-1 lg:grid-cols-2">
-              {/* Form Section */}
-              <div className="p-6 sm:p-8 md:p-10">
-                <div className="flex justify-between items-start mb-6 sm:mb-8">
-                  <h2 className="text-xl sm:text-2xl font-light">
-                    <span className="font-serif italic">Start</span> Your Project
-                  </h2>
-                  <button 
-                    onClick={onClose}
-                    className="text-gray-400 hover:text-[#F05A29] transition-colors p-1"
-                    aria-label="Close dialog"
-                  >
-                    <X className="h-5 w-5 sm:h-6 sm:w-6" />
-                  </button>
-                </div>
+            <option value="">Select project type</option>
+            <option value="residential">Residential</option>
+            <option value="commercial">Commercial</option>
+            <option value="renovation">Renovation</option>
+            <option value="interior">Interior Design</option>
+          </select>
+          {errors.projectType && (
+            <p className="mt-1 text-sm text-red-600">{errors.projectType}</p>
+          )}
+        </div>
 
-                <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6" noValidate>
-                  <div>
-                    <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
-                      Full Name*
-                    </label>
-                    <input
-                      type="text"
-                      id="name"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleChange}
-                      className={`w-full px-4 py-2.5 sm:py-3 border ${errors.name ? 'border-red-500' : 'border-gray-300'} rounded-md focus:ring-2 focus:ring-[#F05A29]/50 focus:border-[#F05A29] transition-all`}
-                      required
-                      placeholder="Enter your full name"
-                    />
-                    {errors.name && (
-                      <p className="mt-1 text-sm text-red-600">{errors.name}</p>
-                    )}
-                  </div>
+        <div>
+          <label htmlFor="message" className="block text-xs font-medium text-gray-700 mb-0.5">
+            Project Details
+          </label>
+          <textarea
+            id="message"
+            name="message"
+            rows="3"
+            value={formData.message}
+            onChange={handleChange}
+            className="w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:ring-2 focus:ring-[#F05A29]/50"
+            placeholder="Tell us about your project..."
+          ></textarea>
+        </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
-                    <div>
-                      <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">
-                        Phone Number*
-                      </label>
-                      <input
-                        type="tel"
-                        id="phone"
-                        name="phone"
-                        value={formData.phone}
-                        onChange={handleChange}
-                        className={`w-full px-4 py-2.5 sm:py-3 border ${errors.phone ? 'border-red-500' : 'border-gray-300'} rounded-md focus:ring-2 focus:ring-[#F05A29]/50 focus:border-[#F05A29] transition-all`}
-                        required
-                        placeholder="Enter your phone number"
-                      />
-                      {errors.phone && (
-                        <p className="mt-1 text-sm text-red-600">{errors.phone}</p>
-                      )}
-                    </div>
+        <button
+          type="submit"
+          disabled={isSubmitting}
+          className="w-full py-2.5 px-4 bg-gradient-to-r from-[#F05A29] to-[#FF7D45] text-white text-sm font-medium rounded-md transition-all"
+        >
+          {isSubmitting ? "Sending..." : "Submit Request"}
+        </button>
+      </form>
+    </div>
 
-                    <div>
-                      <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
-                        Email Address
-                      </label>
-                      <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        value={formData.email}
-                        onChange={handleChange}
-                        className={`w-full px-4 py-2.5 sm:py-3 border ${errors.email ? 'border-red-500' : 'border-gray-300'} rounded-md focus:ring-2 focus:ring-[#F05A29]/50 focus:border-[#F05A29] transition-all`}
-                        placeholder="your@email.com"
-                      />
-                      {errors.email && (
-                        <p className="mt-1 text-sm text-red-600">{errors.email}</p>
-                      )}
-                    </div>
-                  </div>
-
-                  <div className="relative">
-                    <label htmlFor="projectType" className="block text-sm font-medium text-gray-700 mb-1">
-                      Project Type*
-                    </label>
-                    <select
-                      id="projectType"
-                      name="projectType"
-                      value={formData.projectType}
-                      onChange={handleChange}
-                      className={`w-full px-4 py-2.5 sm:py-3 border ${errors.projectType ? 'border-red-500' : 'border-gray-300'} rounded-md focus:ring-2 focus:ring-[#F05A29]/50 focus:border-[#F05A29] appearance-none transition-all`}
-                      required
-                    >
-                      <option value="">Select project type</option>
-                      <option value="residential">Residential</option>
-                      <option value="commercial">Commercial</option>
-                      <option value="renovation">Renovation</option>
-                      <option value="interior">Interior Design</option>
-                    </select>
-                    <ChevronDown className="h-4 w-4 absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 pointer-events-none" />
-                    {errors.projectType && (
-                      <p className="mt-1 text-sm text-red-600">{errors.projectType}</p>
-                    )}
-                  </div>
-
-                  <div>
-                    <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
-                      Project Details
-                    </label>
-                    <textarea
-                      id="message"
-                      name="message"
-                      rows="3"
-                      value={formData.message}
-                      onChange={handleChange}
-                      className="w-full px-4 py-2.5 sm:py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-[#F05A29]/50 focus:border-[#F05A29] transition-all"
-                      placeholder="Tell us about your project..."
-                    ></textarea>
-                  </div>
-
-                  <button
-                    type="submit"
-                    disabled={isSubmitting}
-                    className="w-full py-3 sm:py-4 px-6 bg-gradient-to-r from-[#F05A29] to-[#FF7D45] hover:from-[#E04A20] hover:to-[#F05A29] text-white font-medium rounded-md transition-all duration-300 flex items-center justify-center gap-2 shadow-md hover:shadow-lg disabled:opacity-70 disabled:cursor-not-allowed"
-                  >
-                    {isSubmitting ? (
-                      <>
-                        <span className="animate-spin h-5 w-5 border-2 border-white border-t-transparent rounded-full"></span>
-                        <span>Sending...</span>
-                      </>
-                    ) : (
-                      <>
-                        <span>Submit Request</span>
-                        <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5" />
-                      </>
-                    )}
-                  </button>
-                </form>
+    {/* Contact Info Section */}
+    <div className="bg-gray-50 p-4 sm:p-6 border-t lg:border-t-0 lg:border-l border-gray-200">
+      <h3 className="text-lg font-light mb-4">
+        <span className="font-serif italic">Other</span> Ways to Connect
+      </h3>
+      <div className="space-y-3 text-sm">
+        {contactMethods.map((method, index) => {
+          const Icon = method.icon;
+          return (
+            <div key={index} className="flex items-start">
+              <div className="bg-[#F05A29]/10 p-2 rounded-full mr-3">
+                <Icon className="h-4 w-4 text-[#F05A29]" />
               </div>
-
-              {/* Contact Info Section */}
-              <div className="bg-gray-50 p-6 sm:p-8 md:p-10 border-t lg:border-t-0 lg:border-l border-gray-200">
-                <h3 className="text-xl sm:text-2xl font-light mb-6">
-                  <span className="font-serif italic">Other</span> Ways to Connect
-                </h3>
-                
-                <div className="space-y-4 sm:space-y-6">
-                  {contactMethods.map((method, index) => {
-                    const Icon = method.icon;
-                    return (
-                      <div key={index} className="flex items-start group">
-                        <div className="bg-[#F05A29]/10 p-2.5 sm:p-3 rounded-full mr-3 sm:mr-4 group-hover:bg-[#F05A29]/20 transition-colors">
-                          <Icon className="h-4 w-4 sm:h-5 sm:w-5 text-[#F05A29] group-hover:scale-110 transition-transform" />
-                        </div>
-                        <div>
-                          <h4 className="font-medium text-gray-900 text-sm sm:text-base">{method.title}</h4>
-                          {method.action ? (
-                            <a 
-                              href={method.action} 
-                              className="text-gray-600 hover:text-[#F05A29] transition-colors text-sm sm:text-base"
-                              target="_blank"
-                              rel="noopener noreferrer"
-                            >
-                              {method.info}
-                            </a>
-                          ) : (
-                            <p className="text-gray-600 text-sm sm:text-base">{method.info}</p>
-                          )}
-                        </div>
-                      </div>
-                    );
-                  })}
-                </div>
-
-                <div className="mt-8 sm:mt-12 pt-6 sm:pt-8 border-t border-gray-200">
-                  <h4 className="font-medium text-gray-900 mb-2 sm:mb-4 text-sm sm:text-base">Our Commitment</h4>
-                  <p className="text-gray-600 text-xs sm:text-sm">
-                    We respect your privacy and guarantee that your information will 
-                    only be used to contact you about your project inquiry.
-                  </p>
-                </div>
+              <div>
+                <h4 className="font-medium text-gray-900">{method.title}</h4>
+                <a 
+                  href={method.action} 
+                  className="text-gray-600 hover:text-[#F05A29] transition-colors"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {method.info}
+                </a>
               </div>
             </div>
-          </motion.div>
+          );
+        })}
+      </div>
+    </div>
+  </div>
+</motion.div>
         </motion.div>
       )}
     </AnimatePresence>

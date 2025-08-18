@@ -6,7 +6,9 @@ import {
   Bebas_Neue,
   Roboto,
   Cormorant_Garamond,
-  Raleway 
+  Raleway ,
+  Kumar_One,
+  Kaushan_Script
 } from "next/font/google";
 import "./globals.css";
 import ClientWrapper from "../app/Clientwrapper";
@@ -58,6 +60,16 @@ const raleway = Raleway({
   subsets: ['latin'],
   variable: '--font-raleway',
   weight: ['300', '400', '500']
+});
+const kumarOne = Kumar_One({
+  subsets: ['latin'],
+  variable: '--font-kumar-one',
+  weight: '400'
+});
+const kaushanScript = Kaushan_Script({
+  subsets: ['latin'],
+  variable: '--font-kaushan-script',
+  weight: '400'
 });
 
 export const metadata = {
@@ -121,6 +133,7 @@ export default function RootLayout({ children }) {
         ${roboto.variable}
         ${cormorant.variable}
         ${raleway.variable}
+        ${kumarOne.variable}
         antialiased
       `}>
         <ClientWrapper>{children}</ClientWrapper>

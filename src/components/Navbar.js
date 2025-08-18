@@ -27,7 +27,7 @@ export default function LuxuryNavbar() {
     { name: "Home", href: "#home" },
     { name: "Service", href: "#service" },
     { name: "Packages", href: "#package" },
-    { name: "Portfolio", href: "#portfolio" },
+    { name: "Our Clients", href: "#reviews" },
     { name: "Partners", href: "#partners" },
     
   ];
@@ -52,10 +52,8 @@ export default function LuxuryNavbar() {
     transition={{ delay: 0.2 }}
     className="flex flex-col items-start justify-center space-x-2"
   >
-    <span className="text-3xl font-playfair italic font-bold tracking-tight 
-                     group-hover:text-[#F05A29] transition-colors duration-300">
-      VARGHESE
-    </span>
+    <p>  <span className="text-5xl kaushan-script-regular ">V</span><span className="text-3xl kaushan-script-regular tracking-widest">arghese</span></p>
+  
     <span className="text-xs font-montserrat font-bold uppercase tracking-[0.35em] 
                     text-[#F05A29] mt-1">
       CONSTRUCTION
@@ -73,7 +71,7 @@ export default function LuxuryNavbar() {
               >
                 <Link
                   href={item.href}
-                  className="text-sm font-light tracking-wider text-gray-700 hover:text-[#F05A29] transition-colors relative group"
+                  className="text-sm font-bold tracking-wider text-gray-600 hover:text-[#F05A29] transition-colors relative group"
                 >
                   {item.name}
                   <span className="absolute left-0 bottom-0 w-0 h-px bg-[#F05A29] transition-all duration-300 group-hover:w-full"></span>

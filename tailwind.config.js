@@ -1,3 +1,5 @@
+
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
     darkMode: ["class"],
@@ -15,6 +17,9 @@ module.exports = {
         roboto: ['var(--font-roboto)'],
         cormorant: ['var(--font-cormorant)'],
         raleway: ['var(--font-raleway)'],
+		kumarOne: ['var(--font-kumar-one)'],
+		kaushanScript: ['var(--font-kaushan-script)'],
+		
       },
 		
   		colors: {

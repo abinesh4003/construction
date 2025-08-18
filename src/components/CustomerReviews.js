@@ -106,7 +106,7 @@ export default function LuxuryCustomerReviews() {
     })
   };
 
-  return (
+return (
 <section id="reviews" className="py-28 bg-white relative">
   <div className="container mx-auto px-4 sm:px-6">
     {/* Header */}
@@ -126,7 +126,8 @@ export default function LuxuryCustomerReviews() {
     </motion.div>
 
     {/* Reviews Slider */}
-    <div className="relative h-[550px] md:h-[450px] overflow-hidden">
+    <div className="relative overflow-hidden ">
+      <div className="releative">
       {/* Navigation Arrows */}
       <button
         onClick={handlePrev}
@@ -153,7 +154,7 @@ export default function LuxuryCustomerReviews() {
           initial="enter"
           animate="center"
           exit="exit"
-          className="absolute inset-0 grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 items-stretch"
+          className=" grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 items-stretch"
         >
           {visibleReviews.map((review) => (
             <motion.div
@@ -219,6 +220,7 @@ export default function LuxuryCustomerReviews() {
           aria-label={`Go to review ${index + 1}`}
         />
       ))}
+    </div>
     </div>
   </div>
 </section>

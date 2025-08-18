@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Julee&family=Kaushan+Script&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -156,4 +157,10 @@
 
 .animate-fade-in-down {
   animation: fadeInDown 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.kaushan-script-regular {
+  font-family: "Kaushan Script", cursive;
+  font-weight: 400;
+  font-style: normal;
 }

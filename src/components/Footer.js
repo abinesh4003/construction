@@ -37,7 +37,7 @@ const LuxuryFooter = () => {
   ];
 
   const contactInfo = [
-    { icon: MapPin, text: "Varghese Construction, Thalavaipuram Main Road, opposite Beski Auditorium, Thalavaipuram, Simon Nagar, Nagercoil, Tamil Nadu 629004" },
+    { icon: MapPin, text: "Thalavaipuram Main Road, Near Beski Auditorium,Simon Nagar, Nagercoil,Varghese Construction" },
     { icon: Phone, text: "+91 9629695979", href: "tel:+919629695979" },
     { icon: Mail, text: "contact@vargheseconstruction.com", href: "mailto:contact@vargheseconstruction.com" }
   ];
