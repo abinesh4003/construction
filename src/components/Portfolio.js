@@ -165,7 +165,7 @@ export default function Portfolio() {
                       className="object-cover"
                     />
                   </div>
-                  <span className="text-md font-medium font-semibold ">{city.name}</span>
+                  <span className="text-sm md:text-sm font-medium font-semibold ">{city.name}</span>
                 </motion.div>
               ))}
             </div>

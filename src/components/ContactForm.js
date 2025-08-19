@@ -65,7 +65,7 @@ const PhoneInput = ({ value, onChange, className = '', error }) => {
         </button>
 
         {open && (
-          <div className="absolute z-10 bg-white border border-gray-200 shadow-lg rounded-lg mt-1 w-56 max-h-60 ">
+          <div className="absolute z-10 bg-white border border-gray-200 shadow-lg rounded-lg mt-1 w-56 max-h-60 overflow-y-auto">
             <div className="p-2 sticky top-0 bg-white">
               <input
                 type="text"
