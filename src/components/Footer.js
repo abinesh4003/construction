@@ -60,17 +60,33 @@ const LuxuryFooter = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <div className="mb-8">
+            {/* <div className="mb-8">
               <span className="text-4xl font-serif italic font-medium tracking-tight text-white">
                 VARGHESE
               </span>
               <span className="block text-xs tracking-widest text-[#F05A29]">
                 CONSTRUCTION
               </span>
-            </div>
+            </div> */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.2 }}
+                className="flex flex-col items-start justify-center space-x-2"
+              >
+                <p> 
+                  <span className="text-2xl font-montserrat font-bold uppercase tracking-[0.15em] ">Varghese</span>
+                   {/* <span className="text-5xl kaushan-script-regular ">V</span><span className="text-3xl kaushan-script-regular tracking-widest">arghese</span> */}
+                   </p>
+              
+                <span className="text-xs font-montserrat font-bold uppercase tracking-[0.35em] 
+                                text-[#F05A29] mt-1">
+                  CONSTRUCTION
+                </span>
+              </motion.div>
             
            
-            <div className="flex space-x-4">
+            <div className="flex space-x-4 mt-4">
               {socialIcons.map((item, index) => {
                 const Icon = item.icon;
                 return (

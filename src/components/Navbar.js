@@ -52,7 +52,10 @@ export default function LuxuryNavbar() {
     transition={{ delay: 0.2 }}
     className="flex flex-col items-start justify-center space-x-2"
   >
-    <p>  <span className="text-5xl kaushan-script-regular ">V</span><span className="text-3xl kaushan-script-regular tracking-widest">arghese</span></p>
+    <p> 
+      <span className="text-2xl font-montserrat font-bold uppercase tracking-[0.15em] ">Varghese</span>
+       {/* <span className="text-5xl kaushan-script-regular ">V</span><span className="text-3xl kaushan-script-regular tracking-widest">arghese</span> */}
+       </p>
   
     <span className="text-xs font-montserrat font-bold uppercase tracking-[0.35em] 
                     text-[#F05A29] mt-1">
