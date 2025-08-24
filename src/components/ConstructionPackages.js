@@ -8,7 +8,7 @@ import { useDialog } from './DialogProvider';
 const packages = [
   {
     title: "Basic",
-    price: "₹2250/sqft",
+    price: "₹2190/sqft",
     description: "Quality construction essentials with trusted brands",
     features: [
       "Steel & cement from reputable brands",
@@ -22,7 +22,7 @@ const packages = [
   },
   {
     title: "Classic",
-    price: "₹2470/sqft",
+    price: "₹2400/sqft",
     description: "Our most popular package with premium upgrades",
     features: [
       "Jindal Steel & premium cement",
@@ -51,7 +51,7 @@ const packages = [
   },
   {
     title: "Royale",
-    price: "₹3010/sqft",
+    price: "₹2990/sqft",
     description: "Ultimate luxury with high-end specifications",
     features: [
       "Premium structural materials",

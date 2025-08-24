@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { CardSim } from "lucide-react";
 import Image from "next/image";
 
 const banks = [
@@ -49,8 +50,7 @@ export default function BankingPartners() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: index * 0.1 }}
-              className="bg-white p-4 rounded-lg shadow-sm flex justify-center items-center"
-            >
+              className="bg-white p-4 rounded-lg shadow-sm hover:shadow-lg hover:scale-105 transition-all duration-300 flex justify-center items-center"            >
               <Image
                 src={bank.logo}
                 alt={bank.name}
@@ -63,5 +63,6 @@ export default function BankingPartners() {
         </div>
       </div>
     </section>
+    
   );
 }

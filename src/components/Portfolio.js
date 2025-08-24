@@ -9,7 +9,7 @@ import { useDialog } from "./DialogProvider";
 const stats = [
   {
     icon: Building,
-    value: "300+",
+    value: "150+",
     label: "Total Projects",
   },
   {
@@ -24,7 +24,7 @@ const stats = [
   },
   {
     icon: Ruler,
-    value: "5,00,000",
+    value: "3,00,000",
     label: "sqft Total Build-up",
   },
   {
@@ -34,7 +34,7 @@ const stats = [
   },
   {
     icon: Users,
-    value: "300+",
+    value: "150+",
     label: "Happy Clients",
   }
 ];
@@ -155,9 +155,9 @@ export default function Portfolio() {
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.3, delay: index * 0.05 }}
-                  className="flex flex-col items-center"
+                  className="flex flex-col items-center "
                 >
-                  <div className="relative w-16 h-16 overflow-hidden mb-2">
+                  <div className="relative w-16 h-16 overflow-hidden mb-2 hover:scale-105 transition-all duration-300">
                     <Image
                       src={city.image}
                       alt={city.name}
