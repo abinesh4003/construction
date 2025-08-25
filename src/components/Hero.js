@@ -95,7 +95,7 @@ export default function LuxuryHero() {
               quality={100}
               className="block sm:hidden object-[center center] object-center"
             />
-            <div className="absolute inset-0 bg-black/10" />
+            <div className="absolute inset-0 bg-black/40" />
           </motion.div>
         )
       )}
@@ -110,9 +110,9 @@ export default function LuxuryHero() {
       transition={{ duration: 1, delay: 0.5 }}
       className="max-w-3xl"
     >
-      <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-light leading-snug sm:leading-tight mb-6 sm:mb-8 text-white">
+        <h1 className=" text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-light leading-snug sm:leading-tight mb-6 sm:mb-8 text-white">
         <motion.span 
-          className="block"
+          className="block "
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.7 }}
@@ -120,7 +120,7 @@ export default function LuxuryHero() {
           Building Your Dreams
         </motion.span>
         <motion.span 
-          className="font-serif italic font-normal"
+          className="font-serif italic font-normal "
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.9 }}
@@ -152,7 +152,7 @@ export default function LuxuryHero() {
           <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
         </button>
         <NextLink href="#service">
-          <button className="bg-transparent border border-white/30 hover:border-white/60 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-sm text-base sm:text-lg font-medium transition-all group flex items-center justify-center gap-2 w-full sm:w-auto">
+          <button className="bg-transparent border border-white/30 hover:border-white/60 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-sm text-base sm:text-lg font-medium transition-all group flex items-center justify-center gap-2 w-full sm:w-auto backdrop-blur-sm">
             View Services 
           </button>
         </NextLink>

@@ -264,7 +264,7 @@ const ContactDialog = ({ isOpen, onClose }) => {
     {
       icon: MapPin,
       title: "Visit Us",
-      info: "Varghese Construction,Thalavaipuram Main Road, Near Beski Auditorium,Simon Nagar, Nagercoil,Tamil Nadu, 629004",
+      info: " Thalavaipuram Main Road, Near Beski Auditorium,Simon Nagar, Nagercoil,Tamil Nadu, 629004",
       action: "https://www.google.com/maps/search/?api=1&query=Thalavaipuram+Main+Road,+Near+Beski+Auditorium,+Simon+Nagar,+Nagercoil,+Varghese+Construction"
     }
   ];
@@ -414,13 +414,21 @@ const ContactDialog = ({ isOpen, onClose }) => {
               </div>
               <div>
                 <h4 className="font-medium text-gray-900">{method.title}</h4>
-                <a 
-                  href={method.action} 
+                <a
+                  href={method.action}
                   className="text-gray-600 hover:text-[#F05A29] transition-colors"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  {method.info}
+                  {method.title === "Visit Us" ? (
+                    <span>
+                      Varghese Construction,
+                      <br />
+                      {method.info}
+                    </span>
+                  ) : (
+                    method.info
+                  )}
                 </a>
               </div>
             </div>
