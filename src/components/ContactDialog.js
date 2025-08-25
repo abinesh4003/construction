@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import { useState,useEffect,useRef } from 'react';
 import { X, ArrowRight, Phone, Mail, MapPin, ChevronDown } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { showToast } from '@/components/ui/toast';
@@ -25,26 +25,40 @@ const PhoneInput = ({ value, onChange, className = '', error }) => {
   const [phoneNumber, setPhoneNumber] = useState('');
   const [search, setSearch] = useState('');
   const [open, setOpen] = useState(false);
+    const wrapperRef = useRef(null);
 
   // Initialize with current value
-  useState(() => {
-    if (value) {
-      if (value.startsWith('+')) {
-        const code = countryList.find(c => value.startsWith(c.code))?.code || '+91';
-        const number = value.replace(code, '');
-        setCountryCode(code);
-        setPhoneNumber(number);
-      } else {
-        setPhoneNumber(value);
-      }
+useEffect(() => {
+  if (value) {
+    if (value.startsWith('+')) {
+      const code = countryList.find(c => value.startsWith(c.code))?.code || '+91';
+      const number = value.replace(code, '');
+      setCountryCode(code);
+      setPhoneNumber(number);
+    } else {
+      setPhoneNumber(value);
     }
-  }, [value]);
+  }
+}, [value]);
 
-  const handlePhoneChange = (e) => {
-    const num = e.target.value.replace(/\D/g, '');
+useEffect(() => {
+  function handleClickOutside(event) {
+    if (wrapperRef.current && !wrapperRef.current.contains(event.target)) {
+      setOpen(false);
+    }
+  }
+  document.addEventListener("mousedown", handleClickOutside);
+  return () => document.removeEventListener("mousedown", handleClickOutside);
+}, []);
+
+
+const handlePhoneChange = (e) => {
+  const num = e.target.value.replace(/\D/g, '');
+  if (num.length <= 15) {  // allow max 15 digits
     setPhoneNumber(num);
     onChange(`${countryCode}${num}`);
-  };
+  }
+};
 
   const filteredCountries = countryList.filter(
     (c) =>
@@ -54,7 +68,7 @@ const PhoneInput = ({ value, onChange, className = '', error }) => {
 
   return (
  <div className={`flex ${className}`}>
-       <div className="relative">
+       <div  ref={wrapperRef} className="relative">
          <button
            type="button"
            onClick={() => setOpen(!open)}
@@ -207,15 +221,15 @@ const ContactDialog = ({ isOpen, onClose }) => {
   
   };
   const sendSMS = async (formData) => {
-    // console.log("Sending SMS with data:", formData);
-    // const res = await fetch("/api/send-sms", {
-    //   method: "POST",
-    //   headers: { "Content-Type": "application/json" },
-    //   body: JSON.stringify(formData),
-    // });
+    console.log("Sending SMS with data:", formData);
+    const res = await fetch("/api/send-sms", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(formData),
+    });
 
-    // const data = await res.json();
-    // console.log(data);
+    const data = await res.json();
+    console.log(data);
 
 
 

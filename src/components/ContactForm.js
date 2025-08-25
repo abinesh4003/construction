@@ -1,6 +1,6 @@
 'use client';
 import { motion } from 'framer-motion';
-import { useState } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import { ArrowRight, Phone, Mail, MapPin, ChevronDown } from 'lucide-react';
 import { showToast } from '@/components/ui/toast';
 
@@ -25,25 +25,39 @@ const PhoneInput = ({ value, onChange, className = '', error }) => {
   const [phoneNumber, setPhoneNumber] = useState('');
   const [search, setSearch] = useState('');
   const [open, setOpen] = useState(false);
+  const wrapperRef = useRef(null);
 
-  useState(() => {
-    if (value) {
-      if (value.startsWith('+')) {
-        const code = countryList.find(c => value.startsWith(c.code))?.code || '+91';
-        const number = value.replace(code, '');
-        setCountryCode(code);
-        setPhoneNumber(number);
-      } else {
-        setPhoneNumber(value);
-      }
+useEffect(() => {
+  if (value) {
+    if (value.startsWith('+')) {
+      const code = countryList.find(c => value.startsWith(c.code))?.code || '+91';
+      const number = value.replace(code, '');
+      setCountryCode(code);
+      setPhoneNumber(number);
+    } else {
+      setPhoneNumber(value);
     }
-  }, [value]);
+  }
+}, [value]);
 
-  const handlePhoneChange = (e) => {
-    const num = e.target.value.replace(/\D/g, '');
+useEffect(() => {
+  function handleClickOutside(event) {
+    if (wrapperRef.current && !wrapperRef.current.contains(event.target)) {
+      setOpen(false);
+    }
+  }
+  document.addEventListener("mousedown", handleClickOutside);
+  return () => document.removeEventListener("mousedown", handleClickOutside);
+}, []);
+
+
+const handlePhoneChange = (e) => {
+  const num = e.target.value.replace(/\D/g, '');
+  if (num.length <= 15) {  // allow max 15 digits
     setPhoneNumber(num);
     onChange(`${countryCode}${num}`);
-  };
+  }
+};
 
   const filteredCountries = countryList.filter(
     (c) =>
@@ -53,10 +67,11 @@ const PhoneInput = ({ value, onChange, className = '', error }) => {
 
   return (
     <div className={`flex ${className}`}>
-      <div className="relative">
+      <div ref={wrapperRef}  className="relative">
         <button
           type="button"
           onClick={() => setOpen(!open)}
+          aria-label="Select country code"
           className={`px-1 py-2.5 border ${error ? 'border-red-500' : 'border-gray-300'} rounded-l-lg bg-gray-100 flex items-center gap-1 hover:bg-gray-200 transition-colors`}
         >
           <span>{countryList.find(c => c.code === countryCode)?.flag}</span>
@@ -107,7 +122,6 @@ const PhoneInput = ({ value, onChange, className = '', error }) => {
         className={`w-full px-2 py-2.5 border ${error ? 'border-red-500' : 'border-gray-300'} rounded-r-lg focus:ring-2 focus:ring-[#F05A29]/50 focus:border-[#F05A29] transition-all`}
         placeholder="9876543210"
         required
-        maxLength={15}
       />
     </div>
   );
@@ -179,7 +193,7 @@ const LuxuryContactForm = () => {
     e.preventDefault();
     
     if (!validateForm()) {
-      showToast('error', 'Please fix the errors in the form');
+      showToast('error', 'Please fix the errors in the form', 'error');
       return;
     }
 
@@ -246,15 +260,15 @@ const LuxuryContactForm = () => {
   };
 
     const sendSMS = async (formData) => {
-    // console.log("Sending SMS with data:", formData);
-    // const res = await fetch("/api/send-sms", {
-    //   method: "POST",
-    //   headers: { "Content-Type": "application/json" },
-    //   body: JSON.stringify(formData),
-    // });
+    console.log("Sending SMS with data:", formData);
+    const res = await fetch("/api/send-sms", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(formData),
+    });
 
-    // const data = await res.json();
-    // console.log(data);
+    const data = await res.json();
+    console.log(data);
     
 
 
