@@ -95,7 +95,7 @@ export default function LuxuryHero() {
               quality={100}
               className="block sm:hidden object-[center center] object-center"
             />
-            <div className="absolute inset-0 bg-black/40" />
+            <div className="absolute inset-0 bg-black/10" />
           </motion.div>
         )
       )}
@@ -130,7 +130,7 @@ export default function LuxuryHero() {
       </h1>
 
       <motion.p
-        className="text-base sm:text-xl text-gray-200 mb-8 sm:mb-12 max-w-md sm:max-w-xl"
+        className="text-base sm:text-xl text-gray-200 mb-8 sm:mb-12 max-w-md sm:max-w-xl bg-gray-900/70 p-2 rounded-sm "
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 1.1 }}
