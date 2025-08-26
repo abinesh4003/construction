@@ -214,7 +214,7 @@ const ContactDialog = ({ isOpen, onClose }) => {
       onClose();
     } catch (error) {
       console.error('Submission error:', error);
-      showToast('error', error.message || 'An unexpected error occurred. Please try again later.');
+      showToast('error', error.message || 'An unexpected error occurred. Please try again later.','error');
     } finally {
       setIsSubmitting(false);
     }
