@@ -1,178 +1,108 @@
-import { Geist, Geist_Mono, Playfair_Display, Montserrat } from "next/font/google";
+import {
+  Geist,
+  Geist_Mono,
+  Playfair_Display,
+  Montserrat,
+  Bebas_Neue,
+  Roboto,
+  Cormorant_Garamond,
+  Raleway,
+  Kumar_One,
+  Kaushan_Script
+} from "next/font/google";
 import "./globals.css";
 import ClientWrapper from "../app/Clientwrapper";
-import Script from 'next/script';
+import Script from "next/script";
 
-// Initialize fonts (optimized for performance)
+// Initialize Geist fonts
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
-  display: 'swap',
 });
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
-  display: 'swap',
 });
 
+// Initialize other fonts
 const playfair = Playfair_Display({
   subsets: ['latin'],
   variable: '--font-playfair',
   weight: ['400', '700'],
-  style: ['italic', 'normal'],
-  display: 'swap',
+  style: ['italic', 'normal']
 });
 
 const montserrat = Montserrat({
   subsets: ['latin'],
   variable: '--font-montserrat',
-  weight: ['400', '500', '600', '700'],
-  display: 'swap',
+  weight: ['400', '500', '700']
 });
 
-// Structured Data for Local Business
-// Structured Data for Local Business (Improved)
-const structuredData = {
-  "@context": "https://schema.org",
-  "@type": "HomeAndConstructionBusiness",
-  "name": "Varghese Construction",
-  "description": "Varghese Construction is the most trusted construction company in Kanyakumari and Nagercoil. We build quality homes, villas, and commercial spaces with 10+ years of experience and 500+ satisfied clients.",
-  "url": "https://vargheseconstruction.com",
-  "telephone": "+91-9042166403", 
-  "image": "https://vargheseconstruction.com/logo.png",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "Thalavaipuram Main Road, Near Beski Auditorium, Simon Nagar",
-    "addressLocality": "Nagercoil",
-    "addressRegion": "Tamil Nadu",
-    "postalCode": "629004",
-    "addressCountry": "IN"
-  },
-  "geo": {
-    "@type": "GeoCoordinates",
-    "latitude": "8.168429831672974",
-    "longitude": "77.41670852597616"
-  },
-  "openingHours": "Mo-Sa 08:00-20:00",
-  "areaServed": [
-    "Kanyakumari", 
-    "Nagercoil", 
-    "Thuckalay", 
-    "Marthandam", 
-    "Kuzhithurai", 
-    "Colachel",
-    "Suchindram",
-    "Puthukadai",
-    "Thiruvattar",
-    "Thiruvanathapuram"
-  ],
-  "serviceType": [
-    "Home Construction", 
-    "Villa Construction", 
-    "Commercial Construction", 
-    "Building Contractors",
-    "House Planning",
-    "Construction Consultancy",
-    "Civil Works"
-  ],
-  "priceRange": "₹₹",
-  "sameAs": [
-    "https://facebook.com/vargheseconstruction",
-    "https://instagram.com/vargheseconstruction",
-    "https://linkedin.com/company/vargheseconstruction"
-  ]
-};
+const bebas = Bebas_Neue({
+  subsets: ['latin'],
+  variable: '--font-bebas',
+  weight: '400'
+});
 
+const roboto = Roboto({
+  subsets: ['latin'],
+  variable: '--font-roboto',
+  weight: ['400', '500']
+});
 
-// FAQ Structured Data
-const faqStructuredData = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "What areas does Varghese Construction serve?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "We serve all of South Tamil Nadu with focus on Kanyakumari District, Nagercoil, Thuckalay, Marthandam, Kuzhithurai, Colachel and surrounding areas."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How many years of experience does Varghese Construction have?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "We have over 10 years of experience in construction industry with 500+ completed projects and satisfied clients across Kanyakumari and Nagercoil."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What types of construction projects do you handle?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "We specialize in home construction, villa projects, commercial buildings, renovation works, interior design, and construction consultancy services."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Do you provide free consultation for construction projects?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes, we offer free consultation and estimation for all construction projects in Kanyakumari and Nagercoil areas. Contact us to discuss your project requirements."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Why choose Varghese Construction over other builders?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "With 10+ years experience, 500+ happy clients, quality materials, timely completion, and transparent pricing, we are the most trusted construction company in Kanyakumari district."
-      }
-    }
-  ]
-};
+const cormorant = Cormorant_Garamond({
+  subsets: ['latin'],
+  variable: '--font-cormorant',
+  weight: ['400', '500', '600']
+});
+
+const raleway = Raleway({
+  subsets: ['latin'],
+  variable: '--font-raleway',
+  weight: ['300', '400', '500']
+});
+
+const kumarOne = Kumar_One({
+  subsets: ['latin'],
+  variable: '--font-kumar-one',
+  weight: '400'
+});
+
+const kaushanScript = Kaushan_Script({
+  subsets: ['latin'],
+  variable: '--font-kaushan-script',
+  weight: '400'
+});
 
 export const metadata = {
-  title: "Varghese Construction | Trusted Home Builders in Kanyakumari & Nagercoil | 10+ Years Experience",
-  description: "Varghese Construction: Most trusted construction company in Kanyakumari & Nagercoil. 10+ years experience, 500+ happy clients. Get quality home construction, villas & commercial buildings at best price. Free consultation available.",
+  title: "Best Construction Company in Nagercoil & Kanyakumari | Varghese Construction",
+  description: "Varghese Construction is a trusted builder in Nagercoil & Kanyakumari. We build luxury homes, villas & commercial projects with transparent pricing and on-time delivery.",
   keywords: [
-    "construction company nagercoil",
-    "home builders kanyakumari",
-    "building contractors nagercoil",
-    "house construction kanyakumari",
-    "villa construction nagercoil",
-    "commercial builders kanyakumari",
-    "best construction company nagercoil",
-    "civil contractors kanyakumari",
-    "home construction cost kanyakumari",
-    "building materials nagercoil",
-    "house construction contractors nagercoil",
-    "construction company kanyakumari district",
-    "varghese construction nagercoil",
-    "building construction company kanyakumari",
-    "home construction services nagercoil",
-    "civil construction contractors kanyakumari",
-    "house building company nagercoil",
-    "residential construction kanyakumari",
-    "commercial construction contractors nagercoil",
-    "construction consultants kanyakumari"
+    "Construction company Nagercoil",
+    "Villa builders Kanyakumari",
+    "House construction Tamil Nadu",
+    "Luxury home builders Nagercoil",
+    "Renovation services"
   ],
-  metadataBase: new URL("https://vargheseconstruction.com"),
+  verification: {
+    google: "qPXGbHMkRjHCvd8gn2RhqkM_sWb7e43inQQIV_u3j50",
+  },
+  metadataBase: new URL("https://www.vargheseconstruction.com"),
   alternates: {
-    canonical: "https://vargheseconstruction.com",
+    canonical: "/",
   },
   openGraph: {
-    title: "Varghese Construction | Trusted Builders in Kanyakumari & Nagercoil | 10+ Years Experience",
-    description: "10+ years experienced construction company in Kanyakumari & Nagercoil. Quality home construction, villas & commercial buildings with 500+ happy clients. Free consultation available.",
-    url: "https://vargheseconstruction.com",
+    title: "Best Construction Company in Nagercoil & Kanyakumari | Varghese Construction",
+    description: "Varghese Construction is a trusted builder in Nagercoil & Kanyakumari. We build luxury homes, villas & commercial projects with transparent pricing and on-time delivery.",
+    url: "https://www.vargheseconstruction.com",
     siteName: "Varghese Construction",
     images: [
       {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Varghese Construction - Trusted Builders in Kanyakumari & Nagercoil with 10+ Years Experience",
+        alt: "Varghese Construction - Luxury Home Builders in Kanyakumari & Nagercoil, Tamil Nadu",
       },
     ],
     locale: "en_IN",
@@ -180,20 +110,12 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Varghese Construction | Trusted Builders in Kanyakumari & Nagercoil",
-    description: "10+ years experienced construction company in Kanyakumari & Nagercoil. Quality home construction with 500+ happy clients. Free consultation available.",
+    site: "@vargheseconst",
+    creator: "@vargheseconst",
+    title: "Best Construction Company in Nagercoil & Kanyakumari | Varghese Construction",
+    description: "Varghese Construction is a trusted builder in Nagercoil & Kanyakumari. We build luxury homes, villas & commercial projects with transparent pricing and on-time delivery.",
     images: ["/twitter-image.jpg"],
-    site: "@vargheseconstruction", // Add your Twitter handle if available
   },
-  themeColor: "#F05A29",
-  icons: {
-    icon: "/favicon.ico",
-    shortcut: "/favicon-16x16.png",
-    apple: "/apple-touch-icon.png",
-  },
-  manifest: "/site.webmanifest",
-  authors: [{ name: "Varghese Construction" }],
-  publisher: "Varghese Construction",
   robots: {
     index: true,
     follow: true,
@@ -205,42 +127,155 @@ export const metadata = {
       'max-snippet': -1,
     },
   },
-  verification: {
-    google: "rJh6zo9ZCw3UQagOszffyZe6wzRTk9Vfz2_Umcagozo",
+  icons: {
+    icon: [
+      { url: "/favicon.ico" },
+      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+    ],
+    apple: [
+      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+    ],
+    other: [
+      {
+        rel: "mask-icon",
+        url: "/safari-pinned-tab.svg",
+        color: "#F05A29",
+      },
+    ],
   },
-  viewport: "width=device-width, initial-scale=1",
-  category: "construction",
+  manifest: "/manifest.webmanifest",
+  authors: [{ name: "Varghese Construction" }],
+  category: "Construction",
+  other: {
+    "facebook-domain-verification": "your-facebook-verification-code",
+  },
+};
+
+export const viewport = {
+  themeColor: "#F05A29",
+  width: "device-width",
+  initialScale: 1,
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className="scrollbar-none">
       <head>
-        <Script
-          id="company-structured-data"
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
-          strategy="afterInteractive"
-        />
-        <Script
-          id="faq-structured-data"
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqStructuredData) }}
-          strategy="afterInteractive"
-        />
         {/* Preload critical resources */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link rel="dns-prefetch" href="https://maps.googleapis.com" />
+
+        {/* Structured Data for Local Business */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "ConstructionBusiness",
+              "name": "Varghese Construction",
+              "url": "https://www.vargheseconstruction.com",
+              "logo": "https://www.vargheseconstruction.com/logo.png",
+              "image": "https://www.vargheseconstruction.com/og-image.jpg",
+              "description": "Premier construction company specializing in luxury villas, custom homes, and commercial projects in Kanyakumari & Nagercoil, Tamil Nadu.",
+              "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "Thalavaipuram Main Road, Near Beski Auditorium, Simon Nagar",
+                "addressLocality": "Nagercoil",
+                "addressRegion": "Tamil Nadu",
+                "postalCode": "629004",
+                "addressCountry": "India"
+              },
+              "geo": {
+                "@type": "GeoCoordinates",
+                "latitude": "8.1745",
+                "longitude": "77.4171"
+              },
+              "openingHours": "Mo-Sa 09:00-18:00",
+              "telephone": "+91-9629695979",
+              "priceRange": "₹₹",
+              "areaServed": [
+                "Kanyakumari",
+                "Nagercoil",
+                "Boothapandi",
+                "Rajakkamangalam",
+                "Muttom",
+                "Colachel",
+                "Thuckalay",
+                "Marthandam",
+                "Kavalkinaru",
+                "South Tamil Nadu"
+              ],
+              "hasOfferCatalog": {
+                "@type": "OfferCatalog",
+                "name": "Construction Services",
+                "itemListElement": [
+                  {
+                    "@type": "Offer",
+                    "itemOffered": {
+                      "@type": "Service",
+                      "name": "Luxury Home Construction",
+                      "description": "Premium residential construction services"
+                    }
+                  },
+                  {
+                    "@type": "Offer",
+                    "itemOffered": {
+                      "@type": "Service",
+                      "name": "Villa Construction",
+                      "description": "Custom villa building services"
+                    }
+                  },
+                  {
+                    "@type": "Offer",
+                    "itemOffered": {
+                      "@type": "Service",
+                      "name": "Commercial Construction",
+                      "description": "Commercial building construction services"
+                    }
+                  }
+                ]
+              },
+              "sameAs": [
+                "https://www.facebook.com/vargheseconstruction",
+                "https://www.instagram.com/vargheseconstruction",
+                "https://twitter.com/vargheseconst"
+              ]
+            })
+          }}
+        />
       </head>
       <body className={`
         ${geistSans.variable} 
         ${geistMono.variable}
         ${playfair.variable}
         ${montserrat.variable}
+        ${bebas.variable}
+        ${roboto.variable}
+        ${cormorant.variable}
+        ${raleway.variable}
+        ${kumarOne.variable}
+        ${kaushanScript.variable}
         antialiased
       `}>
         <ClientWrapper>{children}</ClientWrapper>
+
+        {/* Additional Schema for Reviews */}
+        <Script id="review-schema" type="application/ld+json" strategy="afterInteractive">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "name": "Customer Reviews - Varghese Construction",
+            "description": "Read authentic customer reviews and testimonials for Varghese Construction services",
+            "aggregateRating": {
+              "@type": "AggregateRating",
+              "ratingValue": "4.9",
+              "reviewCount": "150",
+              "bestRating": "5",
+              "worstRating": "1"
+            }
+          })}
+        </Script>
       </body>
     </html>
   );
