@@ -76,8 +76,8 @@ const kaushanScript = Kaushan_Script({
 });
 
 export const metadata = {
-  title: "Best Construction Company in Nagercoil & Kanyakumari | Varghese Construction",
-  description: "Varghese Construction is a trusted builder in Nagercoil & Kanyakumari. We build luxury homes, villas & commercial projects with transparent pricing and on-time delivery.",
+  title: "Best Construction Company in Kanyakumari & Tiruvanantapuram | Varghese Construction",
+  description: "Varghese Construction is the trusted builder in Thiruvananthapuram & Kanyakumari. We create luxury homes, villas & commercial spaces with transparent pricing and on-time delivery",
   keywords: [
     "Construction company Nagercoil",
     "Villa builders Kanyakumari",
@@ -93,8 +93,8 @@ export const metadata = {
     canonical: "/",
   },
   openGraph: {
-    title: "Best Construction Company in Nagercoil & Kanyakumari | Varghese Construction",
-    description: "Varghese Construction is a trusted builder in Nagercoil & Kanyakumari. We build luxury homes, villas & commercial projects with transparent pricing and on-time delivery.",
+    title: "Best Construction Company in Kanyakumari & Tiruvanantapuram | Varghese Construction",
+    description: "Varghese Construction is the trusted builder in Thiruvananthapuram & Kanyakumari. We create luxury homes, villas & commercial spaces with transparent pricing and on-time delivery.",
     url: "https://www.vargheseconstruction.com",
     siteName: "Varghese Construction",
     images: [
@@ -112,8 +112,8 @@ export const metadata = {
     card: "summary_large_image",
     site: "@vargheseconst",
     creator: "@vargheseconst",
-    title: "Best Construction Company in Nagercoil & Kanyakumari | Varghese Construction",
-    description: "Varghese Construction is a trusted builder in Nagercoil & Kanyakumari. We build luxury homes, villas & commercial projects with transparent pricing and on-time delivery.",
+    title: "Best Construction Company in Kanyakumari & Tiruvanantapuram | Varghese Construction",
+    description: "Varghese Construction is the trusted builder in Thiruvananthapuram & Kanyakumari. We create luxury homes, villas & commercial spaces with transparent pricing and on-time delivery.",
     images: ["/twitter-image.jpg"],
   },
   robots: {

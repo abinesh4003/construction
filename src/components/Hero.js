@@ -93,10 +93,10 @@ export default function LuxuryHero() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.3 }}
-              className="text-xl   lg:text-5xl font-bold text-white allerta-regular  uppercase mb-12 md:mb:0  my-2 sm:my-4 md:my-6"
-              style={{fontFamily: "Times New Roman, Times, serif",letterSpacing: "1px",lineHeight: "1.2"}}
+              className="text-xl   lg:text-3xl text-white allerta-regular  uppercase mb-12 md:mb:0  my-2 sm:my-4 md:my-6"
+              style={{fontFamily: "Times New Roman, Times, serif",letterSpacing: "1px",lineHeight: "1.2",fontWeight: "600"}}
             >
-              Best Construction Company in <span className="block"> Kanyakumari & Tiruvanantapuram</span>
+              Best Construction Company in <span className="block"> Kanyakumari & Thiruvananthapuram</span>
             </motion.h1>
 
             <motion.h2
