@@ -90,14 +90,15 @@ export default function LuxuryHero() {
           {/* Headline */}
           <div className="overflow-hidden mb-4 sm:mb-6">
             <motion.h1
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.3 }}
-              className="text-xl   lg:text-3xl text-white allerta-regular  uppercase mb-12 md:mb:0  my-2 sm:my-4 md:my-6"
-              style={{fontFamily: "Times New Roman, Times, serif",letterSpacing: "1px",lineHeight: "1.2",fontWeight: "600"}}
-            >
-              Best Construction Company in <span className="block"> Kanyakumari & Thiruvananthapuram</span>
-            </motion.h1>
+  initial={{ opacity: 0, y: 30 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.7, delay: 0.3 }}
+  className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-white barlow-condensed uppercase tracking-wide mb-8"
+  style={{ letterSpacing: "1.5px", lineHeight: "1.2" }}
+>
+  Luxury Home & Villa Builders in Nagercoil
+</motion.h1>
+
 
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
@@ -116,8 +117,7 @@ export default function LuxuryHero() {
             transition={{ duration: 0.7, delay: 0.9 }}
             className="text-sm sm:text-xl md:text-xl text-gray-200 alkatra mb-8 sm:mb-10 md:mb-14 max-w-md sm:max-w-xl font-light tracking-wide px-2 sm:px-0"
           >
-            Excellence in construction with precision craftsmanship, innovative solutions, and unwavering commitment to quality.
-          </motion.p>
+ We are the trusted builders in Kanyakumari district. We deliver quality homes, villas & projects with transparent pricing and timely completion.          </motion.p>
 
           {/* CTA Buttons */}
           <motion.div

@@ -76,8 +76,8 @@ const kaushanScript = Kaushan_Script({
 });
 
 export const metadata = {
-  title: "Best Construction Company in Kanyakumari & Tiruvanantapuram | Varghese Construction",
-  description: "Varghese Construction is the trusted builder in Thiruvananthapuram & Kanyakumari. We create luxury homes, villas & commercial spaces with transparent pricing and on-time delivery",
+  title: "Luxury Home & Villa Builders in Nagercoil | Varghese Construction",
+  description: "Varghese Construction, trusted builders in Kanyakumari district. We deliver quality homes, villas & projects with transparent pricing and timely completion.",
   keywords: [
     "Construction company Nagercoil",
     "Villa builders Kanyakumari",
@@ -93,8 +93,8 @@ export const metadata = {
     canonical: "/",
   },
   openGraph: {
-    title: "Best Construction Company in Kanyakumari & Tiruvanantapuram | Varghese Construction",
-    description: "Varghese Construction is the trusted builder in Thiruvananthapuram & Kanyakumari. We create luxury homes, villas & commercial spaces with transparent pricing and on-time delivery.",
+    title: "Luxury Home & Villa Builders in Nagercoil | Varghese Construction",
+    description: "Varghese Construction, trusted builders in Kanyakumari district. We deliver quality homes, villas & projects with transparent pricing and timely completion.",
     url: "https://www.vargheseconstruction.com",
     siteName: "Varghese Construction",
     images: [
@@ -112,8 +112,8 @@ export const metadata = {
     card: "summary_large_image",
     site: "@vargheseconst",
     creator: "@vargheseconst",
-    title: "Best Construction Company in Kanyakumari & Tiruvanantapuram | Varghese Construction",
-    description: "Varghese Construction is the trusted builder in Thiruvananthapuram & Kanyakumari. We create luxury homes, villas & commercial spaces with transparent pricing and on-time delivery.",
+    title: "Luxury Home & Villa Builders in Nagercoil | Varghese Construction",
+    description: "Varghese Construction, trusted builders in Kanyakumari district. We deliver quality homes, villas & projects with transparent pricing and timely completion.",
     images: ["/twitter-image.jpg"],
   },
   robots: {
