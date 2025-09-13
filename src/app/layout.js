@@ -76,7 +76,7 @@ const kaushanScript = Kaushan_Script({
 });
 
 export const metadata = {
-  title: "Luxury Home & Villa Builders in Nagercoil | Varghese Construction",
+  title: "Luxury Home Builders in Nagercoil | Varghese Construction",
   description: "Varghese Construction, trusted builders in Kanyakumari district. We deliver quality homes, villas & projects with transparent pricing and timely completion.",
   keywords: [
     "Construction company Nagercoil",
@@ -93,7 +93,7 @@ export const metadata = {
     canonical: "/",
   },
   openGraph: {
-    title: "Luxury Home & Villa Builders in Nagercoil | Varghese Construction",
+    title: "Luxury Home Builders in Nagercoil | Varghese Construction",
     description: "Varghese Construction, trusted builders in Kanyakumari district. We deliver quality homes, villas & projects with transparent pricing and timely completion.",
     url: "https://www.vargheseconstruction.com",
     siteName: "Varghese Construction",
@@ -112,7 +112,7 @@ export const metadata = {
     card: "summary_large_image",
     site: "@vargheseconst",
     creator: "@vargheseconst",
-    title: "Luxury Home & Villa Builders in Nagercoil | Varghese Construction",
+    title: "Luxury Home Builders in Nagercoil | Varghese Construction",
     description: "Varghese Construction, trusted builders in Kanyakumari district. We deliver quality homes, villas & projects with transparent pricing and timely completion.",
     images: ["/twitter-image.jpg"],
   },
