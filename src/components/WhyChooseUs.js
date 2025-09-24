@@ -50,58 +50,47 @@ const features = [
 
 export default function LuxuryWhyChooseUs() {
   return (
-    <section id="why-choose-us" className="py-16 bg-gray-50">
+    <section className="py-20 bg-gray-50" id="portfolio">
       <div className="container mx-auto px-6">
         
-        {/* Single Title */}
-        <motion.h2 
-          className="text-4xl md:text-5xl font-light text-center mb-20"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-         
-          Why Choose Us for <span className="font-serif italic">Building Constructions</span>
-        </motion.h2>
+        {/* Section Heading */}
+         <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 font-montserrat text-[#F05A29]">
+         Why Choose <span className=" font-montserrat text-black">Our Construction</span> 
+        </h2>
 
         {/* Features Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
-          {features.map((feature, index) => {
-            const Icon = feature.icon;
-            return (
-              <motion.div
-                key={feature.title}
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="group relative overflow-hidden bg-white border border-gray-100 rounded-none p-8 hover:shadow-xl transition-all duration-500 flex flex-col items-center text-center"
-              >
-                <div className="absolute inset-0 bg-[#F05A29] translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-in-out" />
-                
-                <div className="relative z-10">
-                  <div className={`${feature.bgColor} group-hover:bg-white/20 p-4 rounded-lg inline-flex mb-6 transition-colors duration-500`}>
-                    <Image 
-                      src={feature.icon}
-                      alt={feature.title}
-                      width={60}
-                      height={60}
-                      className="w-20 h-20"
-                    />
-                  </div>
-                  
-                  <h3 className="text-xl font-medium mb-3 group-hover:text-white transition-colors duration-500">
-                    {feature.title}
-                  </h3>
-                  
-                  <p className="text-gray-600 group-hover:text-white/80 transition-colors duration-500">
-                    {feature.description}
-                  </p>
-                </div>
-              </motion.div>
-            );
-          })}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+          {features.map((feature, index) => (
+            <motion.div
+              key={feature.title}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+              className="relative bg-white rounded-3xl shadow-lg p-8 flex flex-col items-center text-center hover:shadow-2xl transition-all duration-500"
+            >
+              {/* Icon Background Circle */}
+              <div className={`${feature.bgColor} p-6 rounded-full mb-6`}>
+                <Image
+                  src={feature.icon}
+                  alt={feature.title}
+                  width={60}
+                  height={60}
+                  className="w-16 h-16"
+                />
+              </div>
+
+              {/* Feature Title */}
+              <h3 className="text-xl md:text-2xl font-semibold mb-3 font-montserrat">
+                {feature.title}
+              </h3>
+
+              {/* Feature Description */}
+              <p className="text-gray-600 font-inter text-base md:text-lg">
+                {feature.description}
+              </p>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>

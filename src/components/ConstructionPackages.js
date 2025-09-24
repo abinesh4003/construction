@@ -73,31 +73,29 @@ export default function LuxuryPackages() {
     <section className="py-28 bg-gray-50" id="package">
       <div className="container mx-auto px-6">
         {/* Header */}
-        <div className="text-center mb-20" >
-       
-          <h2 className="text-4xl md:text-5xl font-light mb-6">
-            <span className="font-serif italic">Construction</span> Packages
-          </h2>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+        <div className="text-center mb-20">
+             <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 font-montserrat text-[#F05A29]">
+          <span className=" font-montserrat text-black">Construction</span> Packages
+        </h2>
+          <p className="text-lg text-gray-600 max-w-3xl mx-auto inter">
             Tailored solutions to match your vision and budget
           </p>
         </div>
 
         {/* Package Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {packages.map((pkg, index) => (
+          {packages.map((pkg) => (
             <motion.div
               key={pkg.title}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ }}
               whileHover={{ scale: 1.05 }}
               onClick={() => setSelectedPackage(pkg)}
               className={`relative rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all cursor-pointer ${
-                pkg.popular 
-                  ? 'bg-gradient-to-br from-yellow-100 via-yellow-50 to-amber-50 border-2 border-yellow-400 shadow-lg shadow-yellow-200/50' 
-                  : 'bg-white border border-[#F05A29]'
+                pkg.popular
+                  ? "bg-gradient-to-br from-yellow-100 via-yellow-50 to-amber-50 border-2 border-yellow-400 shadow-lg shadow-yellow-200/50"
+                  : "bg-white border border-[#F05A29]"
               }`}
             >
               {pkg.popular && (
@@ -106,7 +104,7 @@ export default function LuxuryPackages() {
                   POPULAR
                 </div>
               )}
-              
+
               <div className="relative h-48">
                 <Image
                   src={pkg.image}
@@ -118,32 +116,59 @@ export default function LuxuryPackages() {
                   <div className="absolute inset-0 bg-gradient-to-t from-amber-900/20 to-transparent" />
                 )}
               </div>
-              
+
               <div className="p-6">
                 <div className="flex justify-between items-start mb-2">
-                  <h3 className={`text-xl font-semibold ${pkg.popular ? 'text-amber-800' : 'text-gray-900'}`}>
+                  <h3
+                    className={`text-xl font-bold montserrat ${
+                      pkg.popular ? "text-amber-800" : "text-gray-900"
+                    }`}
+                  >
                     {pkg.title}
                   </h3>
-                  <span className={`font-medium ${pkg.popular ? 'text-amber-700' : 'text-[#F05A29]'}`}>
+                  <span
+                    className={`font-medium montserrat ${
+                      pkg.popular ? "text-amber-700" : "text-[#F05A29]"
+                    }`}
+                  >
                     {pkg.price}
                   </span>
                 </div>
-                <p className={`text-sm mb-4 ${pkg.popular ? 'text-amber-600' : 'text-gray-600'}`}>
+
+                <p
+                  className={`text-sm mb-4 inter ${
+                    pkg.popular ? "text-amber-600" : "text-gray-600"
+                  }`}
+                >
                   {pkg.description}
                 </p>
-                
+
                 <ul className="space-y-2 mb-6">
                   {pkg.features.slice(0, 3).map((feature, i) => (
-                    <li key={i} className="flex items-start text-sm">
-                      <Check className={`h-4 w-4 mr-2 mt-0.5 flex-shrink-0 ${pkg.popular ? 'text-amber-600' : 'text-[#F05A29]'}`} />
-                      <span className={pkg.popular ? 'text-amber-700' : 'text-gray-700'}>{feature}</span>
+                    <li key={i} className="flex items-start text-sm inter">
+                      <Check
+                        className={`h-4 w-4 mr-2 mt-0.5 flex-shrink-0 ${
+                          pkg.popular ? "text-amber-600" : "text-[#F05A29]"
+                        }`}
+                      />
+                      <span
+                        className={`${
+                          pkg.popular ? "text-amber-700" : "text-gray-700"
+                        }`}
+                      >
+                        {feature}
+                      </span>
                     </li>
                   ))}
                 </ul>
-                
-                <button className={`hover:underline flex items-center text-sm font-medium ${
-                  pkg.popular ? 'text-amber-700 hover:text-amber-800' : 'text-[#F05A29]'
-                }`}>
+
+                <button
+                  className={`hover:underline flex items-center text-sm font-medium inter ${
+                    pkg.popular
+                      ? "text-amber-700 hover:text-amber-800"
+                      : "text-[#F05A29]"
+                  }`}
+                >
                   View full details
                   <ArrowRight className="h-4 w-4 ml-1" />
                 </button>
@@ -167,12 +192,12 @@ export default function LuxuryPackages() {
               initial={{ scale: 0.95, y: 20 }}
               animate={{ scale: 1, y: 0 }}
               exit={{ scale: 0.95, y: 20 }}
-              transition={{ type: 'spring', damping: 25 }}
+              transition={{ type: "spring", damping: 25 }}
               onClick={(e) => e.stopPropagation()}
               className={`rounded-xl shadow-2xl w-full max-w-4xl overflow-hidden max-h-[90vh] flex flex-col ${
-                selectedPackage.popular 
-                  ? 'bg-gradient-to-b from-amber-50 to-yellow-50 border-2 border-amber-300' 
-                  : 'bg-white'
+                selectedPackage.popular
+                  ? "bg-gradient-to-b from-amber-50 to-yellow-50 border-2 border-amber-300"
+                  : "bg-white"
               }`}
             >
               {/* Modal Header */}
@@ -183,125 +208,130 @@ export default function LuxuryPackages() {
                   fill
                   className="object-cover"
                 />
-                <button 
+                <button
                   onClick={() => setSelectedPackage(null)}
                   className={`absolute top-4 right-4 p-2 rounded-full hover:bg-opacity-20 transition-colors shadow-sm ${
-                    selectedPackage.popular 
-                      ? 'bg-amber-500/20 hover:bg-amber-500/30 text-amber-800' 
-                      : 'bg-white hover:bg-gray-100 text-gray-800'
+                    selectedPackage.popular
+                      ? "bg-amber-500/20 hover:bg-amber-500/30 text-amber-800"
+                      : "bg-white hover:bg-gray-100 text-gray-800"
                   }`}
                 >
                   <X className="h-5 w-5" />
                 </button>
-                <div className={`absolute bottom-0 left-0 right-0 p-6 ${
-                  selectedPackage.popular 
-                    ? 'bg-gradient-to-t from-amber-900/80 to-transparent' 
-                    : 'bg-gradient-to-t from-black/70 to-transparent'
-                }`}>
-                  <h3 className={`text-2xl font-light ${
-                    selectedPackage.popular ? 'text-amber-100' : 'text-white'
-                  }`}>
+                <div
+                  className={`absolute bottom-0 left-0 right-0 p-6 ${
+                    selectedPackage.popular
+                      ? "bg-gradient-to-t from-amber-900/80 to-transparent"
+                      : "bg-gradient-to-t from-black/70 to-transparent"
+                  }`}
+                >
+                  <h3
+                    className={`text-2xl font-bold montserrat ${
+                      selectedPackage.popular ? "text-amber-100" : "text-white"
+                    }`}
+                  >
                     {selectedPackage.title}
                   </h3>
-                  <p className={`mt-1 ${
-                    selectedPackage.popular ? 'text-amber-200' : 'text-white/90'
-                  }`}>
+                  <p
+                    className={`mt-1 inter ${
+                      selectedPackage.popular ? "text-amber-200" : "text-white/90"
+                    }`}
+                  >
                     {selectedPackage.description}
                   </p>
                 </div>
-                {selectedPackage.popular && (
-                  <div className="absolute top-4 left-4 bg-gradient-to-r from-yellow-600 to-amber-600 text-white text-sm px-3 py-1 rounded-full font-medium tracking-wider flex items-center shadow-md">
-                    <Star className="h-3 w-3 mr-1 fill-white" />
-                    MOST POPULAR CHOICE
-                  </div>
-                )}
               </div>
-              
+
               {/* Modal Content */}
               <div className="p-8 overflow-y-auto">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
                   <div className="md:col-span-2">
-                    <h4 className={`text-lg font-medium mb-4 ${
-                      selectedPackage.popular ? 'text-amber-800' : 'text-gray-900'
-                    }`}>
+                    <h4
+                      className={`text-lg font-bold montserrat mb-4 ${
+                        selectedPackage.popular ? "text-amber-800" : "text-gray-900"
+                      }`}
+                    >
                       Package Features
                     </h4>
-                    <ul className="space-y-3">
+                    <ul className="space-y-3 inter">
                       {selectedPackage.features.map((feature, i) => (
                         <li key={i} className="flex items-start">
-                          <div className={`p-1 rounded-full mr-3 mt-0.5 ${
-                            selectedPackage.popular 
-                              ? 'bg-amber-100' 
-                              : 'bg-[#F05A29]/10'
-                          }`}>
-                            <div className={`h-2 w-2 rounded-full ${
-                              selectedPackage.popular 
-                                ? 'bg-amber-600' 
-                                : 'bg-[#F05A29]'
-                            }`} />
+                          <div
+                            className={`p-1 rounded-full mr-3 mt-0.5 ${
+                              selectedPackage.popular ? "bg-amber-100" : "bg-[#F05A29]/10"
+                            }`}
+                          >
+                            <div
+                              className={`h-2 w-2 rounded-full ${
+                                selectedPackage.popular ? "bg-amber-600" : "bg-[#F05A29]"
+                              }`}
+                            />
                           </div>
-                          <span className={selectedPackage.popular ? 'text-amber-700' : 'text-gray-700'}>
+                          <span className="inter">
                             {feature}
                           </span>
                         </li>
                       ))}
                     </ul>
                   </div>
-                  
+
                   <div>
-                    <h4 className={`text-lg font-medium mb-4 ${
-                      selectedPackage.popular ? 'text-amber-800' : 'text-gray-900'
-                    }`}>
+                    <h4
+                      className={`text-lg font-bold montserrat mb-4 ${
+                        selectedPackage.popular ? "text-amber-800" : "text-gray-900"
+                      }`}
+                    >
                       Included Brands
                     </h4>
                     <div className="grid grid-cols-3 gap-4">
                       {selectedPackage.brands.map((brand, i) => (
-                        <div key={i} className={`p-3 rounded-lg flex items-center justify-center ${
-                          selectedPackage.popular 
-                            ? 'bg-amber-100/50 border border-amber-200' 
-                            : 'bg-gray-50'
-                        }`}>
+                        <div
+                          key={i}
+                          className={`p-3 rounded-lg flex items-center justify-center ${
+                            selectedPackage.popular
+                              ? "bg-amber-100/50 border border-amber-200"
+                              : "bg-gray-50"
+                          }`}
+                        >
                           <div className="relative h-10 w-full">
-                            <Image
-                              src={brand}
-                              alt="Brand logo"
-                              fill
-                              className="object-contain"
-                            />
+                            <Image src={brand} alt="Brand logo" fill className="object-contain" />
                           </div>
                         </div>
                       ))}
                     </div>
                   </div>
                 </div>
-                
-                <div className={`p-6 rounded-lg ${
-                  selectedPackage.popular 
-                    ? 'bg-amber-100/50 border border-amber-200' 
-                    : 'bg-gray-50'
-                }`}>
+
+                <div
+                  className={`p-6 rounded-lg ${
+                    selectedPackage.popular
+                      ? "bg-amber-100/50 border border-amber-200"
+                      : "bg-gray-50"
+                  }`}
+                >
                   <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
                     <div>
-                      <h4 className={`text-lg font-medium mb-1 ${
-                        selectedPackage.popular ? 'text-amber-800' : 'text-gray-900'
+                      <h4 className={`text-lg font-bold montserrat mb-1 ${
+                        selectedPackage.popular ? "text-amber-800" : "text-gray-900"
                       }`}>
                         {selectedPackage.title} Package
                       </h4>
-                      <p className={`text-2xl font-medium ${
-                        selectedPackage.popular ? 'text-amber-700' : 'text-[#F05A29]'
+                      <p className={`text-2xl font-bold montserrat ${
+                        selectedPackage.popular ? "text-amber-700" : "text-[#F05A29]"
                       }`}>
                         {selectedPackage.price}
                       </p>
                     </div>
-                    <button className={`w-full md:w-auto px-8 py-3 rounded-lg transition-colors flex items-center justify-center gap-2 ${
-                      selectedPackage.popular
-                        ? 'bg-gradient-to-r from-amber-600 to-amber-700 hover:from-amber-700 hover:to-amber-800 text-white shadow-md shadow-amber-500/30'
-                        : 'bg-[#F05A29] hover:bg-[#e04a20] text-white'
-                    }`}
-                    onClick={()=>{
-                      openDialog();
-                      setSelectedPackage(null);
-                    }}
+                    <button
+                      className={`w-full md:w-auto px-8 py-3 rounded-lg transition-colors flex items-center justify-center gap-2 montserrat ${
+                        selectedPackage.popular
+                          ? "bg-gradient-to-r from-amber-600 to-amber-700 hover:from-amber-700 hover:to-amber-800 text-white shadow-md shadow-amber-500/30"
+                          : "bg-[#F05A29] hover:bg-[#e04a20] text-white"
+                      }`}
+                      onClick={() => {
+                        openDialog();
+                        setSelectedPackage(null);
+                      }}
                     >
                       Free Consulting
                       <ArrowRight className="h-5 w-5" />

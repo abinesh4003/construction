@@ -24,10 +24,10 @@ export default function BankingPartners() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-3xl md:text-4xl font-bold mb-3"
+          className="text-3xl md:text-4xl font-bold mb-3 montserrat text-[#F05A29]"
         >
          
-          Our Banking Partners
+       <span className="inter text-black">Our Banking</span> Partners
         </motion.h2>
 
         {/* Subtitle */}
