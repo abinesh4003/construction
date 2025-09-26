@@ -4,14 +4,12 @@ import Home from './Home';
 
 export const metadata = {
   title: "Luxury Home Builders in Nagercoil | Varghese Construction",
-  description: "Varghese Construction, trusted builders in Kanyakumari district. We deliver quality homes, villas & projects with transparent pricing and timely completion.",
+  description: "Build luxury villas & homes in Nagercoil with Varghese Construction. Trusted builders with 10+ years of experience in premium residential & commercial projects.",
   keywords: [
-    "Construction company Nagercoil",
-    "Villa builders Kanyakumari",
-    "House construction Tamil Nadu",
-    "Luxury home builders Nagercoil",
-    "Renovation services"
-  ],
+  " Luxury home builders Nagercoil",
+"Villa construction Tamil Nadu",
+"Best construction company Nagercoil",
+"Residential & commercial builders",],
   verification: {
     google: "qPXGbHMkRjHCvd8gn2RhqkM_sWb7e43inQQIV_u3j50",
   },

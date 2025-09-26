@@ -4,7 +4,7 @@ import { notFound } from 'next/navigation';
 
 const seo = {
   home: {
-    title: "Luxury Home Builders in Nagercoil | Varghese Construction",
+    title: "Luxury Home Builders in kanyakumari | Varghese Construction",
     description: "Varghese Construction, trusted builders in Kanyakumari district. We deliver quality homes, villas & projects with transparent pricing and timely completion.",
     keywords: [
       "Construction company Nagercoil",
@@ -50,15 +50,19 @@ const seo = {
   },
 
   service: {
-    title: "Our Services - Varghese Construction",
+    title: "Construction Services in Nagercoil Homes, Villas & Commercial",
     description: "Explore Varghese Construction's premium services including luxury home building, villa projects, and commercial construction in Nagercoil & Kanyakumari.",
-    keywords: ["Construction services Nagercoil", "Villa construction Kanyakumari", "House renovation Tamil Nadu"],
+    keywords: ["Home construction services Nagercoil",
+"Villa builders Nagercoil",
+"Commercial construction Tamil Nadu",
+"Renovation and interiors Nagercoil"
+],
     verification: { google: "qPXGbHMkRjHCvd8gn2RhqkM_sWb7e43inQQIV_u3j50" },
     metadataBase: new URL("https://www.vargheseconstruction.com"),
     alternates: { canonical: "/service" },
     openGraph: {
       title: "Our Services - Varghese Construction",
-      description: "Premium residential, villa, and commercial construction services in Tamil Nadu.",
+      description: "Explore our construction services in Nagercoil. From premium villas to commercial projects, Varghese Construction delivers quality on time.",
       url: "https://www.vargheseconstruction.com/service",
       siteName: "Varghese Construction",
       images: [{ url: "/og-service.jpg", width: 1200, height: 630, alt: "Our Services - Varghese Construction" }],
@@ -90,9 +94,9 @@ const seo = {
   },
 
   portfolio: {
-    title: "Portfolio - Varghese Construction",
-    description: "View our completed projects, including luxury homes, villas, and commercial buildings in Kanyakumari & Nagercoil.",
-    keywords: ["Construction portfolio Nagercoil", "Luxury homes Kanyakumari", "Villa projects Tamil Nadu"],
+    title: "About Varghese Construction Trusted Builders in Nagercoil",
+    description: "Varghese Construction has 20+ years of experience in building luxury homes, villas & commercial projects in Nagercoil. Quality, trust & innovation.",
+    keywords: ["Varghese Construction Nagercoil", "Trusted builders in Tamil Nadu", "Experienced home builders Nagercoil","Best construction company Tamil Nadu"],
     verification: { google: "qPXGbHMkRjHCvd8gn2RhqkM_sWb7e43inQQIV_u3j50" },
     metadataBase: new URL("https://www.vargheseconstruction.com"),
     alternates: { canonical: "/portfolio" },
@@ -130,9 +134,9 @@ const seo = {
   },
 
   package: {
-    title: "Packages & Pricing - Varghese Construction",
-    description: "Discover our construction packages with transparent pricing for villas, luxury homes, and commercial projects in Kanyakumari & Nagercoil.",
-    keywords: ["Construction packages Nagercoil", "Villa pricing Tamil Nadu", "Luxury home packages"],
+    title: "Affordable Construction Packages in Nagercoil | Varghese Construction",
+    description: "Choose from affordable construction packages in Nagercoil. Transparent pricing, quality materials & turnkey solutions for every budget.",
+    keywords: ["Construction packages Nagercoil", "Villa construction cost Tamil Nadu", "House construction rates Nagercoil","Turnkey home builders Tamil Nadu"],
     verification: { google: "qPXGbHMkRjHCvd8gn2RhqkM_sWb7e43inQQIV_u3j50" },
     metadataBase: new URL("https://www.vargheseconstruction.com"),
     alternates: { canonical: "/package" },
@@ -250,9 +254,9 @@ const seo = {
   },
 
   contact: {
-    title: "Contact Us - Varghese Construction",
-    description: "Get in touch with Varghese Construction for inquiries, quotes, or consultations regarding your home or villa project in Tamil Nadu.",
-    keywords: ["Contact builders Nagercoil", "Construction inquiry Tamil Nadu", "Get a quote Kanyakumari"],
+    title: "Contact Varghese Construction Nagercoil Builders",
+    description: "Contact Varghese Construction for home, villa & commercial construction in Nagercoil. Call or visit us to start your dream project today.",
+    keywords: ["Contact construction company Nagercoil", "Builders near me in Nagercoil", "Construction company phone number","Varghese Construction Tamil Nadu"],
     verification: { google: "qPXGbHMkRjHCvd8gn2RhqkM_sWb7e43inQQIV_u3j50" },
     metadataBase: new URL("https://www.vargheseconstruction.com"),
     alternates: { canonical: "/contact" },
