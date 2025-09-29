@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { CheckCircle, Shield, Timer, Wallet, Construction, Award } from "lucide-react";
 import Image from "next/image";
 
 const features = [
@@ -9,86 +8,96 @@ const features = [
     icon: "/whyus/time.jpg",
     title: "Timely Completion",
     description: "90% of projects delivered ahead of schedule",
-    color: "text-blue-500",
-    bgColor: "bg-blue-50",
+    bgColor: "bg-amber-100",
   },
   {
-      icon: "/whyus/price.jpg",
+    icon: "/whyus/price.jpg",
     title: "Cost Transparency",
     description: "Fixed-price contracts with no hidden fees",
-    color: "text-green-500",
-    bgColor: "bg-green-50",
+    bgColor: "bg-green-100",
   },
   {
-       icon: "/whyus/safety.jpg",
+    icon: "/whyus/safety.jpg",
     title: "Safety First",
     description: "Zero accidents in the past 3 years",
-    color: "text-red-500",
-    bgColor: "bg-red-50",
+    bgColor: "bg-red-100",
   },
   {
-         icon: "/whyus/quality.jpg",
+    icon: "/whyus/quality.jpg",
     title: "Quality Assurance",
     description: "5-year warranty on all structural work",
-    color: "text-purple-500",
-    bgColor: "bg-purple-50",
-  },
-  {       icon: "/whyus/method.jpg",
-    title: "Modern Methods",
-    description: "BIM technology for precision planning",
-    color: "text-amber-500",
-    bgColor: "bg-amber-50",
+    bgColor: "bg-purple-100",
   },
   {
-       icon: "/whyus/trofy.jpg",
+    icon: "/whyus/method.jpg",
+    title: "Modern Methods",
+    description: "BIM technology for precision planning",
+    bgColor: "bg-amber-200",
+  },
+  {
+    icon: "/whyus/trofy.jpg",
     title: "Industry Recognition",
     description: "2023 Best Commercial Builder Award",
-    color: "text-[#F05A29]",
-    bgColor: "bg-[#F05A29]/10",
-  }
+    bgColor: "bg-orange-100",
+  },
 ];
 
 export default function LuxuryWhyChooseUs() {
   return (
-    <section className="py-20 bg-gray-50" id="portfolio">
-      <div className="container mx-auto px-6">
-        
+    <section className="relative py-32 bg-gradient-to-b from-amber-50 to-amber-100 overflow-hidden" id="why-choose-us">
+      <div className="max-w-7xl mx-auto px-6">
         {/* Section Heading */}
-         <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 font-montserrat text-[#F05A29]">
-         Why Choose <span className=" font-montserrat text-black">Our Construction</span> 
-        </h2>
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="text-center mb-20"
+        >
+          <h2 className="montserrat text-4xl md:text-5xl font-extrabold">
+            <span className="bg-gradient-to-r from-amber-500 to-orange-400 bg-clip-text text-transparent">
+              Why Choose
+            </span>{" "}
+            <span className="text-gray-900">Our Construction</span>
+          </h2>
+          <p className="inter mt-4 text-gray-700 max-w-2xl mx-auto text-lg md:text-xl">
+            Discover why clients trust us to deliver exceptional construction projects with quality, safety, and innovation.
+          </p>
+        </motion.div>
 
-        {/* Features Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-          {features.map((feature, index) => (
+        {/* Animated Floating Grid */}
+        <div className="relative flex flex-wrap justify-center gap-10">
+          {features.map((feature, idx) => (
             <motion.div
               key={feature.title}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, y: 50, rotate: -2 }}
+              whileInView={{ opacity: 1, y: 0, rotate: 0 }}
+              whileHover={{ scale: 1.05, rotate: 1, y: -5, boxShadow: "0 25px 40px rgba(0,0,0,0.15)" }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="relative bg-white rounded-3xl shadow-lg p-8 flex flex-col items-center text-center hover:shadow-2xl transition-all duration-500"
+              transition={{ duration: 0.7, delay: idx * 0.15 }}
+              className="relative w-72 bg-white rounded-3xl shadow-lg p-8 flex flex-col items-center text-center cursor-pointer"
             >
-              {/* Icon Background Circle */}
-              <div className={`${feature.bgColor} p-6 rounded-full mb-6`}>
+              {/* Icon */}
+              <motion.div
+                whileHover={{ scale: 1.2 }}
+                className={`${feature.bgColor} p-6 rounded-full mb-6 shadow-md`}
+              >
                 <Image
                   src={feature.icon}
                   alt={feature.title}
-                  width={60}
-                  height={60}
+                  width={64}
+                  height={64}
                   className="w-16 h-16"
                 />
-              </div>
+              </motion.div>
 
-              {/* Feature Title */}
-              <h3 className="text-xl md:text-2xl font-semibold mb-3 font-montserrat">
+              {/* Title */}
+              <h3 className="montserrat text-xl md:text-2xl font-bold mb-2">
                 {feature.title}
               </h3>
 
-              {/* Feature Description */}
-              <p className="text-gray-600 font-inter text-base md:text-lg">
-                {feature.description}
-              </p>
+              {/* Description */}
+              <p className="inter text-gray-600 text-base md:text-lg">{feature.description}</p>
             </motion.div>
           ))}
         </div>

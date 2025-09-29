@@ -33,7 +33,7 @@ const packages = [
     ],
     brands: ["/brands/jsw.png", "/brands/dalmia.png", "/brands/hindware.png"],
     popular: true,
-     image: "/house/18.jpeg"
+    image: "/house/18.jpeg"
   },
   {
     title: "Premium",
@@ -47,7 +47,7 @@ const packages = [
       "Upgraded kitchen & bath"
     ],
     brands: ["/brands/ultratech.png", "/brands/asianpaints.png", "/brands/jaquar.png"],
-   image: "/house/19.jpeg"
+    image: "/house/19.jpeg"
   },
   {
     title: "Royale",
@@ -74,10 +74,10 @@ export default function LuxuryPackages() {
       <div className="container mx-auto px-6">
         {/* Header */}
         <div className="text-center mb-20">
-             <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 font-montserrat text-[#F05A29]">
-          <span className=" font-montserrat text-black">Construction</span> Packages
-        </h2>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto inter">
+          <h2 className="text-4xl md:text-5xl font-extrabold text-[#F05A29] mb-4 montserrat">
+            <span className="text-gray-900">Construction</span> Packages
+          </h2>
+          <p className="text-gray-600 max-w-3xl mx-auto inter text-lg">
             Tailored solutions to match your vision and budget
           </p>
         </div>
@@ -90,16 +90,16 @@ export default function LuxuryPackages() {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              whileHover={{ scale: 1.05 }}
+              whileHover={{ scale: 1.03 }}
               onClick={() => setSelectedPackage(pkg)}
-              className={`relative rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all cursor-pointer ${
+              className={`relative rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-all cursor-pointer ${
                 pkg.popular
-                  ? "bg-gradient-to-br from-yellow-100 via-yellow-50 to-amber-50 border-2 border-yellow-400 shadow-lg shadow-yellow-200/50"
+                  ? "bg-gradient-to-br from-yellow-100 via-yellow-50 to-amber-50 border-2 border-yellow-400 shadow-lg"
                   : "bg-white border border-[#F05A29]"
               }`}
             >
               {pkg.popular && (
-                <div className="absolute top-4 right-4 bg-gradient-to-r from-yellow-600 to-amber-600 text-white text-xs px-3 py-1 rounded-full font-medium tracking-wider z-10 flex items-center shadow-md">
+                <div className="absolute top-4 right-4 bg-amber-600 text-white text-xs px-3 py-1 rounded-full font-medium flex items-center shadow-md z-10">
                   <Star className="h-3 w-3 mr-1 fill-white" />
                   POPULAR
                 </div>
@@ -110,7 +110,7 @@ export default function LuxuryPackages() {
                   src={pkg.image}
                   alt={pkg.title}
                   fill
-                  className="object-cover w-full h-full group-hover:scale-105 transition-all duration-500"
+                  className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-105"
                 />
                 {pkg.popular && (
                   <div className="absolute inset-0 bg-gradient-to-t from-amber-900/20 to-transparent" />
@@ -152,9 +152,7 @@ export default function LuxuryPackages() {
                         }`}
                       />
                       <span
-                        className={`${
-                          pkg.popular ? "text-amber-700" : "text-gray-700"
-                        }`}
+                        className={`${pkg.popular ? "text-amber-700" : "text-gray-700"}`}
                       >
                         {feature}
                       </span>
@@ -164,9 +162,7 @@ export default function LuxuryPackages() {
 
                 <button
                   className={`hover:underline flex items-center text-sm font-medium inter ${
-                    pkg.popular
-                      ? "text-amber-700 hover:text-amber-800"
-                      : "text-[#F05A29]"
+                    pkg.popular ? "text-amber-700 hover:text-amber-800" : "text-[#F05A29]"
                   }`}
                 >
                   View full details
@@ -267,9 +263,7 @@ export default function LuxuryPackages() {
                               }`}
                             />
                           </div>
-                          <span className="inter">
-                            {feature}
-                          </span>
+                          <span className="inter">{feature}</span>
                         </li>
                       ))}
                     </ul>
