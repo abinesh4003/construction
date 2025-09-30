@@ -107,7 +107,7 @@ export default function WhyChooseUs() {
             </span>
           </h2>
           <p className="mt-4 max-w-2xl mx-auto text-gray-600 text-lg inter">
-            We don’t just build homes, we build trust and quality.
+            We don&apos;t just build homes, we build trust and quality.
           </p>
         </motion.div>
 
@@ -170,7 +170,7 @@ export default function WhyChooseUs() {
               <div className="absolute inset-0 p-6 flex flex-col justify-end">
                 <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 max-w-xl">
                   <h3 className="text-2xl text-white montserrat font-semibold">
-                    We're Building Across 10+ Cities
+                    We&apos;re Building Across 10+ Cities
                   </h3>
                   <p className="mt-1 text-sm text-gray-200 inter">
                     Reliable projects, local teams, trusted workmanship.
