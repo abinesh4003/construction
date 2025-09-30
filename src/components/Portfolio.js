@@ -1,149 +1,285 @@
-"use client";
+'use client';
 
-import { useEffect, useState } from "react";
-import { motion, animate } from "framer-motion";
-import { Building, Users, Ruler, Layers } from "lucide-react";
-import Image from "next/image";
-import { Button } from "@/components/ui/button";
-import { useDialog } from "./DialogProvider";
+import React, { useEffect, useRef, useState } from 'react';
+import { motion, useAnimation } from 'framer-motion';
+import Image from 'next/image';
+import {
+  Building2,
+  FileText,
+  Users,
+  Ruler,
+  Award,
+  Smile,
+  MapPin,
+} from 'lucide-react';
 
-const stats = [
-  { icon: Building, value: 150, suffix: "+", label: "Total Projects" },
-  { icon: Layers, value: 1000, suffix: "+", label: "Floor Plans" },
-  { icon: Users, value: 100, suffix: "+", label: "Construction Workers" },
-  { icon: Ruler, value: 300000, suffix: "", label: "sqft Total Build-up" },
-  { icon: Building, value: 10, suffix: "+", label: "Years of Experience" },
-  { icon: Users, value: 150, suffix: "+", label: "Happy Clients" },
-];
+// WhyChooseUs - Enhanced with luxury fonts & animations
+export default function WhyChooseUs() {
+  const stats = [
+    { label: 'Total Projects', value: 150, suffix: '+', icon: Building2 },
+    { label: 'Floor Plans', value: 1000, suffix: '+', icon: FileText },
+    { label: 'Construction Workers', value: 100, suffix: '+', icon: Users },
+    { label: 'sqft Total Build-up', value: 300000, suffix: '', icon: Ruler },
+    { label: 'Years of Experience', value: 10, suffix: '+', icon: Award },
+    { label: 'Happy Clients', value: 150, suffix: '+', icon: Smile },
+  ];
 
-const cities = [
-  { name: "Kanyakumari", image: "/cities/kanyakumari.jpg" },
-  { name: "Kavalkinaru", image: "/cities/kavalkinaru.jpg" },
-  { name: "Nagercoil", image: "/cities/nagercoil.jpg" },
-  { name: "Boothapandi", image: "/cities/boothapandi.jpg" },
-  { name: "Rajakkamangalam", image: "/cities/Rajakkamangalam.jpg" },
-  { name: "Muttom", image: "/cities/muttom.jpg" },
-  { name: "Colachal", image: "/cities/colachel.jpg" },
-  { name: "Thuckalay", image: "/cities/thuckalay.jpg" },
-  { name: "Marthandam", image: "/cities/marthandam.jpg" },
-  { name: "Thiruvananthapuram", image: "/cities/Thiruvananthapuram.jpg" },
-];
+  const cities = [
+    { name: 'Kanyakumari', icon: MapPin },
+    { name: 'Kavalkinaru', icon: MapPin },
+    { name: 'Nagercoil', icon: MapPin },
+    { name: 'Boothapandi', icon: MapPin },
+    { name: 'Rajakkamangalam', icon: MapPin },
+    { name: 'Muttom', icon: MapPin },
+    { name: 'Colachal', icon: MapPin },
+    { name: 'Thuckalay', icon: MapPin },
+    { name: 'Marthandam', icon: MapPin },
+    { name: 'Thiruvananthapuram', icon: MapPin },
+  ];
 
-// Animated number component
-function AnimatedNumber({ value, suffix }) {
-  const [count, setCount] = useState(0);
+  const sectionRef = useRef(null);
+  const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    const controls = animate(0, value, {
-      duration: 2,
-      onUpdate(v) {
-        setCount(Math.floor(v));
+    const el = sectionRef.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setVisible(true);
+            obs.disconnect();
+          }
+        });
       },
-    });
-    return () => controls.stop();
-  }, [value]);
+      { threshold: 0.25 }
+    );
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, []);
 
-  return <p className="montserrat text-3xl font-extrabold mb-2 text-gray-900">{count}{suffix}</p>;
-}
+  const sliderRef = useRef(null);
+  useEffect(() => {
+    const el = sliderRef.current;
+    if (!el) return;
+    let rafId;
+    let pos = 0;
+    const speed = 0.4;
+    const loop = () => {
+      pos += speed;
+      if (pos >= el.scrollWidth / 2) pos = 0;
+      el.scrollLeft = pos;
+      rafId = requestAnimationFrame(loop);
+    };
+    const clone = el.innerHTML;
+    el.innerHTML = el.innerHTML + clone;
+    rafId = requestAnimationFrame(loop);
+    return () => {
+      cancelAnimationFrame(rafId);
+      el.innerHTML = el.innerHTML.slice(0, el.innerHTML.length / 2);
+    };
+  }, []);
 
-export default function ProfessionalPortfolio() {
-  const { openDialog } = useDialog();
+  const controls = useAnimation();
+  useEffect(() => {
+    if (visible) controls.start('visible');
+  }, [visible, controls]);
 
   return (
-    <section className="w-full bg-white py-24">
-      <div className="container mx-auto px-6 lg:px-20 flex flex-col gap-24">
-        
+    <section
+      ref={sectionRef}
+      className="w-full bg-gradient-to-b from-gray-50 via-white to-gray-100 py-16 lg:py-24 px-6 lg:px-24 text-gray-800"
+    >
+      <div className="max-w-7xl mx-auto">
         {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="text-center max-w-3xl mx-auto"
+          initial={{ opacity: 0, y: 18 }}
+          animate={visible ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.7 }}
+          className="text-center mb-12"
         >
-          <h2 className="montserrat text-4xl md:text-5xl font-extrabold mb-4 text-gray-900">
-            You Made the <span className="text-[#F05A29]">Right Choice</span>
+          <h2 className="text-4xl lg:text-5xl montserrat font-bold leading-tight text-gray-900">
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-amber-600 to-amber-300">
+              You Made the Right{' '}
+              <span className="kaushan-script-regular text-amber-600">
+                Choice
+              </span>
+            </span>
           </h2>
-          <p className="inter text-gray-700 text-lg md:text-xl">
-            We don&apos;t just build homes, we build{" "}
-            <span className="text-[#F05A29] font-semibold">trust</span> and{" "}
-            <span className="text-[#F05A29] font-semibold">quality</span>.
+          <p className="mt-4 max-w-2xl mx-auto text-gray-600 text-lg inter">
+            We don’t just build homes, we build trust and quality.
           </p>
         </motion.div>
 
-        {/* Stats Section */}
+        {/* Stats Grid */}
         <motion.div
-          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12"
           initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={{
-            hidden: {},
-            visible: { transition: { staggerChildren: 0.15 } },
-          }}
+          animate={controls}
+          variants={{ visible: {}, hidden: {} }}
         >
-          {stats.map((stat, idx) => {
-            const Icon = stat.icon;
-            return (
-              <motion.div
-                key={stat.label}
-                className="relative bg-gray-50 rounded-3xl shadow-sm p-8 flex items-center gap-6 hover:shadow-md transition-shadow duration-500"
-                initial={{ opacity: 0, y: 20, scale: 0.95 }}
-                whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                transition={{ delay: idx * 0.1, duration: 0.8 }}
-              >
-                <div className="bg-[#F05A29]/20 p-4 rounded-full w-20 h-20 flex items-center justify-center">
-                  <Icon className="h-10 w-10 text-[#F05A29]" strokeWidth={1.5} />
+          {stats.map((s, idx) => (
+            <motion.div
+              key={s.label}
+              className="rounded-2xl bg-white/80 backdrop-blur-md border border-gray-100 shadow-lg p-6 flex flex-col items-start hover:-translate-y-1 transition-transform group animate-fade-in-up"
+              initial={{ opacity: 0, y: 12 }}
+              animate={visible ? { opacity: 1, y: 0 } : {}}
+              transition={{ delay: 0.08 * idx, duration: 0.6 }}
+            >
+              <div className="flex items-center gap-4">
+                <div className="p-3 rounded-full bg-gradient-to-tr from-amber-100 to-amber-50 text-amber-600 shadow-inner group-hover:scale-110 transition-transform">
+                  <s.icon className="w-6 h-6" />
                 </div>
-                <div className="flex flex-col">
-                  <AnimatedNumber value={stat.value} suffix={stat.suffix} />
-                  <p className="inter text-gray-600 font-medium">{stat.label}</p>
+                <div>
+                  <div className="text-3xl lg:text-4xl barlow-condensed font-bold text-amber-600">
+                    {visible ? (
+                      <CountUp
+                        value={s.value}
+                        suffix={s.suffix}
+                        duration={1200}
+                      />
+                    ) : (
+                      '0'
+                    )}
+                  </div>
+                  <div className="text-sm inter text-gray-600 tracking-wide mt-1">
+                    {s.label}
+                  </div>
                 </div>
-              </motion.div>
-            );
-          })}
+              </div>
+            </motion.div>
+          ))}
         </motion.div>
 
-        {/* Cities Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="bg-white rounded-3xl shadow-lg p-8 md:p-12 mb-16"
-        >
-          <h3 className="text-2xl md:text-3xl font-bold text-center mb-12 montserrat text-gray-900">
-            We&apos;re Building Across <span className="text-[#F05A29]">10+ Cities</span>
-          </h3>
-
-          <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-5 gap-6">
-            {cities.map((city, idx) => (
-              <motion.div
-                key={city.name}
-                className="flex flex-col items-center"
-                initial={{ opacity: 0, y: 20, scale: 0.95 }}
-                animate={{ opacity: 1, y: 0, scale: 1 }}
-                transition={{ delay: idx * 0.05 }}
-              >
-                <div className="relative w-20 h-20 rounded-full overflow-hidden mb-2 hover:scale-105 transition-transform duration-300 shadow-md">
-                  <Image src={city.image} alt={city.name} fill className="object-cover" />
+        {/* Cities Carousel */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center mb-12">
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            animate={visible ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.7 }}
+            className="col-span-1 lg:col-span-2 rounded-2xl overflow-hidden relative shadow-xl animate-fade-in-left"
+          >
+            <div className="relative h-64 lg:h-80 bg-gradient-to-tr from-gray-900 to-gray-700">
+              <Image
+                src="/project-sample.jpg"
+                alt="Project sample"
+                fill
+                className="object-cover opacity-60"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+              />
+              <div className="absolute inset-0 p-6 flex flex-col justify-end">
+                <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 max-w-xl">
+                  <h3 className="text-2xl text-white montserrat font-semibold">
+                    We're Building Across 10+ Cities
+                  </h3>
+                  <p className="mt-1 text-sm text-gray-200 inter">
+                    Reliable projects, local teams, trusted workmanship.
+                  </p>
                 </div>
-                <p className="text-sm font-medium inter text-gray-700">{city.name}</p>
-              </motion.div>
-            ))}
-          </div>
+              </div>
+            </div>
+          </motion.div>
 
-          <div className="text-center mt-12">
-            <Button
-              size="lg"
-              className="bg-gradient-to-r from-[#F05A29] to-orange-400 hover:from-orange-500 hover:to-[#F05A29] text-white px-8 py-6 text-lg shadow-lg hover:shadow-xl transition-all"
-              onClick={openDialog}
-            >
-              Start Your Project Today
-            </Button>
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            animate={visible ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.7 }}
+            className="col-span-1 animate-fade-in-right"
+          >
+            <div className="rounded-2xl bg-white p-6 shadow-md h-full flex flex-col">
+              <h4 className="text-lg montserrat font-semibold mb-4">
+                Our Cities
+              </h4>
+              <div
+                ref={sliderRef}
+                className="flex gap-3 overflow-hidden whitespace-nowrap py-2"
+              >
+                {cities.concat(cities).map((c, i) => (
+                  <div
+                    key={`${c.name}-${i}`}
+                    className="inline-flex items-center gap-2 justify-center px-4 py-2 rounded-full bg-gradient-to-r from-amber-100 to-amber-50 text-gray-800 alkatra font-medium shadow-sm mr-2"
+                    style={{ minWidth: 180 }}
+                  >
+                    <c.icon className="w-4 h-4 text-amber-600" /> {c.name}
+                  </div>
+                ))}
+              </div>
+              <div className="mt-6 text-sm text-gray-600 inter">
+                Local teams across coastal & inland cities — experienced in
+                residential, commercial and infrastructure projects.
+              </div>
+            </div>
+          </motion.div>
+        </div>
+
+        {/* CTA Banner */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.98 }}
+          animate={visible ? { opacity: 1, scale: 1 } : {}}
+          transition={{ duration: 0.7 }}
+          className="rounded-3xl overflow-hidden relative bg-gray-900 shadow-2xl animate-fade-in-up"
+        >
+          <div className="relative h-48 flex items-center">
+            <Image
+              src="/cta-project.jpg"
+              alt="Start your project"
+              fill
+              className="object-cover opacity-50"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-black/40 to-black/10"></div>
+            <div className="relative z-10 px-6 lg:px-12 flex flex-col lg:flex-row items-center justify-between w-full">
+              <div className="text-white py-6">
+                <h3 className="text-2xl lg:text-3xl montserrat font-semibold">
+                  Start Your Project Today
+                </h3>
+                <p className="mt-2 text-gray-200 max-w-xl inter">
+                  Schedule a free consultation and get a bespoke plan & estimate
+                  for your dream build.
+                </p>
+              </div>
+              <div className="py-6">
+                <a
+                  href="#contact"
+                  className="inline-block px-6 py-3 rounded-full bg-gradient-to-r from-amber-500 to-amber-300 text-black montserrat font-semibold shadow-lg hover:scale-105 transform transition"
+                >
+                  Start Now →
+                </a>
+              </div>
+            </div>
           </div>
         </motion.div>
       </div>
     </section>
+  );
+}
+
+function CountUp({ value = 0, duration = 3000, suffix = '' }) {
+  const [display, setDisplay] = useState(0);
+  useEffect(() => {
+    let start = 0;
+    const end = Number(value);
+    const range = end - start;
+    if (range <= 0) {
+      setDisplay(end);
+      return;
+    }
+    let startTime = null;
+    const step = (timestamp) => {
+      if (!startTime) startTime = timestamp;
+      const progress = Math.min((timestamp - startTime) / duration, 1);
+      const val = Math.floor(progress * range + start);
+      setDisplay(val);
+      if (progress < 1) window.requestAnimationFrame(step);
+    };
+    const raf = window.requestAnimationFrame(step);
+    return () => cancelAnimationFrame(raf);
+  }, [value, duration]);
+
+  const formatted = display.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  return (
+    <span>
+      {formatted}
+      {suffix}
+    </span>
   );
 }
