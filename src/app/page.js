@@ -2,7 +2,7 @@
 import Home from './Home';
 // Re-exporting metadata for the home page
 
-export const metadata = {
+ export const metadata = {
   title: "Luxury Home Builders in Nagercoil | Varghese Construction",
   description: "Build luxury villas & homes in Nagercoil with Varghese Construction. Trusted builders with 10+ years of experience in premium residential & commercial projects.",
   keywords: [
@@ -75,7 +75,7 @@ export const metadata = {
   other: {
     "facebook-domain-verification": "your-facebook-verification-code",
   },
-};
+ };
 export default function Page() {
 return <Home scrollTo="home" />;
 }

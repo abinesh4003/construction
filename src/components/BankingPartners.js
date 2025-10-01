@@ -14,7 +14,7 @@ export default function BankingPartners() {
   ];
 
   return (
-    <section className="py-20 bg-gradient-to-b from-gray-50 to-white relative">
+    <section className="py-20 bg-gradient-to-b from-gray-50 to-white relative" id='partners'>
       <div className="max-w-7xl mx-auto px-6 lg:px-20 text-center">
         <h2 className="text-3xl md:text-5xl font-bold text-amber-500 mb-4 font-montserrat">
           Our Banking Partners

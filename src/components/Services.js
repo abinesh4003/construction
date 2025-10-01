@@ -2,142 +2,166 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowRight } from "lucide-react";
 import Image from "next/image";
+import { cn } from "@/lib/utils"; // remove if you don’t use it
 
-const services = {
-  home: {
-    banner: "/homeservice.jpg",
+const categories = [
+  {
     title: "Home Construction",
     subtitle: "Crafting timeless homes with elegance & precision",
+    image: "/homeservice.jpg",
     items: [
-      { title: "Duplex Homes", desc: "Modern two-story living with premium finishes", image: "/house/1.jpeg" },
-      { title: "Luxury Homes", desc: "Bespoke residences tailored to your vision", image: "/house/2.jpeg" },
-      { title: "Villas", desc: "Spacious retreats with resort-style amenities", image: "/house/3.jpeg" },
+      { title: "Duplex Homes", desc: "Modern two-story living with premium finishes", img: "/house/1.jpeg" },
+      { title: "Luxury Homes", desc: "Bespoke residences tailored to your vision", img: "/house/2.jpeg" },
+      { title: "Villas", desc: "Spacious retreats with resort-style amenities", img: "/house/3.jpeg" },
     ],
   },
-  commercial: {
-    banner: "/commercialservice.jpg",
+  {
     title: "Commercial Construction",
     subtitle: "Building inspiring spaces for work & hospitality",
+    image: "/commercialservice.jpg",
     items: [
-      { title: "PG / Rental", desc: "Comfortable living spaces for students and professionals", image: "/house/6.jpeg" },
-      { title: "Schools", desc: "Inspirational learning environments", image: "/house/5.jpeg" },
-      { title: "Hotels", desc: "Hospitality spaces that delight guests", image: "/house/4.jpeg" },
+      { title: "PG / Rental", desc: "Comfortable living spaces for students and professionals", img: "/house/6.jpeg" },
+      { title: "Schools", desc: "Inspirational learning environments", img: "/house/5.jpeg" },
+      { title: "Hotels", desc: "Hospitality spaces that delight guests", img: "/house/4.jpeg" },
     ],
   },
-};
+];
 
-export default function ServicesSection() {
-  const [active, setActive] = useState("home");
+export default function PremiumServices() {
+  const [active, setActive] = useState(0);
 
   return (
-    <section className="relative w-full bg-neutral-50 text-gray-900 overflow-hidden" id="service">
+    <section className="relative w-full py-12 md:py-16" id="service">
       {/* Section Heading */}
-      <div className="text-center py-20 px-6">
-        <h2 className="montserrat text-3xl md:text-5xl font-extrabold">
-          <span className="bg-gradient-to-r from-amber-500 to-orange-400 bg-clip-text text-transparent">
-            Our Services
-          </span>
-        </h2>
-        <p className="inter mt-4 text-gray-600 text-lg max-w-2xl mx-auto">
-          Explore our wide range of construction solutions designed to bring your dream spaces to life.
-        </p>
+      <div className="text-center px-6 mb-10">
+        <motion.h2
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+          className="text-4xl md:text-5xl font-bold montserrat bg-gradient-to-r from-amber-500 to-orange-400 bg-clip-text text-transparent"
+        >
+          Our Services
+        </motion.h2>
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="mt-4 text-lg text-gray-600 max-w-2xl mx-auto font-[Inter]"
+        >
+          Discover our premium construction services tailored for homes and businesses.
+        </motion.p>
       </div>
 
       {/* Banner */}
-      <div className="relative h-[50vh] w-full rounded-3xl overflow-hidden max-w-7xl mx-auto shadow-xl">
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={active}
-            initial={{ opacity: 0, scale: 1.05 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.95 }}
-            transition={{ duration: 0.6, ease: "easeInOut" }}
-            className="absolute inset-0"
-          >
-            <Image
-              src={services[active].banner}
-              alt={services[active].title}
-              fill
-              className="object-cover"
-            />
-            <div className="absolute inset-0 bg-black/40" />
-          </motion.div>
-        </AnimatePresence>
+      <div className="relative w-full h-[60vh] md:h-[70vh] overflow-hidden  shadow-2xl">
+        <Image
+          src={categories[active].image}
+          alt={categories[active].title}
+          fill
+          priority
+          className="object-cover scale-105"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
 
-        {/* Banner Text */}
-        <div className="absolute inset-0 flex items-center justify-center px-6">
-          <motion.div
-            key={services[active].title}
-            initial={{ y: 40, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="bg-black/50 rounded-2xl p-8 md:p-12 text-center max-w-2xl"
-          >
-            <h3 className="montserrat text-3xl md:text-5xl font-bold text-white relative inline-block">
-              <span className="bg-gradient-to-r from-amber-400 to-orange-500 bg-clip-text text-transparent">
-                {services[active].title}
-              </span>
-              <span className="block h-[3px] w-16 bg-amber-400 mx-auto mt-3 rounded-full"></span>
-            </h3>
-            <p className="inter mt-4 text-base md:text-lg text-gray-200">
-              {services[active].subtitle}
-            </p>
+        {/* Floating Shapes */}
+        <motion.div
+          animate={{ y: [0, -10, 0] }}
+          transition={{ duration: 6, repeat: Infinity }}
+          className="absolute top-10 left-10 w-20 h-20 bg-amber-400/20 rounded-full blur-2xl"
+        />
+        <motion.div
+          animate={{ y: [0, 15, 0] }}
+          transition={{ duration: 8, repeat: Infinity }}
+          className="absolute bottom-10 right-10 w-32 h-32 bg-white/10 rounded-full blur-3xl"
+        />
 
-            {/* Tabs */}
-            <div className="flex gap-8 mt-8 justify-center">
-              {Object.keys(services).map((key) => (
-                <button
-                  key={key}
-                  onClick={() => setActive(key)}
-                  className={`relative pb-2 text-lg md:text-xl font-medium transition-all duration-300 ${
-                    active === key ? "text-amber-400" : "text-gray-300 hover:text-white"
-                  }`}
-                >
-                  {services[key].title.split(" ")[0]}
-                  {active === key && (
-                    <motion.div
-                      layoutId="underline"
-                      className="absolute left-0 -bottom-1 h-[2px] w-full bg-amber-400"
-                    />
-                  )}
-                </button>
-              ))}
-            </div>
-          </motion.div>
+        {/* Banner Content */}
+        <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
+          <motion.h2
+            key={categories[active].title}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
+            className="text-3xl md:text-5xl font-bold text-white drop-shadow-xl font-[Montserrat]"
+          >
+            {categories[active].title}
+          </motion.h2>
+          <motion.p
+            key={categories[active].subtitle}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="mt-3 text-lg md:text-xl text-gray-200 max-w-xl font-[Inter]"
+          >
+            {categories[active].subtitle}
+          </motion.p>
         </div>
       </div>
 
-      {/* Service Cards */}
-      <div className="max-w-7xl mx-auto px-6 py-20 grid gap-8 md:grid-cols-3">
-        {services[active].items.map((item, i) => (
-          <motion.div
-            key={item.title}
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: i * 0.2 }}
-            viewport={{ once: true }}
-            className="group bg-white rounded-2xl border border-gray-200 shadow-md hover:shadow-xl overflow-hidden transition-all duration-500"
+      {/* Tabs */}
+      <div className="flex justify-center gap-6 mt-6 flex-wrap">
+        {categories.map((c, i) => (
+          <button
+            key={i}
+            onClick={() => setActive(i)}
+            className={cn(
+              "relative pb-2 text-lg font-semibold transition-all font-[Montserrat]",
+              active === i ? "text-amber-500" : "text-gray-600 hover:text-amber-400"
+            )}
           >
-            <div className="relative h-56 w-full overflow-hidden">
+            {c.title}
+            {active === i && (
+              <motion.div
+                layoutId="underline"
+                className="absolute left-0 bottom-0 w-full h-[2px] bg-amber-500"
+              />
+            )}
+          </button>
+        ))}
+      </div>
+
+      {/* Services Grid */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-10 px-6 md:px-12">
+        <AnimatePresence mode="wait">
+          {categories[active].items.map((item, idx) => (
+            <motion.div
+              key={item.title}
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.6, delay: idx * 0.2 }}
+              className="group relative rounded-md overflow-hidden shadow-lg hover:shadow-2xl transition-all h-64"
+            >
               <Image
-                src={item.image}
+                src={item.img}
                 alt={item.title}
                 fill
-                className="object-cover transition-transform duration-700 group-hover:scale-110"
+                className="object-cover group-hover:scale-110 transition-transform duration-500"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-70 group-hover:opacity-90 transition-opacity" />
-            </div>
-            <div className="p-6">
-              <h4 className="montserrat text-xl font-semibold flex items-center justify-between">
-                {item.title}
-                <ArrowRight className="opacity-0 group-hover:opacity-100 transform group-hover:translate-x-2 transition-all duration-300 text-amber-500" />
-              </h4>
-              <p className="inter mt-2 text-gray-600 text-sm">{item.desc}</p>
-            </div>
-          </motion.div>
-        ))}
+              <div className="absolute inset-0 bg-black/40 group-hover:bg-black/30 transition-all flex flex-col justify-end p-6">
+                <h3 className="text-lg font-semibold text-white font-[Montserrat]">
+                  {item.title}
+                </h3>
+                <p className="text-gray-200 mt-1 text-sm font-[Inter]">
+                  {item.desc}
+                </p>
+              </div>
+            </motion.div>
+          ))}
+        </AnimatePresence>
+      </div>
+
+      {/* CTA Button */}
+      <div className="flex justify-center mt-12">
+        <motion.a
+          href="#contact"
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          className="px-8 py-3 rounded-full bg-amber-500 text-white font-semibold text-lg shadow-lg hover:bg-amber-600 transition-all font-[Montserrat]"
+        >
+          Get Started Today
+        </motion.a>
       </div>
     </section>
   );

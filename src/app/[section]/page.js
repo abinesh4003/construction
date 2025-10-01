@@ -3,52 +3,6 @@ import Home from '../Home';
 import { notFound } from 'next/navigation';
 
 const seo = {
-  home: {
-    title: "Luxury Home Builders in kanyakumari | Varghese Construction",
-    description: "Varghese Construction, trusted builders in Kanyakumari district. We deliver quality homes, villas & projects with transparent pricing and timely completion.",
-    keywords: [
-      "Construction company Nagercoil",
-      "Villa builders Kanyakumari",
-      "House construction Tamil Nadu",
-      "Luxury home builders Nagercoil",
-      "Renovation services"
-    ],
-    verification: { google: "qPXGbHMkRjHCvd8gn2RhqkM_sWb7e43inQQIV_u3j50" },
-    metadataBase: new URL("https://www.vargheseconstruction.com"),
-    alternates: { canonical: "/" },
-    openGraph: {
-      title: "Luxury Home Builders in Nagercoil | Varghese Construction",
-      description: "Varghese Construction, trusted builders in Kanyakumari district. We deliver quality homes, villas & projects with transparent pricing and timely completion.",
-      url: "https://www.vargheseconstruction.com",
-      siteName: "Varghese Construction",
-      images: [{ url: "/og-home.jpg", width: 1200, height: 630, alt: "Varghese Construction - Luxury Home Builders" }],
-      locale: "en_IN",
-      type: "website",
-    },
-    twitter: {
-      card: "summary_large_image",
-      site: "@vargheseconst",
-      creator: "@vargheseconst",
-      title: "Luxury Home Builders in Nagercoil | Varghese Construction",
-      description: "Varghese Construction, trusted builders in Kanyakumari district. We deliver quality homes, villas & projects with transparent pricing and timely completion.",
-      images: ["/twitter-home.jpg"],
-    },
-    robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-video-preview': -1, 'max-image-preview': 'large', 'max-snippet': -1 } },
-    icons: {
-      icon: [
-        { url: "/favicon/favicon.ico" },
-        { url: "/favicon/favicon-16x16.png", sizes: "16x16", type: "image/png" },
-        { url: "/favicon/favicon-32x32.png", sizes: "32x32", type: "image/png" },
-      ],
-      apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
-      other: [{ rel: "mask-icon", url: "/safari-pinned-tab.svg", color: "#F05A29" }],
-    },
-    manifest: "/manifest.webmanifest",
-    authors: [{ name: "Varghese Construction" }],
-    category: "Construction",
-      
-  },
-
   service: {
     title: "Construction Services in Nagercoil Homes, Villas & Commercial",
     description: "Explore Varghese Construction's premium services including luxury home building, villa projects, and commercial construction in Nagercoil & Kanyakumari.",
@@ -329,10 +283,10 @@ export async function generateStaticParams() {
 
 // --- Page Component ---
 export default async function SectionPage({ params }) {
-  const { section } = await params;   // ✅ Await params
+  const { section } = await params;  
 
   if (!seo[section]) {
-    notFound(); // undefined route → 404
+    notFound(); 
   }
 
   return <Home scrollTo={section} />;

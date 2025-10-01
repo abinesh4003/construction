@@ -10,7 +10,7 @@ export default function LuxuryCustomerReviews() {
   const [direction, setDirection] = useState(1); // 1 = forward, -1 = backward
   const [isMobile, setIsMobile] = useState(false);
 
-  const reviews = [
+ const reviews = [
     {
       id: 1,
       name: "Sudarson",
@@ -18,6 +18,7 @@ export default function LuxuryCustomerReviews() {
       rating: 5,
       content: "From planning to execution, their precision and commitment were outstanding. My home was completed ahead of schedule with flawless detailing and uncompromising quality.",
       avatar: "/avatars/0.jpg",
+      // avatar: "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg"
     },
     {
       id: 2,
@@ -25,7 +26,8 @@ export default function LuxuryCustomerReviews() {
       role: "Export/Import, Kurusady",
       rating: 5,
       content: "Our commercial project was executed seamlessly with excellent coordination. They managed approvals effortlessly while maintaining top-notch quality throughout.",
-      avatar: "/avatars/0.jpg",
+       avatar: "/avatars/0.jpg",
+      // avatar: "https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg"
     },
     {
       id: 3,
@@ -33,7 +35,8 @@ export default function LuxuryCustomerReviews() {
       role: "ISRO, Asaripallam",
       rating: 5,
       content: "Having worked with them on multiple projects, I can confidently say they excel in timely delivery, superior quality, and absolute transparency in pricing.",
-      avatar: "/avatars/0.jpg",
+       avatar: "/avatars/0.jpg",
+      // avatar: "https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg"
     },
     {
       id: 4,
@@ -41,7 +44,9 @@ export default function LuxuryCustomerReviews() {
       role: "MBBS, Punnainagar",
       rating: 5,
       content: "They translated my design ideas into reality with remarkable precision. Every detail was executed with care, making the entire journey stress-free and satisfying.",
+      
       avatar: "/avatars/0.jpg",
+      // avatar: "https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg",
     },
     {
       id: 5,
@@ -49,9 +54,65 @@ export default function LuxuryCustomerReviews() {
       role: "ISRO, Vallankumaranvilai",
       rating: 5,
       content: "Our resort project was handled with exceptional professionalism. Despite regulatory challenges, they delivered world-class craftsmanship beyond expectations.",
+       avatar: "/avatars/0.jpg",
+      // avatar: "https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg"
+    },
+    {
+      id: 6,
+      name: "Mervin Alexandar",
+      role: "IPS, Beach House",
+      rating: 5,
+      content: "The team exceeded every expectation, delivering my home early with unmatched quality. Their meticulous attention to detail truly set them apart.",
+       avatar: "/avatars/0.jpg",
+      // avatar: "https://images.pexels.com/photos/1043474/pexels-photo-1043474.jpeg"
+    },
+    {
+      id: 7,
+      name: "Benito",
+      role: "Bank Manager, Maravankudieruppu",
+      rating: 5,
+      content: "My project was completed right on schedule and within budget. The craftsmanship was outstanding, and their professionalism was truly remarkable.",
+       avatar: "/avatars/0.jpg",
+      // avatar: "https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg"
+    },
+    {
+      id: 8,
+      name: "Sornam",
+      role: "ISRO, Suchindram",
+      rating: 5,
+      content: "Our commercial facility was delivered exactly to our specifications. The team managed every detail smoothly, ensuring a flawless execution process.",
+       avatar: "/avatars/0.jpg",
+      // avatar: "https://images.pexels.com/photos/1704488/pexels-photo-1704488.jpeg"
+    },
+    {
+      id: 9,
+      name: "Sitharaman",
+      role: "District Tourism Officer, Gansahapuram",
+      rating: 5,
+      content: "We have collaborated on several projects, and their consistency in delivering quality, punctuality, and transparency makes them our trusted construction partner.",
+       avatar: "/avatars/0.jpg",
+      // avatar: "https://images.pexels.com/photos/2379005/pexels-photo-2379005.jpeg"
+    },
+    {
+      id: 10,
+      name: "Shajan",
+      role: "ISRO, Vettunimadam",
+      rating: 5,
+      content: "They understood our architectural vision perfectly and executed it with excellence. The result was beyond our expectations and truly impressive.",
+       avatar: "/avatars/0.jpg",
+      // avatar: "https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg"
+    },
+    {
+      id: 11,
+      name: "Kumar",
+      role: "NRI, Nagercoil Town",
+      rating: 5,
+      content: "Entrusting them with my project was the best decision. They combined modern design with quality execution, delivering a flawless and elegant result.",
       avatar: "/avatars/0.jpg",
+      // avatar: "https://images.pexels.com/photos/428364/pexels-photo-428364.jpeg"
     }
   ];
+
 
   // Detect mobile screen
   useEffect(() => {
@@ -97,7 +158,7 @@ export default function LuxuryCustomerReviews() {
   };
 
   return (
-    <section id="reviews" className="py-16 md:py-28 bg-gradient-to-br from-gray-900 to-gray-800 relative">
+    <section id="reviews" className="py-16 md:py-28 bg-gradient-to-br from-gray-900 to-gray-800 relative" >
       <div className="container mx-auto px-4 sm:px-6">
         {/* Header */}
         <motion.div
