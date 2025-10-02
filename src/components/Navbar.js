@@ -5,10 +5,12 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useDialog } from './DialogProvider';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { openDialog } = useDialog();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -64,12 +66,15 @@ export default function Navbar() {
               {item.name}
             </Link>
           ))}
-          <Link
-            href="/contact"
-            className="px-6 py-2 rounded-full bg-gradient-to-r from-[#F5B041] to-[#FFD580] text-black font-semibold hover:scale-105 transition"
-          >
-            Contact Us
-          </Link>
+          <button
+                onClick={() => {
+                  setIsOpen(false);
+                  openDialog();
+                }}
+                className="px-6 py-2 rounded-full bg-gradient-to-r from-[#F5B041] to-[#FFD580] text-black font-semibold hover:scale-105 transition"
+              >
+                Contact Us
+              </button>
         </div>
 
         {/* Mobile Hamburger */}
@@ -104,13 +109,15 @@ export default function Navbar() {
                   {item.name}
                 </Link>
               ))}
-              <Link
-                href="/contact"
-                onClick={() => setIsOpen(false)}
+              <button
+                onClick={() => {
+                  setIsOpen(false);
+                  openDialog();
+                }}
                 className="px-6 py-2 rounded-full bg-gradient-to-r from-[#F5B041] to-[#FFD580] text-black font-semibold hover:scale-105 transition"
               >
                 Contact Us
-              </Link>
+              </button>
             </div>
           </motion.div>
         )}

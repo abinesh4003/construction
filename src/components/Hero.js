@@ -6,8 +6,12 @@ import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { useDialog } from "./DialogProvider";
 
 export default function HeroSection() {
+
+  const { openDialog } = useDialog();
+
   const videos = [
     "hero/hero-bg.mp4",
     "hero/hero-bg1.mp4",
@@ -115,14 +119,14 @@ export default function HeroSection() {
           transition={{ duration: 1, delay: 0.6 }}
           className="flex flex-col sm:flex-row gap-3 sm:gap-6"
         >
-          <Link
-            href="#contact"
+         <button
             className="px-5 sm:px-6 py-2 sm:py-3 rounded-full bg-gradient-to-r from-[#F5B041] to-[#FFD580] text-black text-sm sm:text-base font-semibold shadow-lg hover:scale-105 transition"
+            onClick={openDialog}
           >
             Start Your Project
-          </Link>
+          </button>
           <Link
-            href="#projects"
+            href="/portfolio"
             className="px-5 sm:px-6 py-2 sm:py-3 rounded-full border border-white text-white text-sm sm:text-base font-medium hover:bg-white/10 transition"
           >
             View Portfolio

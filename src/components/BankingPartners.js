@@ -2,53 +2,97 @@
 
 import { motion } from 'framer-motion';
 import Image from 'next/image';
+import { useEffect, useRef } from 'react';
 
 export default function BankingPartners() {
   const partners = [
-    { name: "Bajaj Finserv", logo: "/bank-logos/bajaj.jpg" },
-    { name: "ICICI", logo: "/bank-logos/icici.png" },
-    { name: "Godrej Housing Finance", logo: "/bank-logos/godrej.png" },
-    { name: "HDFC Home Loans", logo: "/bank-logos/hdfc.png" },
-    { name: "Housing.com", logo: "/bank-logos/housing.png" },
-    { name: "SBI Home Loans", logo: "/bank-logos/sbi.png" },
+    '/bank-logos/hdfc.png',
+    '/bank-logos/sbi.png',
+    '/bank-logos/icici.png',
+    '/bank-logos/kotak.png',
+    '/bank-logos/pnb.png',
+    '/bank-logos/axis.png',
+    '/bank-logos/idbi.png',
   ];
 
-  return (
-    <section className="py-20 bg-gradient-to-b from-gray-50 to-white relative" id='partners'>
-      <div className="max-w-7xl mx-auto px-6 lg:px-20 text-center">
-        <h2 className="text-3xl md:text-5xl font-bold text-amber-500 mb-4 font-montserrat">
-          Our Banking Partners
-        </h2>
-        <p className="text-gray-600 mb-12 inter max-w-2xl mx-auto">
-          We collaborate with top banks to offer flexible and trusted financial solutions for your projects.
-        </p>
+  const containerRef = useRef(null);
 
-        {/* Partner Grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-6 md:gap-8">
-          {partners.map((partner, idx) => (
+  useEffect(() => {
+    const scrollSpeed = 1; // pixels per frame
+    let animationFrame;
+
+    const scrollCarousel = () => {
+      if (containerRef.current) {
+        const { scrollLeft, scrollWidth } = containerRef.current;
+        if (scrollLeft >= scrollWidth / 2) {
+          containerRef.current.scrollLeft = 0;
+        } else {
+          containerRef.current.scrollLeft += scrollSpeed;
+        }
+      }
+      animationFrame = requestAnimationFrame(scrollCarousel);
+    };
+
+    animationFrame = requestAnimationFrame(scrollCarousel);
+    return () => cancelAnimationFrame(animationFrame);
+  }, []);
+
+  return (
+    <section className="w-full py-20 bg-gradient-to-r from-gray-200 to-gray-100">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-20">
+        {/* Section Title */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="text-center mb-12"
+        >
+          <h2 className="text-3xl md:text-5xl font-extrabold mb-4 animate-gradient-x">
+            Our Trusted Banking Partners
+          </h2>
+          <p className="text-gray-500 md:text-lg max-w-2xl mx-auto inter">
+            Partnered with leading financial institutions to ensure smooth transactions for our clients.
+          </p>
+        </motion.div>
+
+        {/* Carousel */}
+        <div
+          ref={containerRef}
+          className="flex gap-8 overflow-x-hidden whitespace-nowrap py-4 no-scrollbar"
+        >
+          {partners.concat(partners).map((logo, idx) => (
             <motion.div
               key={idx}
-              className="relative w-full h-24 md:h-28 rounded-2xl bg-white/30 backdrop-blur-lg flex items-center justify-center p-4 shadow-lg hover:shadow-2xl transition-all cursor-pointer"
-              whileHover={{ scale: 1.05 }}
+              className="flex-shrink-0 w-32 h-16 md:w-40 md:h-20 rounded-lg flex items-center justify-center filter grayscale hover:grayscale-0 transition-all duration-500 cursor-pointer shadow-lg hover:scale-110 bg-white"
+              whileHover={{ scale: 1.1, rotate: 2 }}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: idx * 0.1 }}
+              transition={{ duration: 0.8, delay: idx * 0.1 }}
             >
               <Image
-                src={partner.logo}
-                alt={partner.name}
-                fill
+                src={logo}
+                alt={`Partner ${idx}`}
+                width={160}
+                height={80}
                 className="object-contain"
-                sizes="(max-width: 768px) 120px, 150px"
               />
             </motion.div>
           ))}
         </div>
       </div>
 
-      {/* Optional luxury accent */}
-      <div className="absolute top-0 left-0 w-16 h-16 rounded-full bg-amber-100 opacity-30 blur-3xl"></div>
-      <div className="absolute bottom-10 right-0 w-24 h-24 rounded-full bg-amber-200 opacity-20 blur-3xl"></div>
+      {/* Custom styles */}
+      <style jsx>{`
+        .no-scrollbar::-webkit-scrollbar {
+          display: none;
+        }
+        .no-scrollbar {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        }
+       
+      `}</style>
     </section>
   );
 }
