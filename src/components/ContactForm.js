@@ -315,7 +315,7 @@ const LuxuryContactForm = () => {
               )}
             </motion.button>
             <p className="text-xs text-gray-500 text-center mt-3 font-inter">
-              We'll contact you within 24 hours to discuss your project
+             We&apos;ll contact you within 24 hours to discuss your project details.
             </p>
           </div>
         </form>

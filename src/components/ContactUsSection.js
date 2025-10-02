@@ -36,11 +36,11 @@ export default function ContactSection() {
           whileInView={{ opacity: 1, y: 0 }}
           className="text-center mb-12"
         >
-          <h2 className="text-4xl font-kaushan-script-regular text-amber-500 mb-4">
-            Let's Build Together
-          </h2>
+          <h2 className="text-4xl font-bold text-gray-900 mb-4">
+  Let&apos;s Build Together
+</h2>
           <p className="text-lg font-inter text-gray-700 max-w-2xl mx-auto">
-            Get in touch with our team to discuss your construction project and get started today.
+            Get in touch with our team to discuss your constr uction project and get started today.
           </p>
         </motion.div>
 
