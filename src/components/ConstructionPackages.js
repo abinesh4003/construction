@@ -2,6 +2,7 @@
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { Check } from 'lucide-react';
+import { useDialog } from './DialogProvider';
 
 const packages = [
   {
@@ -71,90 +72,125 @@ const packages = [
 ];
 
 export default function PackagesSection() {
+  const { openDialog } = useDialog();
+
   return (
-    <section className="w-full bg-gray-100 py-20 px-6 lg:px-20 bg-gradient-to-b from-gray-200 to-gray-200" id="packages"
-    > 
-      <div className=" mx-auto flex flex-col gap-20">
+    <section
+      id="package"
+      className="w-full py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-20
+                 bg-gradient-to-r from-amber-50 via-amber-50 to-amber-100
+                 bg-[length:200%_200%] "
+    >
+      <div className="max-w-7xl mx-auto flex flex-col gap-12 sm:gap-16 lg:gap-20">
         {/* Section Heading */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-12"
+          className="text-center"
         >
-          <h2 className="kaushan-script-regular text-4xl lg:text-5xl text-amber-600 font-bold">
-            ✨  Our Packages
+          <h2 className="kaushan-script-regular text-3xl sm:text-4xl lg:text-5xl text-amber-600 font-bold mb-3 sm:mb-4">
+            ✨ Our Packages
           </h2>
-          <p className="inter text-gray-700 mt-4 max-w-2xl mx-auto">
+          <p className="inter text-gray-700 text-sm sm:text-base max-w-2xl mx-auto px-4">
             Tailored construction solutions to match your vision, budget, and luxury lifestyle.
           </p>
         </motion.div>
 
         {/* Package Cards */}
-        {packages.map((pkg, idx) => (
-          <motion.div
-            key={idx}
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: idx * 0.2 }}
-            className={`relative flex flex-col lg:flex-row items-center rounded-md overflow-hidden bg-white gap-10 ${
-              pkg.layout === 'left' ? 'lg:flex-row' : 'lg:flex-row-reverse'
-            }`}
-          >
-            {/* Package Image */}
-            <div className="relative w-full lg:w-1/2 overflow-hidden shadow-xl  flex-shrink-0 h-[200px] sm:h-[400px] md:h-[500px]">
-              <Image src={pkg.image} alt={pkg.name} fill className="object-cover" priority />
-              {/* <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" /> */}
-
-              {/* Ribbon */}
-              {pkg.ribbon && (
-                <div className="absolute top-4 left-4 bg-gradient-to-r from-amber-500 to-amber-300 text-black font-bold px-4 py-1 rounded-lg shadow-lg z-10">
-                  {pkg.ribbon}
-                </div>
-              )}
-            </div>
-
-            {/* Floating Info Panel */}
+        <div className="space-y-8 sm:space-y-12 lg:space-y-16">
+          {packages.map((pkg, idx) => (
             <motion.div
-              initial={{ opacity: 0, y: 50 }}
+              key={idx}
+              initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className={`relative w-full lg:w-1/2 rounded-3xl py-6 md:py-5 px-6 md:px-10  transition-all flex flex-col justify-start
-                lg:-translate-y-16
-              `}
+              transition={{ duration: 0.8, delay: idx * 0.2 }}
+              className="relative"
             >
-              <h3 className="kaushan-script-regular text-3xl text-amber-600 font-bold mb-2">{pkg.name}</h3>
-              <p className="inter text-gray-600 mb-4">{pkg.tagline}</p>
-              <p className="text-2xl montserrat font-bold text-amber-300 mb-6">{pkg.price}</p>
-
-              {/* Features */}
-              <ul className="space-y-2 mb-6">
-                {pkg.features.map((feat, i) => (
-                  <li key={i} className="flex items-start text-gray-600 font-inter gap-2">
-                    <Check className="w-5 h-5 text-amber-500 mt-1 flex-shrink-0" /> {feat}
-                  </li>
-                ))}
-              </ul>
-
-              {/* Brands */}
-              <div className="flex flex-wrap gap-3 mb-6">
-                {pkg.brands.map((b, i) => (
-                  <Image key={i} src={b} alt={`Brand ${i}`} width={50} height={50} className="object-contain" />
-                ))}
-              </div>
-
-              {/* CTA */}
-              <a
-                href="#contact"
-                className="inline-block w-full text-center px-6 py-3 rounded-full bg-gradient-to-r from-amber-500 to-amber-300 text-black font-semibold hover:scale-105 transform transition"
+              <div
+                className={`
+                  relative flex flex-col lg:flex-row items-stretch rounded-2xl sm:rounded-3xl overflow-hidden 
+                  bg-white shadow-lg hover:shadow-xl transition-all duration-300
+                  ${pkg.layout === 'left' ? 'lg:flex-row' : 'lg:flex-row-reverse'}
+                  h-auto lg:h-96 xl:h-[28rem]
+                `}
               >
-                Free Consulting →
-              </a>
+                {/* Package Image */}
+                <div className="relative w-full lg:w-1/2 h-[180px] sm:h-96 lg:h-full flex-shrink-0 overflow-hidden">
+                  <Image
+                    src={pkg.image}
+                    alt={pkg.name}
+                    fill
+                    className="object-cover transition-transform duration-500 hover:scale-105"
+                    priority={idx < 2}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent lg:bg-gradient-to-r lg:from-black/30 lg:via-transparent" />
+                  <div className="absolute bottom-4 left-4 sm:bottom-6 sm:left-6 text-white lg:bottom-6 lg:left-6">
+                    <h3 className="kaushan-script-regular text-2xl sm:text-3xl lg:text-3xl font-bold drop-shadow-lg">
+                      {pkg.name}
+                    </h3>
+                    <p className="inter text-sm sm:text-base lg:text-base mt-1 drop-shadow-md">
+                      {pkg.tagline}
+                    </p>
+                    {pkg.ribbon && (
+                      <div className="mt-2 inline-block bg-amber-500/80 backdrop-blur-sm px-3 py-1 rounded-md font-bold text-xs sm:text-sm">
+                        {pkg.ribbon}
+                      </div>
+                    )}
+                  </div>
+                </div>
+
+                {/* Content Panel */}
+                <motion.div
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  className="relative w-full lg:w-1/2 py-4 sm:py-6 lg:py-6 px-5 sm:px-8 lg:px-8 flex flex-col justify-center"
+                >
+                  <div className="bg-white/95 backdrop-blur-sm rounded-2xl p-5 sm:p-6 lg:p-6 shadow-xl border border-gray-100 h-full flex flex-col justify-center">
+                    <p className="text-xl sm:text-2xl lg:text-2xl montserrat font-bold text-amber-500 mb-4">
+                      {pkg.price}
+                    </p>
+
+                    <ul className="space-y-2 sm:space-y-3 mb-4 sm:mb-6">
+                      {pkg.features.map((feat, i) => (
+                        <li
+                          key={i}
+                          className="flex items-start text-gray-700 font-inter gap-2 text-sm sm:text-base"
+                        >
+                          <Check className="w-4 h-4 sm:w-5 sm:h-5 text-amber-500 mt-0.5 flex-shrink-0" />
+                          <span className="leading-relaxed">{feat}</span>
+                        </li>
+                      ))}
+                    </ul>
+
+                    <div className="flex flex-wrap gap-3 sm:gap-4 mb-4 sm:mb-6">
+                      {pkg.brands.map((b, i) => (
+                        <div
+                          key={i}
+                          className="relative w-10 h-10 sm:w-12 sm:h-12 bg-white rounded-lg p-1 shadow-sm border"
+                        >
+                          <Image src={b} alt={`Brand ${i}`} fill className="object-contain p-1" />
+                        </div>
+                      ))}
+                    </div>
+
+                    <motion.button
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      className="inline-block w-full text-center px-6 py-3 sm:py-3 rounded-full bg-gradient-to-r from-amber-500 to-amber-300 text-black font-semibold hover:shadow-lg transform transition-all duration-200 text-sm sm:text-base shadow-md"
+                      onClick={openDialog}
+                    >
+                      Free Consulting →
+                    </motion.button>
+                  </div>
+                </motion.div>
+              </div>
             </motion.div>
-          </motion.div>
-        ))}
+          ))}
+        </div>
       </div>
     </section>
   );

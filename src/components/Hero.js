@@ -13,9 +13,12 @@ export default function HeroSection() {
   const { openDialog } = useDialog();
 
   const videos = [
-    "hero/hero-bg.mp4",
+     "hero/hero-bg4.mp4",
     "hero/hero-bg1.mp4",
-    "hero/hero-bg2.mp4",
+   
+    "hero/hero-bg3.mp4",
+    "hero/hero-bg2.mp4",  
+    "hero/hero-bg5.mp4",
   ];
 
   const texts = [

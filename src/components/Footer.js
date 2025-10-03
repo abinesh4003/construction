@@ -1,11 +1,26 @@
 'use client';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Facebook, Instagram, Twitter, Linkedin, Phone, Mail, MapPin, ArrowRight, Star, Building2 } from 'lucide-react';
 import { useDialog } from './DialogProvider';
+import Image from 'next/image';
+
+// Client-only year component to prevent hydration errors
+const CurrentYear = () => {
+  const [year, setYear] = useState(null);
+
+  useEffect(() => {
+    setYear(new Date().getFullYear());
+  }, []);
+
+  if (!year) return null;
+
+  return <>{year}</>;
+};
 
 const LuxuryFooter = () => {
   const { openDialog } = useDialog();
-  
+
   const footerLinks = [
     {
       title: "Quick Links",
@@ -19,27 +34,27 @@ const LuxuryFooter = () => {
     {
       title: "Our Services",
       links: [
-        { name: "Luxury Homes", href: "#", onclick: "openDialog" },
-        { name: "Villas", href: "#", onclick: "openDialog" },
-        { name: "Commercial Spaces", href: "#", onclick: "openDialog" },
-        { name: "Renovation", href: "#", onclick: "openDialog" },
-        { name: "Interior Design", href: "#", onclick: "openDialog" },
+        { name: "Luxury Homes", href: "#", onClick: openDialog },
+        { name: "Villas", href: "#", onClick: openDialog },
+        { name: "Commercial Spaces", href: "#", onClick: openDialog },
+        { name: "Renovation", href: "#", onClick: openDialog },
+        { name: "Interior Design", href: "#", onClick: openDialog },
       ]
     }
   ];
 
   const socialIcons = [
-    { icon: Facebook, href: "#", color: "hover:text-blue-400" },
-    { icon: Instagram, href: "#", color: "hover:text-pink-400" },
-    { icon: Twitter, href: "#", color: "hover:text-blue-300" },
-    { icon: Linkedin, href: "#", color: "hover:text-blue-500" }
+    { icon: Facebook, href: "#", color: "hover:text-blue-500" },
+    { icon: Instagram, href: "#", color: "hover:text-pink-500" },
+    { icon: Twitter, href: "#", color: "hover:text-blue-400" },
+    { icon: Linkedin, href: "#", color: "hover:text-blue-600" }
   ];
 
   const contactInfo = [
     { 
       icon: MapPin, 
       text: "Thalavaipuram Main Road, Near Beski Auditorium, Simon Nagar, Nagercoil, Tamil Nadu, 629004",
-      href: "https://www.google.com/maps/place/Varghese+Construction/@8.1744989,77.4170643,17z/data=!3m1!4b1!4m5!3m4!1s0x3b04f18b6b099351:0x354f907f00a899e7!8m2!3d8.1744989!4d77.4170643"
+      href: "https://www.google.com/maps"
     },
     { icon: Phone, text: "+91 9629695979", href: "tel:+919629695979" },
     { icon: Mail, text: "contact@vargheseconstruction.com", href: "mailto:contact@vargheseconstruction.com" }
@@ -52,59 +67,48 @@ const LuxuryFooter = () => {
   ];
 
   return (
-    <footer className="relative bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white pt-20 pb-8 px-6 overflow-hidden">
-      {/* Background Elements */}
-      <div className="absolute inset-0 bg-black/40"></div>
-      <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-amber-500 to-orange-500"></div>
-      
-      {/* Decorative Elements */}
-      <div className="absolute top-20 right-10 w-32 h-32 bg-amber-500/10 rounded-full blur-xl"></div>
-      <div className="absolute bottom-10 left-10 w-24 h-24 bg-orange-500/10 rounded-full blur-xl"></div>
+    <footer className="relative bg-gray-900 text-white pt-16 pb-12 px-6 overflow-hidden font-inter">
+      {/* Background Overlays */}
+      <div className="absolute inset-0 bg-black/30"></div>
+      <div className="absolute top-10 right-10 w-40 h-40 bg-[#F5B041]/10 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-10 left-10 w-28 h-28 bg-[#FFD580]/10 rounded-full blur-3xl"></div>
 
-      <div className="max-w-7xl mx-auto relative z-10">
-        {/* Main Footer Content */}
+      <div className="relative max-w-7xl mx-auto z-10">
+        {/* Main Footer Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
-          {/* Company Info - Enhanced */}
+          
+          {/* Company Info */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
             className="space-y-6"
           >
-            {/* Logo Section */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.2 }}
-              className="flex items-center gap-3"
-            >
-              <div className="p-3 bg-gradient-to-br from-amber-500 to-orange-500 rounded-xl shadow-lg">
-                <Building2 className="w-6 h-6 text-white" />
-              </div>
-              <div className="flex flex-col">
-                <span className="text-2xl font-bold font-montserrat uppercase tracking-wider text-white">
-                  Varghese
-                </span>
-                <span className="text-xs font-montserrat font-semibold uppercase tracking-[0.3em] text-amber-400 mt-1">
-                  Construction
-                </span>
-              </div>
-            </motion.div>
+            {/* Logo */}
+            <div className="flex items-center gap-3">
+              <Image
+                src="/logo1.png"
+                alt="Varghese Construction Logo"
+                width={120}
+                height={40}
+                className='w-auto h-12'
+              />
+            </div>
 
-            {/* Trust Badge */}
-            <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-4 border border-white/10">
-              <div className="flex items-center gap-2 mb-2">
-                {[1, 2, 3, 4, 5].map((star) => (
-                  <Star key={star} className="w-4 h-4 fill-amber-400 text-amber-400" />
+            {/* Trust Stars */}
+            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-4 border border-white/20">
+              <div className="flex items-center gap-1 mb-2">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="w-4 h-4 text-yellow-400" />
                 ))}
               </div>
-              <p className="text-sm text-gray-300">
+              <p className="text-sm font-inter text-gray-300">
                 Trusted by 200+ clients for premium construction services
               </p>
             </div>
 
-            {/* Social Media */}
+            {/* Social Icons */}
             <div className="flex space-x-3">
               {socialIcons.map((item, index) => {
                 const Icon = item.icon;
@@ -115,7 +119,7 @@ const LuxuryFooter = () => {
                     whileHover={{ y: -3, scale: 1.1 }}
                     whileTap={{ scale: 0.95 }}
                     transition={{ duration: 0.2 }}
-                    className={`p-3 bg-white/5 backdrop-blur-sm rounded-xl border border-white/10 text-gray-400 ${item.color} transition-all duration-300 hover:bg-white/10 hover:border-white/20`}
+                    className={`p-3 bg-white/10 rounded-xl border border-white/20 text-gray-300 ${item.color} hover:bg-white/20 hover:border-white/30 transition-all duration-300`}
                   >
                     <Icon className="h-5 w-5" />
                   </motion.a>
@@ -127,78 +131,54 @@ const LuxuryFooter = () => {
           {/* Footer Links */}
           {footerLinks.map((section, index) => (
             <motion.div
-              key={section.title}
-              initial={{ opacity: 0, y: 30 }}
+              key={index}
+              initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: (index + 1) * 0.1 }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
               className="space-y-6"
             >
-              <h4 className="text-xl font-bold text-white relative pb-3 after:absolute after:left-0 after:bottom-0 after:w-16 after:h-0.5 after:bg-gradient-to-r after:from-amber-500 after:to-orange-500">
+              <h4 className="text-xl font-bold font-montserrat text-[#FFD580] relative pb-2 border-b border-yellow-500">
                 {section.title}
               </h4>
-              <ul className="space-y-4">
+              <ul className="space-y-3">
                 {section.links.map((link, i) => (
                   <li key={i}>
-                    <motion.a
-                      whileHover={{ x: 8 }}
-                      transition={{ duration: 0.2 }}
+                    <a
                       href={link.href}
-                      className="flex items-center text-gray-300 hover:text-white group transition-all duration-300 py-2"
-                      onClick={link.onclick ? openDialog : null}
+                      onClick={link.onClick}
+                      className="text-gray-300 hover:text-white font-inter transition-colors duration-300 flex items-center gap-2"
                     >
-                      <div className="w-2 h-2 bg-amber-500 rounded-full mr-3 group-hover:scale-125 transition-transform duration-300"></div>
-                      <span className="relative">
-                        {link.name}
-                        <span className="absolute bottom-0 left-0 w-0 h-px bg-amber-400 group-hover:w-full transition-all duration-300"></span>
-                      </span>
-                    </motion.a>
+                      <span className="w-2 h-2 bg-yellow-500 rounded-full"></span>
+                      {link.name}
+                    </a>
                   </li>
                 ))}
               </ul>
             </motion.div>
           ))}
 
-          {/* Contact Info - Enhanced */}
+          {/* Contact Info */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.3 }}
+            transition={{ duration: 0.6 }}
             className="space-y-6"
           >
-            <h4 className="text-xl font-bold text-white relative pb-3 after:absolute after:left-0 after:bottom-0 after:w-16 after:h-0.5 after:bg-gradient-to-r after:from-amber-500 after:to-orange-500">
-              Get In Touch
-            </h4>
+            <h4 className="text-xl font-bold font-montserrat text-[#FFD580] relative pb-2 border-b border-yellow-500">Get In Touch</h4>
             <ul className="space-y-4">
-              {contactInfo.map((item, index) => {
+              {contactInfo.map((item, i) => {
                 const Icon = item.icon;
                 return (
-                  <motion.li
-                    key={index}
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6, delay: index * 0.1 }}
-                    className="flex items-start group"
-                  >
-                    <div className="p-2 bg-gradient-to-br from-amber-500 to-orange-500 rounded-lg mr-4 group-hover:scale-110 transition-transform duration-300 shadow-lg">
-                      <Icon className="h-4 w-4 text-white" />
+                  <li key={i} className="flex items-start gap-3">
+                    <div className="p-2 bg-gradient-to-r from-[#F5B041] to-[#FFD580] rounded-lg shadow-lg">
+                      <Icon className="w-5 h-5 text-gray-900" />
                     </div>
-                    <a 
-                      href={item.href} 
-                      className="text-gray-300 hover:text-white transition-colors duration-300 group-hover:translate-x-1 transform"
-                    >
-                      {item.icon === MapPin ? (
-                        <div className="space-y-1">
-                          <p className="font-semibold text-white">Varghese Construction</p>
-                          <p className="text-sm leading-relaxed">{item.text}</p>
-                        </div>
-                      ) : (
-                        <span className="font-medium">{item.text}</span>
-                      )}
+                    <a href={item.href} className="text-gray-300 hover:text-white font-inter transition-colors duration-300">
+                      {item.text}
                     </a>
-                  </motion.li>
+                  </li>
                 );
               })}
             </ul>
@@ -208,76 +188,38 @@ const LuxuryFooter = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={openDialog}
-              className="w-full bg-gradient-to-r from-amber-500 to-orange-500 text-white font-semibold py-3 px-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-2 group"
+              className="w-full bg-gradient-to-r from-[#F5B041] to-[#FFD580] text-gray-900 font-semibold py-3 px-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-2"
             >
               <span>Get Free Quote</span>
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              <ArrowRight className="w-4 h-4" />
             </motion.button>
           </motion.div>
         </div>
 
-        {/* Premium Divider */}
-        <motion.div
-          initial={{ opacity: 0, scaleX: 0 }}
-          whileInView={{ opacity: 1, scaleX: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="relative my-12"
-        >
-          <div className="h-px bg-gradient-to-r from-transparent via-gray-600 to-transparent"></div>
-          <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2">
-            <div className="w-16 h-16 bg-gradient-to-br from-amber-500 to-orange-500 rounded-full flex items-center justify-center shadow-lg">
-              <Building2 className="w-6 h-6 text-white" />
+        {/* Divider */}
+        <div className="border-t border-gray-700 my-12 relative">
+          <div className="absolute left-1/2 -top-6 transform -translate-x-1/2">
+            <div className="w-16 h-16 bg-gradient-to-r from-[#F5B041] to-[#FFD580] rounded-full flex items-center justify-center shadow-lg">
+              <Building2 className="w-6 h-6 text-gray-900" />
             </div>
           </div>
-        </motion.div>
+        </div>
 
-        {/* Bottom Footer - Enhanced */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-white/10"
-        >
-          <div className="flex flex-col md:flex-row items-center gap-4 mb-4 md:mb-0">
-            <p className="text-gray-400 text-sm">
-              &copy; {new Date().getFullYear()} Varghese Construction. All rights reserved.
-            </p>
-            <div className="flex items-center gap-2 text-amber-400">
-              <div className="w-1 h-1 bg-amber-400 rounded-full"></div>
-              <span className="text-sm">Building Dreams Since 2010</span>
-            </div>
-          </div>
-          
-          <div className="flex space-x-8">
-            {legalLinks.map((link, index) => (
-              <motion.a
-                key={index}
-                whileHover={{ y: -2 }}
-                transition={{ duration: 0.2 }}
-                href={link.href}
-                className="text-gray-400 hover:text-amber-400 text-sm transition-colors duration-300 relative group"
-              >
-                {link.name}
-                <span className="absolute bottom-0 left-0 w-0 h-px bg-amber-400 group-hover:w-full transition-all duration-300"></span>
-              </motion.a>
+        {/* Bottom Footer */}
+        <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-gray-300 text-sm font-inter">
+          <p>&copy; <CurrentYear /> Varghese Construction. All rights reserved.</p>
+          <p className="text-[#FFD580] font-montserrat">Building Dreams Since 2010</p>
+          <div className="flex gap-4">
+            {legalLinks.map((link, i) => (
+              <a key={i} href={link.href} className="hover:text-[#FFD580] transition-colors">{link.name}</a>
             ))}
           </div>
-        </motion.div>
+        </div>
 
-        {/* Quality Badge */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.5 }}
-          className="text-center mt-8 pt-6 border-t border-white/5"
-        >
-          <p className="text-xs text-gray-500 uppercase tracking-widest">
-            ISO 9001:2015 Certified • Premium Construction Services
-          </p>
-        </motion.div>
+        {/* ISO Badge */}
+        <p className="text-xs text-gray-500 uppercase tracking-widest mt-6 text-center font-inter">
+          ISO 9001:2015 Certified • Premium Construction Services
+        </p>
       </div>
     </footer>
   );

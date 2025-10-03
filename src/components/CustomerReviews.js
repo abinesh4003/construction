@@ -61,7 +61,7 @@ export default function LuxuryCustomerReviews() {
   };
 
   return (
-    <section id="reviews" className="py-16 md:py-28 bg-gray-50 relative">
+    <section id="reviews" className="py-16 md:py-28 bg-white relative">
       <div className="container mx-auto px-4 sm:px-6">
         {/* Header */}
         <motion.div

@@ -2,6 +2,7 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 import { motion, useAnimation } from 'framer-motion';
+import { useDialog } from './DialogProvider';
 import Image from 'next/image';
 import {
   Building2,
@@ -43,6 +44,7 @@ export default function WhyChooseUs() {
   const [visible, setVisible] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const [isTablet, setIsTablet] = useState(false);
+  const { openDialog } = useDialog();
 
   useEffect(() => {
     const checkDevice = () => {
@@ -387,13 +389,13 @@ export default function WhyChooseUs() {
               </p>
             </div>
 
-            <motion.a
+            <motion.button
               whileHover={{
                 scale: 1.05,
                 boxShadow: "0 20px 40px rgba(245, 158, 11, 0.4)"
               }}
               whileTap={{ scale: 0.95 }}
-              href="#contact"
+              onClick={openDialog}
               className="group relative inline-flex items-center gap-4 px-8 py-4 rounded-2xl bg-gradient-to-r from-amber-500 to-amber-400 text-white font-bold shadow-2xl hover:shadow-amber-500/40 transition-all duration-300 overflow-hidden"
             >
               {/* Button Shine Effect */}
@@ -407,7 +409,7 @@ export default function WhyChooseUs() {
               >
                 <ArrowRight className="w-5 h-5" />
               </motion.div>
-            </motion.a>
+            </motion.button>
           </div>
         </motion.div>
       </div>

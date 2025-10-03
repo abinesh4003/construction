@@ -62,62 +62,74 @@ const PhoneInput = ({ value, onChange, className = '', error }) => {
   );
 
   return (
-    <div className={`flex ${className}`}>
-      <div ref={wrapperRef} className="relative">
+    <div className={`w-full ${className}`}>
+      <div ref={wrapperRef} className="relative flex">
+        {/* Country Code Selector */}
         <button
           type="button"
           onClick={() => setOpen(!open)}
-          className={`px-3 py-3 border ${error ? 'border-red-500' : 'border-gray-300'} rounded-l-lg bg-gray-50 flex items-center gap-2 hover:bg-gray-100 transition-colors font-inter`}
+          className={`flex-shrink-0 px-3 py-3 border ${
+            error ? 'border-red-500' : 'border-gray-300'
+          } rounded-l-lg bg-gray-50 flex items-center gap-2 hover:bg-gray-100 transition-colors min-w-[110px]`}
         >
           <span className="text-lg">{countryList.find(c => c.code === countryCode)?.flag}</span>
           <span className="text-gray-700 text-sm">{countryCode}</span>
           <ChevronDown className="h-4 w-4 text-gray-500" />
         </button>
 
+        {/* Phone Number Input */}
+        <input
+          type="tel"
+          value={phoneNumber}
+          onChange={handlePhoneChange}
+          className={`flex-1 min-w-0 px-4 py-3 border ${
+            error ? 'border-red-500' : 'border-gray-300'
+          } border-l-0 rounded-r-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition-colors font-inter`}
+          placeholder="9876543210"
+          required
+        />
+
+        {/* Dropdown Menu */}
         {open && (
-          <div className="absolute z-10 bg-white border border-gray-200 shadow-lg rounded-lg mt-1 w-56 max-h-60 overflow-y-auto">
+          <div className="absolute z-50 bg-white border border-gray-200 shadow-lg rounded-lg mt-1 w-full max-h-60 overflow-y-auto top-full left-0">
             <div className="p-2 sticky top-0 bg-white border-b border-gray-200">
               <input
                 type="text"
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
                 placeholder="Search country..."
-                className="w-full px-2 py-1 border border-gray-300 rounded-md text-sm focus:ring-2 focus:ring-amber-500 focus:border-amber-500 font-inter"
+                className="w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:ring-2 focus:ring-amber-500 focus:border-amber-500 font-inter"
                 autoFocus
               />
             </div>
-            {filteredCountries.length > 0 ? (
-              filteredCountries.map((country) => (
-                <div
-                  key={country.code}
-                  onClick={() => {
-                    setCountryCode(country.code);
-                    onChange(`${country.code}${phoneNumber}`);
-                    setOpen(false);
-                    setSearch('');
-                  }}
-                  className="px-3 py-2 flex items-center gap-2 hover:bg-amber-50 cursor-pointer text-sm font-inter"
-                >
-                  <span className="text-lg">{country.flag}</span>
-                  <span className="flex-1 text-gray-900">{country.name}</span>
-                  <span className="text-gray-500">{country.code}</span>
+            <div className="max-h-48 overflow-y-auto">
+              {filteredCountries.length > 0 ? (
+                filteredCountries.map((country) => (
+                  <button
+                    key={country.code}
+                    type="button"
+                    onClick={() => {
+                      setCountryCode(country.code);
+                      onChange(`${country.code}${phoneNumber}`);
+                      setOpen(false);
+                      setSearch('');
+                    }}
+                    className="w-full px-3 py-2 flex items-center gap-2 hover:bg-amber-50 cursor-pointer text-sm font-inter text-left"
+                  >
+                    <span className="text-lg">{country.flag}</span>
+                    <span className="flex-1 text-gray-900">{country.name}</span>
+                    <span className="text-gray-500">{country.code}</span>
+                  </button>
+                ))
+              ) : (
+                <div className="px-3 py-2 text-sm text-gray-500 text-center font-inter">
+                  No countries found
                 </div>
-              ))
-            ) : (
-              <div className="px-3 py-2 text-sm text-gray-500 text-center font-inter">No countries found</div>
-            )}
+              )}
+            </div>
           </div>
         )}
       </div>
-
-      <input
-        type="tel"
-        value={phoneNumber}
-        onChange={handlePhoneChange}
-        className={`flex-1 px-4 py-3 border ${error ? 'border-red-500' : 'border-gray-300'} rounded-r-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition-colors font-inter`}
-        placeholder="9876543210"
-        required
-      />
     </div>
   );
 };
@@ -183,27 +195,27 @@ const LuxuryContactForm = () => {
   };
 
   return (
-    <div className="w-full max-w-4xl mx-auto">
-      <div className="bg-white rounded-2xl shadow-lg border border-gray-100 p-6 md:p-8">
+    <div className="w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="bg-white rounded-xl sm:rounded-2xl shadow-lg border border-gray-100 p-4 sm:p-6 md:p-8">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          className="text-center mb-8"
+          className="text-center mb-6 sm:mb-8"
         >
-          <h2 className="text-3xl font-kaushan-script-regular text-amber-500 mb-3">
+          <h2 className="text-2xl sm:text-3xl font-kaushan-script-regular text-amber-500 mb-2 sm:mb-3">
             Start Your Project
           </h2>
-          <p className="text-gray-700 font-inter">
+          <p className="text-gray-700 font-inter text-sm sm:text-base">
             Get in touch for a free consultation about your construction project
           </p>
         </motion.div>
 
-        <form onSubmit={handleSubmit} className="space-y-6">
+        <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
           {/* Basic Information */}
-          <div className="grid md:grid-cols-2 gap-4">
-            <div>
-              <label className="block text-sm font-barlow-condensed text-gray-900 mb-2">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+            <div className="space-y-2">
+              <label className="block text-sm font-barlow-condensed text-gray-900">
                 Full Name *
               </label>
               <input
@@ -211,16 +223,18 @@ const LuxuryContactForm = () => {
                 name="name"
                 value={formData.name}
                 onChange={handleChange}
-                className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition-colors ${
+                className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition-colors font-inter ${
                   errors.name ? 'border-red-500' : 'border-gray-300'
-                } font-inter`}
+                }`}
                 placeholder="Your full name"
               />
-              {errors.name && <p className="mt-1 text-sm text-red-600 font-inter">{errors.name}</p>}
+              {errors.name && (
+                <p className="text-sm text-red-600 font-inter">{errors.name}</p>
+              )}
             </div>
 
-            <div>
-              <label className="block text-sm font-barlow-condensed text-gray-900 mb-2">
+            <div className="space-y-2">
+              <label className="block text-sm font-barlow-condensed text-gray-900">
                 Phone Number *
               </label>
               <PhoneInput
@@ -228,12 +242,14 @@ const LuxuryContactForm = () => {
                 onChange={handlePhoneChange}
                 error={errors.phone}
               />
-              {errors.phone && <p className="mt-1 text-sm text-red-600 font-inter">{errors.phone}</p>}
+              {errors.phone && (
+                <p className="text-sm text-red-600 font-inter">{errors.phone}</p>
+              )}
             </div>
           </div>
 
-          <div>
-            <label className="block text-sm font-barlow-condensed text-gray-900 mb-2">
+          <div className="space-y-2">
+            <label className="block text-sm font-barlow-condensed text-gray-900">
               Email Address
             </label>
             <input
@@ -247,11 +263,11 @@ const LuxuryContactForm = () => {
           </div>
 
           {/* Project Type */}
-          <div>
-            <label className="block text-sm font-barlow-condensed text-gray-900 mb-3">
+          <div className="space-y-3">
+            <label className="block text-sm font-barlow-condensed text-gray-900">
               Project Type *
             </label>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
               {projectTypes.map((type) => {
                 const Icon = type.icon;
                 const isSelected = formData.projectType === type.value;
@@ -269,18 +285,22 @@ const LuxuryContactForm = () => {
                         : 'border-gray-200 hover:border-gray-300 text-gray-700'
                     }`}
                   >
-                    <Icon className={`w-6 h-6 mx-auto mb-2 ${isSelected ? 'text-amber-500' : 'text-gray-500'}`} />
+                    <Icon className={`w-6 h-6 mx-auto mb-2 ${
+                      isSelected ? 'text-amber-500' : 'text-gray-500'
+                    }`} />
                     <div className="text-sm font-medium">{type.label}</div>
                   </button>
                 );
               })}
             </div>
-            {errors.projectType && <p className="mt-1 text-sm text-red-600 font-inter">{errors.projectType}</p>}
+            {errors.projectType && (
+              <p className="text-sm text-red-600 font-inter">{errors.projectType}</p>
+            )}
           </div>
 
           {/* Message */}
-          <div>
-            <label className="block text-sm font-barlow-condensed text-gray-900 mb-2">
+          <div className="space-y-2">
+            <label className="block text-sm font-barlow-condensed text-gray-900">
               Project Details
             </label>
             <textarea
@@ -300,7 +320,7 @@ const LuxuryContactForm = () => {
               disabled={isSubmitting}
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              className="w-full bg-amber-500 hover:bg-amber-600 text-white font-barlow-condensed py-4 px-6 rounded-lg transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+              className="w-full bg-amber-500 hover:bg-amber-600 text-white font-barlow-condensed py-4 px-6 rounded-lg transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 text-sm sm:text-base"
             >
               {isSubmitting ? (
                 <>
@@ -315,7 +335,7 @@ const LuxuryContactForm = () => {
               )}
             </motion.button>
             <p className="text-xs text-gray-500 text-center mt-3 font-inter">
-             We&apos;ll contact you within 24 hours to discuss your project details.
+              We&apos;ll contact you within 24 hours to discuss your project details.
             </p>
           </div>
         </form>

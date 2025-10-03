@@ -38,7 +38,7 @@ export default function BankingPartners() {
   }, []);
 
   return (
-    <section className="w-full py-20 bg-gradient-to-r from-gray-200 to-gray-100">
+    <section className="w-full py-20 bg-gradient-to-r from-gray-200 to-gray-100" id='partners'>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-20">
         {/* Section Title */}
         <motion.div

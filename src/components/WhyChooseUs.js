@@ -2,6 +2,8 @@
 
 import Image from 'next/image';
 import { Clock, BadgeDollarSign, ShieldCheck, BadgeCheck, Cpu, Award } from 'lucide-react';
+import { useDialog } from './DialogProvider';
+
 
 const features = [
   { title: 'Timely Completion', description: '90% of projects delivered ahead of schedule', icon: Clock },
@@ -13,6 +15,8 @@ const features = [
 ];
 
 export default function WhyChooseConstructionPremium() {
+  
+  const { openDialog } = useDialog();
   return (
     <section className="relative w-full overflow-hidden">
        <div className="absolute inset-0 bg-black/10"></div>
@@ -46,12 +50,12 @@ export default function WhyChooseConstructionPremium() {
             </div>
           ))}
           {/* CTA Button */}
-          <a
-            href="#contact"
+          <button
             className="mt-6 sm:col-span-2 inline-block px-8 py-3 rounded-full bg-gradient-to-r from-amber-500 to-amber-300 text-black montserrat font-semibold shadow-lg hover:scale-105 transform transition text-center"
+             onClick={openDialog}
           >
             Book Free Consultation →
-          </a>
+          </button>
         </div>
 
         {/* Right Side: Hero Image */}
