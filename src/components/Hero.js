@@ -92,7 +92,9 @@ export default function HeroSection() {
 
       {/* Text Content */}
       <div className="absolute inset-0 z-20 flex flex-col items-center justify-center text-center px-4 sm:px-6 md:px-10">
-        <motion.h1
+        {
+          textIndex==0?
+           <motion.h1
           key={texts[textIndex].title}
           initial={{ opacity: 0, x: -60 }}
           animate={{ opacity: 1, x: 0 }}
@@ -102,6 +104,18 @@ export default function HeroSection() {
         >
           {texts[textIndex].title}
         </motion.h1>
+       :
+         <motion.p
+          key={texts[textIndex].title}
+          initial={{ opacity: 0, x: -60 }}
+          animate={{ opacity: 1, x: 0 }}
+          exit={{ opacity: 0, x: 60 }}
+          transition={{ duration: 0.8 }}
+          className="text-white text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-serif mb-4 sm:mb-6 md:mb-8 leading-tight max-w-full sm:max-w-4xl"
+        >
+          {texts[textIndex].title}
+        </motion.p>
+        }
 
         <motion.p
           key={texts[textIndex].subtitle}
