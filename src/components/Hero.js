@@ -89,7 +89,7 @@ export default function HeroSection() {
       </Slider>
 
       {/* Overlay */}
-      <div className="absolute inset-0 bg-black/30 z-10" />
+      <div className="absolute inset-0 bg-black/50 z-10" />
 
       {/* Text Content */}
       <div className="absolute inset-0 z-20 flex flex-col items-center justify-center text-center px-4 sm:px-6 md:px-10">
@@ -103,16 +103,16 @@ export default function HeroSection() {
  
 
         {/* Visible motion texts */}
-       <motion.h2
+       <motion.span
   key={texts[textIndex].title}   // changed from h1 to h2
   initial={{ opacity: 0, x: -60 }}
   animate={{ opacity: 1, x: 0 }}
   exit={{ opacity: 0, x: 60 }}
   transition={{ duration: 0.8 }}
-  className="text-white text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-serif mb-4 sm:mb-6 md:mb-8 leading-tight max-w-full sm:max-w-4xl"
+   className="text-white text-3xl sm:text-4xl md:text-6xl lg:text-7xl montserrat mb-4 sm:mb-6 md:mb-8 leading-tight font-bold max-w-full sm:max-w-4xl block"
 >
   {texts[textIndex].title}
-</motion.h2>
+</motion.span>
 
 
         <motion.p
