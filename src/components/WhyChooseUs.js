@@ -95,13 +95,13 @@ export default function WhyChooseConstructionPremium() {
 
         <div className="relative z-10 flex flex-col justify-center items-center text-center px-6 py-12 space-y-6">
           <span className="text-3xl font-bold montserrat text-white">
-            <span className="kaushan-script-regular text-amber-400">Why Choose</span>{" "}
+            <span className="kaushan-script-regular text-amber-400">Why Clients</span>{" "}
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-gray-100 to-gray-300">
-              Our Construction
+              Trust Us
             </span>
           </span>
           <p className="text-white inter max-w-md">
-            Discover why clients trust us to deliver exceptional construction projects with quality, safety, and innovation.
+           See why clients rely on us to deliver exceptional construction projects, combining quality, safety, and innovation.
           </p>
 
           <div className="grid grid-cols-1 gap-4 w-full max-w-md">
