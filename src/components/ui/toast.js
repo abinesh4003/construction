@@ -34,7 +34,7 @@ export function Toast() {
             )}
           </div>
           <div className="flex-1">
-            <h3 className="font-medium">{toast.title}</h3>
+       <span className="font-medium">{toast.title}</span>
             <p className="text-sm">{toast.description}</p>
           </div>
           <button

@@ -109,7 +109,7 @@ export default function HeroSection() {
   animate={{ opacity: 1, x: 0 }}
   exit={{ opacity: 0, x: 60 }}
   transition={{ duration: 0.8 }}
-   className="text-white text-3xl sm:text-4xl md:text-6xl lg:text-7xl montserrat mb-4 sm:mb-6 md:mb-8 leading-tight font-bold max-w-full sm:max-w-4xl block"
+   className="text-white text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-serif mb-4 sm:mb-6 md:mb-8 leading-tight font-bold max-w-full sm:max-w-4xl block"
 >
   {texts[textIndex].title}
 </motion.span>

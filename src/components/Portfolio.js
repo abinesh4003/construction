@@ -253,14 +253,15 @@ export default function WhyChooseUs() {
 
       <div className="absolute inset-0 p-6 lg:p-8 flex flex-col justify-end">
         <div className="bg-white/10 backdrop-blur-xs rounded-2xl p-6 lg:p-8 max-w-2xl border border-white/20">
-          <h3
-            className={`text-white font-semibold ${
-              isMobile ? 'text-xl' : 'text-2xl lg:text-3xl'
-            }`}
-          >
-            Building Dreams Across{' '}
-            <span className="text-amber-300">10+ Cities</span>
-          </h3>
+        <span
+  className={`text-white font-semibold block ${
+    isMobile ? 'text-xl' : 'text-2xl lg:text-3xl'
+  }`}
+>
+  Building Dreams Across{' '}
+  <span className="text-amber-300">10+ Cities</span>
+</span>
+
           <p
             className={`text-gray-200 mt-2 ${
               isMobile ? 'text-sm' : 'text-base'
@@ -308,13 +309,14 @@ export default function WhyChooseUs() {
         <div className="p-2 rounded-xl bg-gradient-to-br from-amber-400 to-amber-300 text-white">
           <MapPin className="w-5 h-5" />
         </div>
-        <h4
-          className={`font-semibold text-gray-900 ${
-            isMobile ? 'text-lg' : 'text-xl'
-          }`}
-        >
-          Our Service Areas
-        </h4>
+     <span
+  className={`font-semibold text-gray-900 ${
+    isMobile ? 'text-lg' : 'text-xl'
+  }`}
+>
+  Our Service Areas
+</span>
+
       </div>
 
       {/* Cities Grid */}

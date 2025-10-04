@@ -56,7 +56,7 @@ export default function BankingPartners() {
           ) }
           {/* Main Heading */}
           <h2 className="text-3xl md:text-5xl font-extrabold mb-4 animate-gradient-x">
-            Our Trusted Banking Partners
+            Our Banking Partners
           </h2>
           <p className="text-gray-500 md:text-lg max-w-2xl mx-auto inter">
             Partnered with leading financial institutions to ensure smooth transactions for our clients.

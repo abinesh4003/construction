@@ -221,9 +221,10 @@ const ContactDialog = ({ isOpen, onClose }) => {
               {/* Form Section */}
               <div className="p-6">
                 <div className="flex justify-between items-start mb-4">
-                  <h2 className="text-lg sm:text-xl font-semibold text-amber-600">
-                    Start Your Project
-                  </h2>
+                <span className="text-lg sm:text-xl font-semibold text-amber-600 block">
+  Start Your Project
+</span>
+
                   <button onClick={onClose} className="text-gray-400 hover:text-amber-500 transition-colors p-1">
                     <X className="h-5 w-5" />
                   </button>
@@ -278,7 +279,10 @@ const ContactDialog = ({ isOpen, onClose }) => {
 
               {/* Contact Info */}
               <div className="bg-amber-50 p-6 border-t lg:border-t-0 lg:border-l border-amber-200">
-                <h3 className="text-lg font-semibold text-amber-600 mb-4">Other Ways to Connect</h3>
+                <span className="text-lg font-semibold text-amber-600 mb-4 block">
+  Other Ways to Connect
+</span>
+
                 <div className="space-y-3 text-sm">
                   {contactMethods.map((method, index) => {
                     const Icon = method.icon;
@@ -288,7 +292,7 @@ const ContactDialog = ({ isOpen, onClose }) => {
                           <Icon className="h-4 w-4 text-amber-500"/>
                         </div>
                         <div>
-                          <h4 className="font-medium text-gray-900">{method.title}</h4>
+                          <span className="font-medium text-gray-900">{method.title}</span>
                           <a href={method.action} target="_blank" rel="noopener noreferrer" className="text-gray-700 hover:text-amber-500 transition-colors">
                             {method.title === "Visit Us" ? <span>{method.info}</span> : method.info}
                           </a>

@@ -150,9 +150,10 @@ export default function PremiumServices() {
                 className="object-cover group-hover:scale-110 transition-transform duration-500"
               />
               <div className="absolute inset-0 bg-black/40 group-hover:bg-black/30 transition-all flex flex-col justify-end p-6">
-                <h3 className="text-lg font-semibold text-white font-[Montserrat]">
-                  {item.title}
-                </h3>
+               <span className="text-lg font-semibold text-white font-[Montserrat] block">
+  {item.title}
+</span>
+
                 <p className="text-gray-200 mt-1 text-sm font-[Inter]">
                   {item.desc}
                 </p>

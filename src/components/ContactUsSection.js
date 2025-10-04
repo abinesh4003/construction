@@ -44,7 +44,7 @@ export default function ContactSection() {
           ) }
           {/* Main Heading */}
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-3 sm:mb-4">
-            Let&apos;s Build Together
+            Let&apos;s Build Your Dream with Varghese Construction
           </h2>
           <p className="text-base sm:text-lg font-inter text-gray-700 max-w-2xl mx-auto px-2">
             Get in touch with our team to discuss your construction project and get started today.
@@ -68,9 +68,10 @@ export default function ContactSection() {
                     <Icon className="w-5 h-5 text-amber-500" />
                   </div>
                   <div>
-                    <h3 className="font-barlow-condensed text-gray-900 text-sm sm:text-base mb-1">
-                      {item.title}
-                    </h3>
+                   <span className="font-barlow-condensed text-gray-900 text-sm sm:text-base mb-1 block">
+  {item.title}
+</span>
+
                     <p className="font-inter text-gray-600 text-xs sm:text-sm leading-snug">
                       {item.details}
                     </p>

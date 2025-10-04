@@ -137,9 +137,10 @@ export default function PackagesSection() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent lg:bg-gradient-to-r lg:from-black/30 lg:via-transparent" />
                   <div className="absolute bottom-4 left-4 sm:bottom-6 sm:left-6 text-white lg:bottom-6 lg:left-6">
-                    <h3 className="kaushan-script-regular text-2xl sm:text-3xl lg:text-3xl font-bold drop-shadow-lg">
-                      {pkg.name}
-                    </h3>
+                    <span className="kaushan-script-regular text-2xl sm:text-3xl lg:text-3xl font-bold drop-shadow-lg block">
+  {pkg.name}
+</span>
+
                     <p className="inter text-sm sm:text-base lg:text-base mt-1 drop-shadow-md">
                       {pkg.tagline}
                     </p>

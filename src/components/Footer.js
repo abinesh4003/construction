@@ -167,7 +167,10 @@ const LuxuryFooter = () => {
             transition={{ duration: 0.6 }}
             className="space-y-6"
           >
-            <h4 className="text-xl font-bold font-montserrat text-[#FFD580] relative pb-2 border-b border-yellow-500">Get In Touch</h4>
+      <span className="text-xl font-bold font-montserrat text-[#FFD580] relative pb-2 border-b border-yellow-500">
+  Get In Touch
+</span>
+
             <ul className="space-y-4">
               {contactInfo.map((item, i) => {
                 const Icon = item.icon;
