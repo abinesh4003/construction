@@ -17,11 +17,14 @@ export default function WhyChooseConstructionPremium() {
 
   return (
     <section className="relative w-full overflow-hidden" aria-labelledby="why-choose-heading">
+      <h2 className="sr-only">
+  Why Choose Our Construction | Varghese Construction
+</h2>
       <div className="absolute inset-0 bg-black/10" />
 
       {/* Desktop Heading */}
       <div className="hidden lg:block py-16 text-center relative z-10">
-      <h2 id="why-choose-heading" className="text-4xl p-3 font-bold montserrat text-white">
+      <h2 id="why-choose-heading" className="text-4xl p-3 font-bold montserrat text-white" aria-hidden="true">
   <span className="kaushan-script-regular text-amber-400">Why Choose</span>{" "}
   <span className="text-transparent bg-clip-text bg-gradient-to-r from-black to-gray-600">
     Our Construction
@@ -45,7 +48,10 @@ export default function WhyChooseConstructionPremium() {
                 <f.icon className="w-6 h-6" aria-hidden="true" />
               </div>
               <div>
-                <h2 className="text-lg montserrat font-semibold text-gray-900">{f.title}</h2>
+               <span className="text-lg montserrat font-semibold text-gray-900 block">
+  {f.title}
+</span>
+
                 <p className="text-gray-600 inter text-sm">{f.description}</p>
               </div>
             </div>
@@ -84,7 +90,7 @@ export default function WhyChooseConstructionPremium() {
         <div className="absolute inset-0 bg-black/40" />
 
         <div className="relative z-10 flex flex-col justify-center items-center text-center px-6 py-12 space-y-6">
-          <h2 className="text-3xl font-bold montserrat text-white">
+          <h2 className="text-3xl font-bold montserrat text-white" aria-hidden="true">
             <span className="kaushan-script-regular text-amber-400">Why Choose</span>{" "}
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-gray-100 to-gray-300">
               Our Construction
@@ -104,7 +110,10 @@ export default function WhyChooseConstructionPremium() {
                   <f.icon className="w-5 h-5" aria-hidden="true" />
                 </div>
                 <div>
-                  <h3 className="text-white font-semibold montserrat text-sm">{f.title}</h3>
+                  <span className="text-white font-semibold montserrat text-sm block">
+  {f.title}
+</span>
+
                   <p className="text-white text-xs inter">{f.description}</p>
                 </div>
               </div>

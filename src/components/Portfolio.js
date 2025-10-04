@@ -382,13 +382,12 @@ export default function WhyChooseUs() {
             } ${isTablet || isMobile ? 'text-center' : 'lg:flex-row'}`}>
 
             <div className="flex-1">
-              <h3 className={`font-bold text-white ${isMobile ? 'text-2xl' : 'text-3xl lg:text-4xl'
-                }`}>
-                Ready to Build Your{' '}
-                <span className="bg-gradient-to-r from-amber-300 to-amber-200 bg-clip-text text-transparent">
-                  Dream Project?
-                </span>
-              </h3>
+           <span className={`font-bold text-white ${isMobile ? 'text-2xl' : 'text-3xl lg:text-4xl'}`}>
+  Ready to Build Your{' '}
+  <span className="bg-gradient-to-r from-amber-300 to-amber-200 bg-clip-text text-transparent">
+    Dream Project?
+  </span>
+</span>
               <p className={`text-gray-200 mt-3 ${isMobile ? 'text-base' : 'text-lg'
                 } ${isMobile ? 'max-w-sm' : 'max-w-2xl'}`}>
                 Schedule a complimentary consultation and receive a bespoke plan

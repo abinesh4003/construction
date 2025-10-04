@@ -86,15 +86,17 @@ export default function PremiumServices() {
 
         {/* Banner Content */}
         <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
-          <motion.h2
-            key={categories[active].title}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7 }}
-            className="text-3xl md:text-5xl font-bold text-white drop-shadow-xl font-[Montserrat]"
-          >
-            {categories[active].title}
-          </motion.h2>
+          <motion.span
+  key={categories[active].title}
+  initial={{ opacity: 0, y: 20 }}
+  animate={{ opacity: 1, y: 0 }}
+  exit={{ opacity: 0, y: 20 }} // optional, keep exit animation
+  transition={{ duration: 0.7 }}
+  className="text-3xl md:text-5xl font-bold text-white drop-shadow-xl font-[Montserrat] block"
+>
+  {categories[active].title}
+</motion.span>
+
           <motion.p
             key={categories[active].subtitle}
             initial={{ opacity: 0, y: 20 }}

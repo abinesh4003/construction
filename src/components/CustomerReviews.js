@@ -144,9 +144,10 @@ export default function LuxuryCustomerReviews() {
                       <Image src={review.avatar} alt={review.name} fill className="object-cover" />
                     </div>
                     <div className="flex-1 min-w-0">
-                      <h4 className="montserrat font-semibold text-gray-900 text-base md:text-lg truncate">
-                        {review.name}
-                      </h4>
+                     <span className="montserrat font-semibold text-gray-900 text-base md:text-lg truncate">
+  {review.name}
+</span>
+
                       <p className="inter text-gray-500 text-xs md:text-sm truncate">
                         {review.role}
                       </p>

@@ -138,9 +138,10 @@ const LuxuryFooter = () => {
               transition={{ duration: 0.6, delay: index * 0.1 }}
               className="space-y-6"
             >
-              <h4 className="text-xl font-bold font-montserrat text-[#FFD580] relative pb-2 border-b border-yellow-500">
-                {section.title}
-              </h4>
+             <span className="text-xl font-bold font-montserrat text-[#FFD580] relative pb-2 border-b border-yellow-500">
+  {section.title}
+</span>
+
               <ul className="space-y-3">
                 {section.links.map((link, i) => (
                   <li key={i}>
