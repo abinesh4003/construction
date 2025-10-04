@@ -4,11 +4,13 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Star, Quote, ChevronLeft, ChevronRight } from "lucide-react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 
 export default function LuxuryCustomerReviews() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState(1);
   const [isMobile, setIsMobile] = useState(false);
+  const pathname = usePathname();
 
   const reviews = [
     { id: 1, name: "Sudarson", role: "Scientist – ISRO, Siomon Nagar", rating: 5, content: "From planning to execution, their precision and commitment were outstanding. My home was completed ahead of schedule with flawless detailing and uncompromising quality.", avatar: "/avatars/0.jpg" },
@@ -71,6 +73,11 @@ export default function LuxuryCustomerReviews() {
           transition={{ duration: 0.6 }}
           className="text-center mb-12 md:mb-20"
         >
+          {/* Heading for seo */}
+          {pathname === "/reviews" && (
+            <h1 className="sr-only">Customer Reviews - Varghese Construction</h1>
+          ) }
+          {/* Main Heading */}
           <h2 className="text-3xl md:text-5xl font-bold text-amber-400 font-playfair mb-4 md:mb-6">
             <span className="font-inter text-gray-900">Our Happy </span> Customers
           </h2>

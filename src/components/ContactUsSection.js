@@ -2,8 +2,10 @@
 import { motion } from 'framer-motion';
 import { Phone, Mail, MapPin, Clock } from 'lucide-react';
 import LuxuryContactForm from './ContactForm';
+import { usePathname } from 'next/navigation';
 
 export default function ContactSection() {
+  const pathname = usePathname();
   const contactInfo = [
     {
       icon: MapPin,
@@ -28,7 +30,7 @@ export default function ContactSection() {
   ];
 
   return (
-    <section className="py-12 sm:py-16 bg-gray-50">
+    <section className="py-12 sm:py-16 bg-gray-50" id="contact">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
@@ -36,6 +38,11 @@ export default function ContactSection() {
           whileInView={{ opacity: 1, y: 0 }}
           className="text-center mb-10 sm:mb-12"
         >
+          {/* Heading for seo */}
+          {pathname=="/contact" && (
+            <h1 className="sr-only">Contact Varghese Construction Nagercoil Builders</h1>
+          ) }
+          {/* Main Heading */}
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-3 sm:mb-4">
             Let&apos;s Build Together
           </h2>

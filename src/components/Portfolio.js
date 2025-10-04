@@ -4,6 +4,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import { useDialog } from './DialogProvider';
 import Image from 'next/image';
+import { usePathname } from 'next/navigation';
 import {
   Building2,
   FileText,
@@ -45,6 +46,7 @@ export default function WhyChooseUs() {
   const [isMobile, setIsMobile] = useState(false);
   const [isTablet, setIsTablet] = useState(false);
   const { openDialog } = useDialog();
+  const pathname = usePathname();
 
   useEffect(() => {
     const checkDevice = () => {
@@ -146,6 +148,11 @@ export default function WhyChooseUs() {
             <span className="text-sm uppercase tracking-wide">Trusted Excellence</span>
             <Star className="w-4 h-4" />
           </motion.div> */}
+          {/* heading for seo */}
+          {pathname === "/portfolio" && (
+            <h1 className="sr-only">About Varghese Construction Trusted Builders in Nagercoil</h1>
+          ) }
+          {/* Main Heading */}
 
           <h2 className={`mb-4 leading-tight ${isMobile ? 'text-3xl' : isTablet ? 'text-4xl' : 'text-5xl'}`}>
             {/* Main Text - Modern Professional */}

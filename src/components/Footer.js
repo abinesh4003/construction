@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { Facebook, Instagram, Twitter, Linkedin, Phone, Mail, MapPin, ArrowRight, Star, Building2 } from 'lucide-react';
 import { useDialog } from './DialogProvider';
 import Image from 'next/image';
-
+import Link from 'next/link';
 // Client-only year component to prevent hydration errors
 const CurrentYear = () => {
   const [year, setYear] = useState(null);
@@ -25,10 +25,10 @@ const LuxuryFooter = () => {
     {
       title: "Quick Links",
       links: [
-        { name: "About Us", href: "#portfolio" },
-        { name: "Our Services", href: "#service" },
-        { name: "Projects", href: "#service" },
-        { name: "Testimonials", href: "#reviews" },
+        { name: "About Us", href: "/portfolio" },
+        { name: "Our Services", href: "/service" },
+        { name: "Projects", href: "/service" },
+        { name: "Testimonials", href: "/reviews" },
       ]
     },
     {
@@ -144,14 +144,14 @@ const LuxuryFooter = () => {
               <ul className="space-y-3">
                 {section.links.map((link, i) => (
                   <li key={i}>
-                    <a
+                    <Link
                       href={link.href}
                       onClick={link.onClick}
                       className="text-gray-300 hover:text-white font-inter transition-colors duration-300 flex items-center gap-2"
                     >
                       <span className="w-2 h-2 bg-yellow-500 rounded-full"></span>
                       {link.name}
-                    </a>
+                    </Link>
                   </li>
                 ))}
               </ul>

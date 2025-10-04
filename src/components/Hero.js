@@ -2,22 +2,23 @@
 
 import Slider from "react-slick";
 import { motion } from "framer-motion";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, use } from "react";
 import Link from "next/link";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { useDialog } from "./DialogProvider";
+import { usePathname } from 'next/navigation';
 
 export default function HeroSection() {
-
   const { openDialog } = useDialog();
+  const pathname=usePathname();
 
   const videos = [
-     "hero/hero-bg4.mp4",
-    "hero/hero-bg1.mp4",
-    "hero/hero-bg3.mp4",
-    "hero/hero-bg2.mp4",  
     "hero/hero-bg5.mp4",
+    "hero/hero-bg4.mp4",
+    "hero/hero-bg3.mp4",
+    "hero/hero-bg2.mp4",
+    "hero/hero-bg1.mp4",
   ];
 
   const texts = [
@@ -92,30 +93,27 @@ export default function HeroSection() {
 
       {/* Text Content */}
       <div className="absolute inset-0 z-20 flex flex-col items-center justify-center text-center px-4 sm:px-6 md:px-10">
-        {
-          textIndex==0?
-           <motion.h1
-          key={texts[textIndex].title}
-          initial={{ opacity: 0, x: -60 }}
-          animate={{ opacity: 1, x: 0 }}
-          exit={{ opacity: 0, x: 60 }}
-          transition={{ duration: 0.8 }}
-          className="text-white text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-serif mb-4 sm:mb-6 md:mb-8 leading-tight max-w-full sm:max-w-4xl"
-        >
-          {texts[textIndex].title}
-        </motion.h1>
-       :
-         <motion.p
-          key={texts[textIndex].title}
-          initial={{ opacity: 0, x: -60 }}
-          animate={{ opacity: 1, x: 0 }}
-          exit={{ opacity: 0, x: 60 }}
-          transition={{ duration: 0.8 }}
-          className="text-white text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-serif mb-4 sm:mb-6 md:mb-8 leading-tight max-w-full sm:max-w-4xl"
-        >
-          {texts[textIndex].title}
-        </motion.p>
-        }
+
+      {/* SEO H1 for homepage */}
+ {pathname === '/' && (
+        <h1 className="sr-only">
+          Luxury Home Builders in Nagercoil | Varghese Construction
+        </h1>
+      )}
+ 
+
+        {/* Visible motion texts */}
+       <motion.h2
+  key={texts[textIndex].title}   // changed from h1 to h2
+  initial={{ opacity: 0, x: -60 }}
+  animate={{ opacity: 1, x: 0 }}
+  exit={{ opacity: 0, x: 60 }}
+  transition={{ duration: 0.8 }}
+  className="text-white text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-serif mb-4 sm:mb-6 md:mb-8 leading-tight max-w-full sm:max-w-4xl"
+>
+  {texts[textIndex].title}
+</motion.h2>
+
 
         <motion.p
           key={texts[textIndex].subtitle}
@@ -135,7 +133,7 @@ export default function HeroSection() {
           transition={{ duration: 1, delay: 0.6 }}
           className="flex flex-col sm:flex-row gap-3 sm:gap-6"
         >
-         <button
+          <button
             className="px-5 sm:px-6 py-2 sm:py-3 rounded-full bg-gradient-to-r from-[#F5B041] to-[#FFD580] text-black text-sm sm:text-base font-semibold shadow-lg hover:scale-105 transition"
             onClick={openDialog}
           >

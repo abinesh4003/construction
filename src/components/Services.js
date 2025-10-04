@@ -4,6 +4,8 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { cn } from "@/lib/utils"; // remove if you don’t use it
+import { useDialog } from "./DialogProvider";
+import { usePathname } from "next/navigation";
 
 const categories = [
   {
@@ -30,11 +32,17 @@ const categories = [
 
 export default function PremiumServices() {
   const [active, setActive] = useState(0);
+  const { openDialog } = useDialog();
+  const pathname = usePathname();
 
   return (
     <section className="relative w-full py-12 md:py-16" id="service">
       {/* Section Heading */}
       <div className="text-center px-6 mb-10">
+        {/* Heading for seo */}
+        {pathname === "/service" && (
+          <h1 className="sr-only">Construction Services in Nagercoil Homes, Villas & Commercial</h1>
+        ) }
         <motion.h2
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -154,14 +162,14 @@ export default function PremiumServices() {
 
       {/* CTA Button */}
       <div className="flex justify-center mt-12">
-        <motion.a
-          href="#contact"
+        <motion.button
+          onClick={openDialog}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           className="px-8 py-3 rounded-full bg-amber-500 text-white font-semibold text-lg shadow-lg hover:bg-amber-600 transition-all font-[Montserrat]"
         >
-          Get Started Today
-        </motion.a>
+          Get Started today
+        </motion.button>
       </div>
     </section>
   );

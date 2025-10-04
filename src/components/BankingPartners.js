@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { useEffect, useRef } from 'react';
+import { usePathname } from 'next/navigation';
 
 export default function BankingPartners() {
   const partners = [
@@ -16,6 +17,7 @@ export default function BankingPartners() {
   ];
 
   const containerRef = useRef(null);
+  const pathname = usePathname();
 
   useEffect(() => {
     const scrollSpeed = 1; // pixels per frame
@@ -48,6 +50,11 @@ export default function BankingPartners() {
           transition={{ duration: 0.8 }}
           className="text-center mb-12"
         >
+          {/* Heading for seo */}
+          {pathname === "/partners" && (
+            <h1 className="sr-only">Our Partners - Varghese Construction</h1>
+          ) }
+          {/* Main Heading */}
           <h2 className="text-3xl md:text-5xl font-extrabold mb-4 animate-gradient-x">
             Our Trusted Banking Partners
           </h2>

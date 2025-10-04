@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { Check } from 'lucide-react';
 import { useDialog } from './DialogProvider';
-
+import { usePathname } from 'next/navigation';
 // Static packages array (same for server + client)
 const packages = [
   {
@@ -75,6 +75,7 @@ const packages = [
 
 export default function PackagesSection() {
   const { openDialog } = useDialog();
+  const pathname = usePathname(); 
 
   return (
     <section
@@ -94,6 +95,11 @@ export default function PackagesSection() {
           className="text-center"
           suppressHydrationWarning
         >
+          {/* Heading for seo */}
+          {pathname === "/package" && (
+            <h1 className="sr-only">Affordable Construction Packages in Nagercoil | Varghese Construction</h1>
+          ) }
+          {/* Main Heading */}
           <h2 className="kaushan-script-regular text-3xl sm:text-4xl lg:text-5xl text-amber-600 font-bold mb-3 sm:mb-4">
             Our Packages
           </h2>

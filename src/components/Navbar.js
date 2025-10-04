@@ -22,10 +22,10 @@ export default function Navbar() {
 
   const navItems = [
     { name: 'Home', href: '/' },
-    { name: 'Services', href: 'service' },
-    { name: 'Packages', href: 'package' },
-    { name: 'Testimonials', href: 'reviews' },
-    { name: 'Partners', href: 'partners' },
+    { name: 'Services', href: '/service' },
+    { name: 'Packages', href: '/package' },
+    { name: 'Testimonials', href: '/reviews' },
+    { name: 'Partners', href: '/partners' },
   ];
 
   // Dynamic logo/text color based on scroll
