@@ -20,26 +20,29 @@ export default function WhyChooseConstructionPremium() {
   return (
     <section className="relative w-full overflow-hidden" aria-labelledby="why-choose-heading">
 
-     
+      {/* SEO Hidden Heading */}
+      <h2 id="why-choose-heading" className="sr-only">
+        Why Choose Our Construction | Varghese Construction
+      </h2>
 
       {/* Overlay */}
       <div className="absolute inset-0 bg-black/10" />
 
       {/* Desktop Heading */}
       <div className="hidden lg:block py-16 text-center relative z-10">
-        <h2 className="text-4xl p-3 font-bold montserrat text-white" >
+        <span className="text-4xl p-3 font-bold montserrat text-white">
           <span className="kaushan-script-regular text-amber-400">Why Choose</span>{" "}
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-black to-gray-600">
             Our Construction
           </span>
-        </h2>
-        <p className="text-gray inter text-xl mt-2" aria-hidden="true">
+        </span>
+        <p className="text-gray inter text-xl mt-2">
           Discover why clients trust us to deliver exceptional construction projects with quality, safety, and innovation.
         </p>
       </div>
 
       {/* Desktop Features */}
-      <div className="hidden lg:flex gap-12 px-6 lg:px-20 pb-24" aria-hidden="true">
+      <div className="hidden lg:flex gap-12 px-6 lg:px-20 pb-24">
         <div className="flex-1 grid grid-cols-1 sm:grid-cols-2 gap-6">
           {features.map((f) => (
             <div
@@ -79,7 +82,56 @@ export default function WhyChooseConstructionPremium() {
         </div>
       </div>
 
-   
+      {/* Mobile Layout */}
+      <div className="lg:hidden relative w-full">
+        <Image
+          src="/whyus/banner.jpg"
+          alt="Luxury interior background of construction project"
+          fill
+          className="object-cover"
+          priority
+        />
+        <div className="absolute inset-0 bg-black/40" />
+
+        <div className="relative z-10 flex flex-col justify-center items-center text-center px-6 py-12 space-y-6">
+          <span className="text-3xl font-bold montserrat text-white">
+            <span className="kaushan-script-regular text-amber-400">Why Choose</span>{" "}
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-gray-100 to-gray-300">
+              Our Construction
+            </span>
+          </span>
+          <p className="text-white inter max-w-md">
+            Discover why clients trust us to deliver exceptional construction projects with quality, safety, and innovation.
+          </p>
+
+          <div className="grid grid-cols-1 gap-4 w-full max-w-md">
+            {features.map((f) => (
+              <div
+                key={f.title}
+                className="flex items-start gap-3 bg-white/30 backdrop-blur-md rounded-xl p-4 text-left"
+              >
+                <div className="p-2 rounded-xl bg-amber-400 text-black">
+                  <f.icon className="w-5 h-5" aria-hidden="true" />
+                </div>
+                <div>
+                  <span className="text-white font-semibold montserrat text-sm block">
+                    {f.title}
+                  </span>
+                  <p className="text-white text-xs inter">{f.description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <a
+            href="#contact"
+            className="inline-block px-6 py-3 rounded-full bg-gradient-to-r from-amber-500 to-amber-300 text-black montserrat font-semibold shadow-lg hover:scale-105 transform transition"
+            aria-label="Book Free Consultation"
+          >
+            Book Free Consultation →
+          </a>
+        </div>
+      </div>
     </section>
   );
 }
