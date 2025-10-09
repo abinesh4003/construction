@@ -1,16 +1,15 @@
 'use client';
 
-import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { Check } from 'lucide-react';
-import { useDialog } from './DialogProvider';
-import { usePathname } from 'next/navigation';
-// Static packages array (same for server + client)
+import Image from 'next/image';
+import { CheckCircle2, Sparkles, Crown } from 'lucide-react';
+
 const packages = [
   {
     name: 'Basic',
     tagline: 'Quality construction essentials with trusted brands',
     price: '₹2190/sqft',
+    originalPrice: '₹2490/sqft',
     features: [
       'Steel & cement from reputable brands',
       'Floor tiles up to ₹50/sqft',
@@ -19,193 +18,151 @@ const packages = [
       'Essential kitchen & bath fittings',
     ],
     brands: ['/brands/sunmic.png', '/brands/dalmia.png', '/brands/cera.png'],
-    image: '/house/17.jpeg',
-    ribbon: '',
-    layout: 'left',
+    popular: false,
+    savings: 'Save ₹300/sqft',
   },
   {
     name: 'Classic',
     tagline: 'Our most popular package with premium upgrades',
     price: '₹2400/sqft',
+    originalPrice: '₹2800/sqft',
     features: [
       'Jindal Steel & premium cement',
       'Floor tiles up to ₹100/sqft',
       'Teak wood doors/windows',
       'Tractor Shyne Emulsion',
       'Stylish kitchen & bath fixtures',
+      'Extended warranty coverage',
     ],
     brands: ['/brands/jsw.png', '/brands/dalmia.png', '/brands/hindware.png'],
-    image: '/house/18.jpeg',
-    ribbon: 'Most Popular',
-    layout: 'right',
+    popular: true,
+    savings: 'Save ₹400/sqft',
   },
   {
     name: 'Premium',
     tagline: 'Elegant living with modern amenities',
     price: '₹2740/sqft',
+    originalPrice: '₹3200/sqft',
     features: [
       'High-grade steel & cement',
       'Floor tiles up to ₹140/sqft',
       'Designer teak wood finishes',
       'Apcolite Premium paint',
       'Upgraded kitchen & bath',
+      'Smart home readiness',
+      'Premium fixtures package',
     ],
     brands: ['/brands/ultratech.png', '/brands/asianpaints.png', '/brands/jaquar.png'],
-    image: '/house/19.jpg',
-    ribbon: '',
-    layout: 'left',
+    popular: false,
+    savings: 'Save ₹460/sqft',
   },
   {
     name: 'Royal',
     tagline: 'Ultimate luxury with high-end specifications',
     price: '₹2990/sqft',
+    originalPrice: '₹3600/sqft',
     features: [
       'Premium structural materials',
       'Floor tiles up to ₹160/sqft',
       'Custom designer woodwork',
       'Apex Ultima exterior finish',
       'Luxury kitchen & bath fittings',
+      'Full smart home integration',
+      'Custom architectural details',
+      'Priority project management',
     ],
     brands: ['/brands/jsw.png', '/brands/asianpaints.png', '/brands/kohler.png'],
-    image: '/house/20.jpeg',
-    ribbon: 'Ultimate Luxury',
-    layout: 'right',
+    popular: false,
+    savings: 'Save ₹610/sqft',
   },
 ];
 
-export default function PackagesSection() {
-  const { openDialog } = useDialog();
-  const pathname = usePathname(); 
-
+export default function ConstructionPackages() {
   return (
-    <section
-      id="package"
-      className="w-full py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-20
-                 bg-gradient-to-r from-amber-50 via-amber-50 to-amber-100
-                 bg-[length:200%_200%]"
-    >
-      <div className="max-w-7xl mx-auto flex flex-col gap-12 sm:gap-16 lg:gap-20">
-        
-        {/* Section Heading */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="text-center"
-          suppressHydrationWarning
-        >
-          {/* Heading for seo */}
-          {pathname === "/package" && (
-            <h1 className="sr-only">Affordable Construction Packages in Nagercoil | Varghese Construction</h1>
-          ) }
-          {/* Main Heading */}
-          <h2 className="kaushan-script-regular text-3xl sm:text-4xl lg:text-5xl text-amber-600 font-bold mb-3 sm:mb-4">
-            Our Packages
-          </h2>
-          <p className="inter text-gray-700 text-sm sm:text-base max-w-2xl mx-auto px-4">
-            Tailored construction solutions to match your vision, budget, and luxury lifestyle.
+    <section className="bg-gradient-to-br from-amber-50 to-amber-100 py-20 text-slate-800">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="text-center mb-14">
+          <h2 className="text-4xl font-bold mb-3">Choose Your Construction Package</h2>
+          <p className="text-lg text-slate-600">
+            Crafted to fit your vision, budget, and lifestyle — because every home deserves perfection.
           </p>
-        </motion.div>
+        </div>
 
-        {/* Package Cards */}
-        <div className="space-y-8 sm:space-y-12 lg:space-y-16">
-          {packages.map((pkg, idx) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {packages.map((pkg, i) => (
             <motion.div
-              key={pkg.name} // use name (stable) instead of idx
+              key={pkg.name}
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: idx * 0.2 }}
-              className="relative"
-              suppressHydrationWarning
+              transition={{ delay: i * 0.1 }}
+              className={`relative bg-white rounded-2xl shadow-xl p-8 border 
+                ${pkg.popular ? 'border-amber-400 shadow-amber-200/50 scale-[1.02]' : 'border-slate-200'}`}
             >
-              <div
-                className={`relative flex flex-col lg:flex-row items-stretch rounded-2xl sm:rounded-3xl overflow-hidden 
-                  bg-white shadow-lg hover:shadow-xl transition-all duration-300
-                  ${pkg.layout === 'left' ? 'lg:flex-row' : 'lg:flex-row-reverse'}
-                  h-auto lg:h-96 xl:h-[28rem]`}
-              >
-                {/* Package Image */}
-                <div className="relative w-full lg:w-1/2 h-[180px] sm:h-96 lg:h-full flex-shrink-0 overflow-hidden">
-                  <Image
-                    src={pkg.image}
-                    alt={pkg.name}
-                    fill
-                    priority={idx < 2}
-                    className="object-cover transition-transform duration-500 hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent lg:bg-gradient-to-r lg:from-black/30 lg:via-transparent" />
-                  <div className="absolute bottom-4 left-4 sm:bottom-6 sm:left-6 text-white lg:bottom-6 lg:left-6">
-                    <span className="kaushan-script-regular text-2xl sm:text-3xl lg:text-3xl font-bold drop-shadow-lg block">
-  {pkg.name}
-</span>
-
-                    <p className="inter text-sm sm:text-base lg:text-base mt-1 drop-shadow-md">
-                      {pkg.tagline}
-                    </p>
-                    {pkg.ribbon ? (
-                      <div className="mt-2 inline-block bg-amber-500/80 backdrop-blur-sm px-3 py-1 rounded-md font-bold text-xs sm:text-sm">
-                        {pkg.ribbon}
-                      </div>
-                    ) : null}
-                  </div>
+              {/* Ribbon for popular */}
+              {pkg.popular && (
+                <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-gradient-to-r from-amber-500 to-yellow-400 text-white text-sm font-semibold px-4 py-1 rounded-full shadow-md flex items-center gap-1">
+                  <Sparkles className="w-4 h-4" /> Most Popular
                 </div>
+              )}
 
-                {/* Content Panel */}
-                <motion.div
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  className="relative w-full lg:w-1/2 py-4 sm:py-6 lg:py-6 px-5 sm:px-8 lg:px-8 flex flex-col justify-center"
-                  suppressHydrationWarning
-                >
-                  <div className="bg-white/95 backdrop-blur-sm rounded-2xl p-5 sm:p-6 lg:p-6 shadow-xl border border-gray-100 h-full flex flex-col justify-center">
-                    <p className="text-xl sm:text-2xl lg:text-2xl montserrat font-bold text-amber-500 mb-4">
-                      {pkg.price}
-                    </p>
-
-                    <ul className="space-y-2 sm:space-y-3 mb-4 sm:mb-6">
-                      {pkg.features.map((feat) => (
-                        <li
-                          key={feat}
-                          className="flex items-start text-gray-700 font-inter gap-2 text-sm sm:text-base"
-                        >
-                          <Check className="w-4 h-4 sm:w-5 sm:h-5 text-amber-500 mt-0.5 flex-shrink-0" />
-                          <span className="leading-relaxed">{feat}</span>
-                        </li>
-                      ))}
-                    </ul>
-
-                    <div className="flex flex-wrap gap-3 sm:gap-4 mb-4 sm:mb-6">
-                      {pkg.brands.map((b) => (
-                        <div
-                          key={b}
-                          className="relative w-10 h-10 sm:w-12 sm:h-12 bg-white rounded-lg p-1 shadow-sm border"
-                        >
-                          <Image
-                            src={b}
-                            alt={`Brand logo`}
-                            fill
-                            className="object-contain p-1"
-                          />
-                        </div>
-                      ))}
-                    </div>
-
-                    <motion.button
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                      className="inline-block w-full text-center px-6 py-3 sm:py-3 rounded-full bg-gradient-to-r from-amber-500 to-amber-300 text-black font-semibold hover:shadow-lg transform transition-all duration-200 text-sm sm:text-base shadow-md"
-                      onClick={openDialog}
-                    >
-                      Free Consulting →
-                    </motion.button>
-                  </div>
-                </motion.div>
+              {/* Header */}
+              <div className="text-center mb-4">
+                <span className="text-2xl font-bold">{pkg.name}</span>
+                <p className="text-sm text-slate-500 mt-1">{pkg.tagline}</p>
               </div>
+
+              {/* Pricing */}
+              <div className="text-center mb-6">
+                <p className="text-3xl font-bold text-amber-600">{pkg.price}</p>
+                <p className="text-sm text-slate-500 line-through">{pkg.originalPrice}</p>
+                <p className="text-green-600 text-sm font-semibold mt-1">{pkg.savings}</p>
+              </div>
+
+              {/* Features */}
+              <ul className="space-y-2 mb-6">
+                {pkg.features.map((f) => (
+                  <li key={f} className="flex items-start gap-2 text-slate-600 text-sm">
+                    <CheckCircle2 className="w-4 h-4 text-amber-500 mt-0.5" /> {f}
+                  </li>
+                ))}
+              </ul>
+
+              {/* Brands */}
+              <div className="flex justify-center gap-4 mb-6">
+                {pkg.brands.map((b) => (
+                  <div key={b} className="relative w-10 h-10">
+                    <Image src={b} alt="brand" fill className="object-contain" />
+                  </div>
+                ))}
+              </div>
+
+              {/* CTA */}
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className={`w-full py-3 rounded-lg font-semibold transition-all
+                  ${pkg.popular ? 'bg-amber-500 hover:bg-amber-600 text-white shadow-lg' : 'bg-slate-800 hover:bg-slate-900 text-white'}
+                `}
+              >
+                Get Detailed Quote
+              </motion.button>
             </motion.div>
           ))}
+        </div>
+
+        {/* Bottom Highlight */}
+        <div className="bg-slate-900 text-white rounded-3xl mt-20 py-12 text-center">
+          <p className="text-lg text-slate-300 mb-4">
+            Need something unique? Lets tailor a plan for your dream home.
+          </p>
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="bg-amber-500 hover:bg-amber-600 text-white font-semibold px-8 py-3 rounded-lg shadow-md"
+          >
+            Schedule Personalized Consultation
+          </motion.button>
         </div>
       </div>
     </section>
