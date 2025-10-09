@@ -2,7 +2,8 @@
 
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import { CheckCircle2, Sparkles, Crown } from 'lucide-react';
+import { CheckCircle2, Sparkles } from 'lucide-react';
+import { useDialog } from './DialogProvider';
 
 const packages = [
   {
@@ -78,92 +79,142 @@ const packages = [
 ];
 
 export default function ConstructionPackages() {
+
+  const { openDialog } = useDialog();
+
   return (
-    <section className="bg-gradient-to-br from-amber-50 to-amber-100 py-20 text-slate-800">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-14">
-          <h2 className="text-4xl font-bold mb-3">Choose Your Construction Package</h2>
-          <p className="text-lg text-slate-600">
+    <section id="package" className="relative text-slate-800 overflow-hidden">
+      {/* Background */}
+      <div
+        className="absolute inset-0 bg-fixed bg-center bg-cover"
+        style={{ backgroundImage: "url('/construction-bg.jpg')" }}
+      />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-gray/900 to-black/50 " />
+
+      {/* Content */}
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 py-16 sm:py-20 lg:py-28">
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="text-center text-white mb-12 sm:mb-16"
+        >
+          <h2 className="text-3xl sm:text-4xl font-bold mb-3 leading-tight">
+            Choose Your Construction Package
+          </h2>
+          <p className="text-base sm:text-lg  max-w-2xl mx-auto text-white/80">
             Crafted to fit your vision, budget, and lifestyle — because every home deserves perfection.
           </p>
-        </div>
+        </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {packages.map((pkg, i) => (
+        {/* Packages */}
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={{
+            hidden: { opacity: 0 },
+            visible: {
+              opacity: 1,
+              transition: { staggerChildren: 0.15 },
+            },
+          }}
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8"
+        >
+          {packages.map((pkg) => (
             <motion.div
               key={pkg.name}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
-              className={`relative bg-white rounded-2xl shadow-xl p-8 border 
-                ${pkg.popular ? 'border-amber-400 shadow-amber-200/50 scale-[1.02]' : 'border-slate-200'}`}
+              variants={{
+                hidden: { opacity: 0, y: 40 },
+                visible: { opacity: 1, y: 0 },
+              }}
+              className={`relative bg-white/95 backdrop-blur-sm rounded-2xl shadow-md p-6 sm:p-8 border transition-all
+                ${pkg.popular
+                  ? 'border-amber-400 shadow-xl shadow-amber-300/40 scale-[1.02]'
+                  : 'border-slate-200 hover:shadow-amber-100 scale-100'
+                }`}
             >
-              {/* Ribbon for popular */}
+              {/* Ribbon */}
               {pkg.popular && (
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-gradient-to-r from-amber-500 to-yellow-400 text-white text-sm font-semibold px-4 py-1 rounded-full shadow-md flex items-center gap-1">
-                  <Sparkles className="w-4 h-4" /> Most Popular
+                <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-gradient-to-r from-amber-500 to-yellow-400 text-white text-xs font-semibold px-4 py-1 rounded-full shadow-md flex items-center gap-1">
+                  <Sparkles className="w-3.5 h-3.5" /> Most Popular
                 </div>
               )}
 
               {/* Header */}
               <div className="text-center mb-4">
-                <span className="text-2xl font-bold">{pkg.name}</span>
-                <p className="text-sm text-slate-500 mt-1">{pkg.tagline}</p>
+                <span className="text-xl sm:text-2xl font-bold">{pkg.name}</span>
+                <p className="text-xs sm:text-sm text-slate-500 mt-1">{pkg.tagline}</p>
               </div>
 
               {/* Pricing */}
               <div className="text-center mb-6">
-                <p className="text-3xl font-bold text-amber-600">{pkg.price}</p>
-                <p className="text-sm text-slate-500 line-through">{pkg.originalPrice}</p>
-                <p className="text-green-600 text-sm font-semibold mt-1">{pkg.savings}</p>
+                <p className="text-2xl sm:text-3xl font-bold text-amber-600">{pkg.price}</p>
+                <p className="text-xs sm:text-sm text-slate-500 line-through">{pkg.originalPrice}</p>
+                <p className="text-green-600 text-xs sm:text-sm font-semibold mt-1">{pkg.savings}</p>
               </div>
 
               {/* Features */}
               <ul className="space-y-2 mb-6">
                 {pkg.features.map((f) => (
-                  <li key={f} className="flex items-start gap-2 text-slate-600 text-sm">
-                    <CheckCircle2 className="w-4 h-4 text-amber-500 mt-0.5" /> {f}
+                  <li
+                    key={f}
+                    className="flex items-start gap-2 text-slate-600 text-xs sm:text-sm leading-relaxed"
+                  >
+                    <CheckCircle2 className="w-4 h-4 text-amber-500 mt-0.5 flex-shrink-0" />
+                    {f}
                   </li>
                 ))}
               </ul>
 
               {/* Brands */}
-              <div className="flex justify-center gap-4 mb-6">
+              <div className="flex justify-center gap-3 sm:gap-4 mb-6 flex-wrap">
                 {pkg.brands.map((b) => (
-                  <div key={b} className="relative w-10 h-10">
+                  <div key={b} className="relative w-8 h-8 sm:w-10 sm:h-10">
                     <Image src={b} alt="brand" fill className="object-contain" />
                   </div>
                 ))}
               </div>
 
-              {/* CTA */}
+              {/* Button */}
               <motion.button
+              onClick={openDialog}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className={`w-full py-3 rounded-lg font-semibold transition-all
-                  ${pkg.popular ? 'bg-amber-500 hover:bg-amber-600 text-white shadow-lg' : 'bg-slate-800 hover:bg-slate-900 text-white'}
-                `}
+                className={`w-full py-2.5 sm:py-3 rounded-lg font-semibold transition-all shadow-md text-sm sm:text-base
+                  ${pkg.popular
+                    ? 'bg-amber-500 hover:bg-amber-600 text-white'
+                    : 'bg-slate-800 hover:bg-slate-900 text-white'
+                  }`}
               >
                 Get Detailed Quote
               </motion.button>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
 
-        {/* Bottom Highlight */}
-        <div className="bg-slate-900 text-white rounded-3xl mt-20 py-12 text-center">
-          <p className="text-lg text-slate-300 mb-4">
-            Need something unique? Lets tailor a plan for your dream home.
+        {/* Bottom CTA */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="bg-slate-900 text-white rounded-3xl mt-20 sm:mt-24 py-10 sm:py-12 px-4 text-center"
+        >
+          <p className="text-base sm:text-lg text-slate-300 mb-4 max-w-xl mx-auto">
+            Need something unique? Let’s tailor a plan for your dream home.
           </p>
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="bg-amber-500 hover:bg-amber-600 text-white font-semibold px-8 py-3 rounded-lg shadow-md"
+            onClick={openDialog}
+            className="bg-amber-500 hover:bg-amber-600 text-white font-semibold px-6 sm:px-8 py-2.5 sm:py-3 rounded-lg shadow-md text-sm sm:text-base"
           >
             Schedule Personalized Consultation
           </motion.button>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
