@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
-import { cn } from "@/lib/utils"; // remove if you don’t use it
+import { cn } from "@/lib/utils";
 import { useDialog } from "./DialogProvider";
 import { usePathname } from "next/navigation";
 
@@ -38,31 +38,46 @@ export default function PremiumServices() {
   return (
     <section className="relative w-full py-12 md:py-16" id="service">
       {/* Section Heading */}
-      <div className="text-center px-6 mb-10">
-        {/* Heading for seo */}
+      <motion.div
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: false, amount: 0.3 }}
+        transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
+        className="text-center px-6 mb-10"
+      >
         {pathname === "/service" && (
-          <h1 className="sr-only">Construction Services in Nagercoil Homes, Villas & Commercial</h1>
-        ) }
+          <h1 className="sr-only">
+            Construction Services in Nagercoil Homes, Villas & Commercial
+          </h1>
+        )}
         <motion.h2
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7 }}
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false, amount: 0.3 }}
+          transition={{ duration: 0.9, ease: [0.25, 0.1, 0.25, 1] }}
           className="text-4xl md:text-5xl font-bold montserrat bg-gradient-to-r from-amber-500 to-orange-400 bg-clip-text text-transparent"
         >
           Our Services
         </motion.h2>
         <motion.p
           initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false, amount: 0.3 }}
+          transition={{ duration: 1, ease: [0.25, 0.1, 0.25, 1] }}
           className="mt-4 text-lg text-gray-600 max-w-2xl mx-auto font-[Inter]"
         >
           Discover our premium construction services tailored for homes and businesses.
         </motion.p>
-      </div>
+      </motion.div>
 
       {/* Banner */}
-      <div className="relative w-full h-[60vh] md:h-[70vh] overflow-hidden  shadow-2xl">
+      <motion.div
+        initial={{ opacity: 0, scale: 0.97, y: 30 }}
+        whileInView={{ opacity: 1, scale: 1, y: 0 }}
+        viewport={{ once: false, amount: 0.3 }}
+        transition={{ duration: 1, ease: [0.25, 0.1, 0.25, 1] }}
+        className="relative w-full h-[60vh] md:h-[70vh] overflow-hidden shadow-2xl rounded-xl"
+      >
         <Image
           src={categories[active].image}
           alt={categories[active].title}
@@ -74,43 +89,54 @@ export default function PremiumServices() {
 
         {/* Floating Shapes */}
         <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          whileInView={{ opacity: 1, scale: 1 }}
           animate={{ y: [0, -10, 0] }}
-          transition={{ duration: 6, repeat: Infinity }}
+          viewport={{ once: false }}
+          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
           className="absolute top-10 left-10 w-20 h-20 bg-amber-400/20 rounded-full blur-2xl"
         />
         <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          whileInView={{ opacity: 1, scale: 1 }}
           animate={{ y: [0, 15, 0] }}
-          transition={{ duration: 8, repeat: Infinity }}
+          viewport={{ once: false }}
+          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
           className="absolute bottom-10 right-10 w-32 h-32 bg-white/10 rounded-full blur-3xl"
         />
 
         {/* Banner Content */}
         <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
           <motion.span
-  key={categories[active].title}
-  initial={{ opacity: 0, y: 20 }}
-  animate={{ opacity: 1, y: 0 }}
-  exit={{ opacity: 0, y: 20 }} // optional, keep exit animation
-  transition={{ duration: 0.7 }}
-  className="text-3xl md:text-5xl font-bold text-white drop-shadow-xl font-[Montserrat] block"
->
-  {categories[active].title}
-</motion.span>
+            key={categories[active].title}
+            initial={{ opacity: 0, y: 25 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, ease: [0.25, 0.1, 0.25, 1] }}
+            className="text-3xl md:text-5xl font-bold text-white drop-shadow-xl font-[Montserrat] block"
+          >
+            {categories[active].title}
+          </motion.span>
 
           <motion.p
             key={categories[active].subtitle}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            transition={{ duration: 1, ease: [0.25, 0.1, 0.25, 1] }}
             className="mt-3 text-lg md:text-xl text-gray-200 max-w-xl font-[Inter]"
           >
             {categories[active].subtitle}
           </motion.p>
         </div>
-      </div>
+      </motion.div>
 
       {/* Tabs */}
-      <div className="flex justify-center gap-6 mt-6 flex-wrap">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: false, amount: 0.3 }}
+        transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
+        className="flex justify-center gap-6 mt-6 flex-wrap"
+      >
         {categories.map((c, i) => (
           <button
             key={i}
@@ -124,23 +150,35 @@ export default function PremiumServices() {
             {active === i && (
               <motion.div
                 layoutId="underline"
+                transition={{ type: "spring", stiffness: 100, damping: 15 }}
                 className="absolute left-0 bottom-0 w-full h-[2px] bg-amber-500"
               />
             )}
           </button>
         ))}
-      </div>
+      </motion.div>
 
       {/* Services Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-10 px-6 md:px-12">
+      <motion.div
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: false, amount: 0.3 }}
+        transition={{ duration: 1, ease: [0.25, 0.1, 0.25, 1] }}
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-10 px-6 md:px-12"
+      >
         <AnimatePresence mode="wait">
           {categories[active].items.map((item, idx) => (
             <motion.div
               key={item.title}
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, y: 60 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: false, amount: 0.3 }}
               exit={{ opacity: 0 }}
-              transition={{ duration: 0.6, delay: idx * 0.2 }}
+              transition={{
+                duration: 0.9,
+                ease: [0.25, 0.1, 0.25, 1],
+                delay: idx * 0.15,
+              }}
               className="group relative rounded-md overflow-hidden shadow-lg hover:shadow-2xl transition-all h-64"
             >
               <Image
@@ -150,10 +188,9 @@ export default function PremiumServices() {
                 className="object-cover group-hover:scale-110 transition-transform duration-500"
               />
               <div className="absolute inset-0 bg-black/40 group-hover:bg-black/30 transition-all flex flex-col justify-end p-6">
-               <span className="text-lg font-semibold text-white font-[Montserrat] block">
-  {item.title}
-</span>
-
+                <span className="text-lg font-semibold text-white font-[Montserrat] block">
+                  {item.title}
+                </span>
                 <p className="text-gray-200 mt-1 text-sm font-[Inter]">
                   {item.desc}
                 </p>
@@ -161,19 +198,26 @@ export default function PremiumServices() {
             </motion.div>
           ))}
         </AnimatePresence>
-      </div>
+      </motion.div>
 
       {/* CTA Button */}
-      <div className="flex justify-center mt-12">
+      <motion.div
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: false, amount: 0.3 }}
+        transition={{ duration: 1, ease: [0.25, 0.1, 0.25, 1], delay: 0.3 }}
+        className="flex justify-center mt-12"
+      >
         <motion.button
           onClick={openDialog}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
+          transition={{ type: "spring", stiffness: 250, damping: 15 }}
           className="px-8 py-3 rounded-full bg-amber-500 text-white font-semibold text-lg shadow-lg hover:bg-amber-600 transition-all font-[Montserrat]"
         >
           Get Started today
         </motion.button>
-      </div>
+      </motion.div>
     </section>
   );
 }

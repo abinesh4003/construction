@@ -79,8 +79,15 @@ const packages = [
 ];
 
 export default function ConstructionPackages() {
-
   const { openDialog } = useDialog();
+
+  // Define directions for slide animations based on index
+  const directions = [
+    { x: -50, y: 0 }, // slide from left
+    { x: 50, y: 0 },  // slide from right
+    { x: 0, y: 50 },  // slide from bottom
+    { x: 0, y: -50 }, // slide from top
+  ];
 
   return (
     <section id="package" className="relative text-slate-800 overflow-hidden">
@@ -110,26 +117,15 @@ export default function ConstructionPackages() {
         </motion.div>
 
         {/* Packages */}
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={{
-            hidden: { opacity: 0 },
-            visible: {
-              opacity: 1,
-              transition: { staggerChildren: 0.15 },
-            },
-          }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8"
-        >
-          {packages.map((pkg) => (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+          {packages.map((pkg, idx) => (
             <motion.div
               key={pkg.name}
-              variants={{
-                hidden: { opacity: 0, y: 40 },
-                visible: { opacity: 1, y: 0 },
-              }}
+             initial={{ opacity: 0,scale:0.8  }}
+          whileInView={{ opacity: 1, scale:1  }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: false }}
+              whileHover={{ scale: 1.03, boxShadow: '0px 15px 30px rgba(255, 175, 0, 0.2)' }}
               className={`relative bg-white/95 backdrop-blur-sm rounded-2xl shadow-md p-6 sm:p-8 border transition-all
                 ${pkg.popular
                   ? 'border-amber-400 shadow-xl shadow-amber-300/40 scale-[1.02]'
@@ -144,43 +140,68 @@ export default function ConstructionPackages() {
               )}
 
               {/* Header */}
-              <div className="text-center mb-4">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.1, duration: 0.5 }}
+                className="text-center mb-4"
+              >
                 <span className="text-xl sm:text-2xl font-bold">{pkg.name}</span>
                 <p className="text-xs sm:text-sm text-slate-500 mt-1">{pkg.tagline}</p>
-              </div>
+              </motion.div>
 
               {/* Pricing */}
-              <div className="text-center mb-6">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2, duration: 0.5 }}
+                className="text-center mb-6"
+              >
                 <p className="text-2xl sm:text-3xl font-bold text-amber-600">{pkg.price}</p>
                 <p className="text-xs sm:text-sm text-slate-500 line-through">{pkg.originalPrice}</p>
                 <p className="text-green-600 text-xs sm:text-sm font-semibold mt-1">{pkg.savings}</p>
-              </div>
+              </motion.div>
 
               {/* Features */}
-              <ul className="space-y-2 mb-6">
-                {pkg.features.map((f) => (
-                  <li
+              <ul className="space-y-2 mb-6 text-center">
+                {pkg.features.map((f, i) => (
+                  <motion.li
                     key={f}
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true, amount: 0.3 }}
+                    transition={{ delay: 0.25 + i * 0.05, duration: 0.4 }}
                     className="flex items-start gap-2 text-slate-600 text-xs sm:text-sm leading-relaxed"
                   >
                     <CheckCircle2 className="w-4 h-4 text-amber-500 mt-0.5 flex-shrink-0" />
                     {f}
-                  </li>
+                  </motion.li>
                 ))}
               </ul>
 
               {/* Brands */}
-              <div className="flex justify-center gap-3 sm:gap-4 mb-6 flex-wrap">
-                {pkg.brands.map((b) => (
-                  <div key={b} className="relative w-8 h-8 sm:w-10 sm:h-10">
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3, duration: 0.5 }}
+                className="flex justify-center gap-3 sm:gap-4 mb-6 flex-wrap"
+              >
+                {pkg.brands.map((b, i) => (
+                  <motion.div
+                    key={b}
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: 0.35 + i * 0.05, duration: 0.4 }}
+                    className="relative w-8 h-8 sm:w-10 sm:h-10"
+                  >
                     <Image src={b} alt="brand" fill className="object-contain" />
-                  </div>
+                  </motion.div>
                 ))}
-              </div>
+              </motion.div>
 
               {/* Button */}
               <motion.button
-              onClick={openDialog}
+                onClick={openDialog}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className={`w-full py-2.5 sm:py-3 rounded-lg font-semibold transition-all shadow-md text-sm sm:text-base
@@ -193,14 +214,14 @@ export default function ConstructionPackages() {
               </motion.button>
             </motion.div>
           ))}
-        </motion.div>
+        </div>
 
         {/* Bottom CTA */}
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0,scale:0.8  }}
+          whileInView={{ opacity: 1, scale:1  }}
           transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
+          viewport={{ once: false }}
           className="bg-slate-900 text-white rounded-3xl mt-20 sm:mt-24 py-10 sm:py-12 px-4 text-center"
         >
           <p className="text-base sm:text-lg text-slate-300 mb-4 max-w-xl mx-auto">

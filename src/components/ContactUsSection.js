@@ -82,8 +82,9 @@ export default function ContactSection() {
 
             {/* Map */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, x:-50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: false }}
               className="rounded-lg overflow-hidden shadow-sm border border-gray-100"
             >
               <iframe
@@ -99,9 +100,14 @@ export default function ContactSection() {
           </div>
 
           {/* Contact Form */}
-          <div className="order-1 lg:order-2 lg:col-span-2">
+          <motion.div className="order-1 lg:order-2 lg:col-span-2"
+          initial={{ opacity: 0, scale:0.8  }}
+          whileInView={{ opacity: 1, scale:1  }}
+          viewport={{ once: false}}
+         
+          >
             <LuxuryContactForm />
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

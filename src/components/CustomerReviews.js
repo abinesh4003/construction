@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { Star, Quote, ChevronLeft, ChevronRight } from "lucide-react";
+import { Star, Quote } from "lucide-react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
@@ -20,7 +20,6 @@ export default function LuxuryCustomerReviews() {
     { id: 5, name: "Nandhakumar", role: "ISRO, Vallankumaranvilai", rating: 5, content: "Our resort project was handled with exceptional professionalism. Despite regulatory challenges, they delivered world-class craftsmanship beyond expectations.", avatar: "/avatars/0.jpg" }
   ];
 
-  // Detect mobile screen
   useEffect(() => {
     const checkIfMobile = () => setIsMobile(window.innerWidth < 768);
     checkIfMobile();
@@ -57,9 +56,23 @@ export default function LuxuryCustomerReviews() {
   };
 
   const sliderVariants = {
-    enter: (dir) => ({ x: dir > 0 ? "100%" : "-100%", opacity: 0.8 }),
-    center: { x: "0%", opacity: 1, transition: { duration: 0.8, ease: [0.32, 0.72, 0, 1] } },
-    exit: (dir) => ({ x: dir > 0 ? "-100%" : "100%", opacity: 0.8, transition: { duration: 0.8, ease: [0.32, 0.72, 0, 1] } })
+    enter: (dir) => ({
+      x: dir > 0 ? "100%" : "-100%",
+      opacity: 0,
+      scale: 0.95
+    }),
+    center: {
+      x: "0%",
+      opacity: 1,
+      scale: 1,
+      transition: { type: "spring", stiffness: 120, damping: 20 }
+    },
+    exit: (dir) => ({
+      x: dir > 0 ? "-100%" : "100%",
+      opacity: 0,
+      scale: 0.95,
+      transition: { type: "spring", stiffness: 120, damping: 20 }
+    })
   };
 
   return (
@@ -70,38 +83,29 @@ export default function LuxuryCustomerReviews() {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
           className="text-center mb-12 md:mb-20"
         >
-          {/* Heading for seo */}
-          {pathname === "/reviews" && (
-            <h1 className="sr-only">Customer Reviews - Varghese Construction</h1>
-          ) }
-          {/* Main Heading */}
-          <h2 className="text-3xl md:text-5xl font-bold text-amber-400 font-playfair mb-4 md:mb-6">
+          {pathname === "/reviews" && <h1 className="sr-only">Customer Reviews - Varghese Construction</h1>}
+          <motion.h2 className="text-3xl md:text-5xl font-bold text-amber-400 font-playfair mb-4 md:mb-6"
+          initial={{ opacity: 0, x: 300 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: false }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          >
             <span className="font-inter text-gray-900">Our Happy </span> Customers
-          </h2>
-          <p className="text-base md:text-lg text-gray-700 max-w-3xl mx-auto px-4 inter">
+          </motion.h2>
+          <motion.p className="text-base md:text-lg text-gray-700 max-w-3xl mx-auto px-4 inter"
+           initial={{ opacity: 0,scale:0.8  }}
+          whileInView={{ opacity: 1, scale:1  }}
+          viewport={{ once: false }}
+          transition={{ duration: 0.6, ease: "easeOut" }}>
             Hear from homeowners and businesses who have experienced our quality craftsmanship firsthand.
-          </p>
+          </motion.p>
         </motion.div>
 
         {/* Slider */}
         <div className="relative">
-          {/* Navigation
-          <button
-            onClick={handlePrev}
-            className="absolute left-0 top-1/2 -translate-y-1/2 bg-white p-2 rounded-full shadow-md transition-all z-10 hover:bg-amber-100"
-          >
-            <ChevronLeft className="h-5 w-5 md:h-6 md:w-6 text-amber-400" />
-          </button>
-          <button
-            onClick={handleNext}
-            className="absolute right-0 top-1/2 -translate-y-1/2 bg-white p-2 rounded-full shadow-md transition-all z-10 hover:bg-amber-100"
-          >
-            <ChevronRight className="h-5 w-5 md:h-6 md:w-6 text-amber-400" />
-          </button> */}
-
           <AnimatePresence custom={direction} mode="popLayout">
             <motion.div
               key={currentIndex}
@@ -117,6 +121,10 @@ export default function LuxuryCustomerReviews() {
                   key={review.id}
                   className="bg-white p-6 md:p-8 border border-gray-200 rounded-3xl flex flex-col h-full shadow-lg hover:shadow-2xl transition-transform"
                   whileHover={{ scale: isMobile ? 1 : 1.03 }}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.3 }}
+                  transition={{ duration: 0.6, ease: "easeOut" }}
                 >
                   {/* Rating + Quote */}
                   <div className="flex items-center mb-4 md:mb-6">
@@ -144,10 +152,9 @@ export default function LuxuryCustomerReviews() {
                       <Image src={review.avatar} alt={review.name} fill className="object-cover" />
                     </div>
                     <div className="flex-1 min-w-0">
-                     <span className="montserrat font-semibold text-gray-900 text-base md:text-lg truncate">
-  {review.name}
-</span>
-
+                      <span className="montserrat font-semibold text-gray-900 text-base md:text-lg truncate">
+                        {review.name}
+                      </span>
                       <p className="inter text-gray-500 text-xs md:text-sm truncate">
                         {review.role}
                       </p>
