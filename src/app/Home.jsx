@@ -25,23 +25,23 @@ useEffect(() => {
   const scrollIntoView = () => {
     const el = document.getElementById(scrollTo);
     if (el) {
-      el.scrollIntoView({ behavior: "smooth", block: "start" });
+      const yOffset = -80; // if navbar is fixed
+      const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
+      window.scrollTo({ top: y, behavior: "smooth" });
     }
   };
 
-  // Try once immediately
-  scrollIntoView();
+  // Retry a few times for mobile layout delays
+  const timeouts = [
+    setTimeout(scrollIntoView, 200),
+    setTimeout(scrollIntoView, 600),
+    setTimeout(scrollIntoView, 1000),
+  ];
 
-  // Retry after layout stabilizes
-  const timeout1 = setTimeout(scrollIntoView, 400);
-  const timeout2 = setTimeout(scrollIntoView, 800);
-
-  // Extra fix for iOS Safari — scroll after images/fonts load
   window.addEventListener("load", scrollIntoView);
 
   return () => {
-    clearTimeout(timeout1);
-    clearTimeout(timeout2);
+    timeouts.forEach(clearTimeout);
     window.removeEventListener("load", scrollIntoView);
   };
 }, [scrollTo, pathname]);
