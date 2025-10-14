@@ -71,7 +71,7 @@ export default function BankingPartners() {
           {partners.concat(partners).map((logo, idx) => (
             <motion.div
               key={idx}
-              className="flex-shrink-0 w-32 h-16 md:w-40 md:h-20 rounded-lg flex items-center justify-center filter grayscale hover:grayscale-0 transition-all duration-500 cursor-pointer shadow-lg hover:scale-110 bg-white"
+              className="flex-shrink-0 w-32 h-16 md:w-40 md:h-20 rounded-lg flex items-center justify-center  transition-all duration-500 cursor-pointer shadow-lg hover:scale-110 bg-white"
               whileHover={{ scale: 1.1, rotate: 2 }}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}

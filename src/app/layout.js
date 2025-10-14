@@ -72,7 +72,7 @@ const kaushanScript = Kaushan_Script({
 
 
 export const viewport = {
-  themeColor: "#F05A29",
+  themeColor: "#FFD580",
   width: "device-width",
   initialScale: 1,
 };
@@ -178,22 +178,6 @@ export default function RootLayout({ children }) {
       `}>
         <ClientWrapper>{children}</ClientWrapper>
 
-        {/* Additional Schema for Reviews */}
-        <Script id="review-schema" type="application/ld+json" strategy="afterInteractive">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "WebPage",
-            "name": "Customer Reviews - Varghese Construction",
-            "description": "Read authentic customer reviews and testimonials for Varghese Construction services",
-            "aggregateRating": {
-              "@type": "AggregateRating",
-              "ratingValue": "4.9",
-              "reviewCount": "150",
-              "bestRating": "5",
-              "worstRating": "1"
-            }
-          })}
-        </Script>
       </body>
     </html>
   );

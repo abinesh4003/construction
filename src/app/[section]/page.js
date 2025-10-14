@@ -6,11 +6,7 @@ const seo = {
   service: {
     title: "Construction Services in Nagercoil Homes, Villas & Commercial",
     description: "Explore Varghese Construction's premium services including luxury home building, villa projects, and commercial construction in Nagercoil & Kanyakumari.",
-    keywords: ["Home construction services Nagercoil",
-"Villa builders Nagercoil",
-"Commercial construction Tamil Nadu",
-"Renovation and interiors Nagercoil"
-],
+    keywords: ["Home construction services Nagercoil", "Villa builders Nagercoil", "Commercial construction Tamil Nadu", "Renovation and interiors Nagercoil"],
     verification: { google: "qPXGbHMkRjHCvd8gn2RhqkM_sWb7e43inQQIV_u3j50" },
     metadataBase: new URL("https://www.vargheseconstruction.com"),
     alternates: { canonical: "/service" },
@@ -32,19 +28,48 @@ const seo = {
       images: ["/twitter-service.jpg"],
     },
     robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-video-preview': -1, 'max-image-preview': 'large', 'max-snippet': -1 } },
-    icons: {
-      icon: [
-        { url: "/favicon/favicon.ico" },
-        { url: "/favicon/favicon-16x16.png", sizes: "16x16", type: "image/png" },
-        { url: "/favicon/favicon-32x32.png", sizes: "32x32", type: "image/png" },
-      ],
-      apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
-      other: [{ rel: "mask-icon", url: "/safari-pinned-tab.svg", color: "#F05A29" }],
-    },
-    manifest: "/manifest.webmanifest",
     authors: [{ name: "Varghese Construction" }],
     category: "Construction",
-      
+    schema: {
+      "@type": "Service",
+      "name": "Construction Services",
+      "description": "Premium construction services including luxury homes, villas, and commercial projects in Nagercoil & Kanyakumari",
+      "provider": {
+        "@id": "https://www.vargheseconstruction.com/#organization"
+      },
+      "serviceType": "Construction",
+      "areaServed": ["Nagercoil", "Kanyakumari", "Tamil Nadu"],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Construction Services Catalog",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Luxury Home Construction",
+              "description": "Custom luxury home building services"
+            }
+          },
+          {
+            "@type": "Offer", 
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Villa Construction",
+              "description": "Premium villa construction projects"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service", 
+              "name": "Commercial Construction",
+              "description": "Commercial building construction services"
+            }
+          }
+        ]
+      }
+    }
   },
 
   portfolio: {
@@ -72,19 +97,47 @@ const seo = {
       images: ["/twitter-portfolio.jpg"],
     },
     robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-video-preview': -1, 'max-image-preview': 'large', 'max-snippet': -1 } },
-    icons: {
-      icon: [
-        { url: "/favicon/favicon.ico" },
-        { url: "/favicon/favicon-16x16.png", sizes: "16x16", type: "image/png" },
-        { url: "/favicon/favicon-32x32.png", sizes: "32x32", type: "image/png" },
-      ],
-      apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
-      other: [{ rel: "mask-icon", url: "/safari-pinned-tab.svg", color: "#F05A29" }],
-    },
-    manifest: "/manifest.webmanifest",
+  
     authors: [{ name: "Varghese Construction" }],
     category: "Construction",
-      
+    schema: {
+      "@type": "CollectionPage",
+      "name": "Project Portfolio",
+      "description": "Showcase of completed construction projects including luxury homes, villas, and commercial buildings",
+      "mainEntity": {
+        "@type": "ItemList",
+        "numberOfItems": 25,
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "item": {
+              "@type": "CreativeWork",
+              "name": "Luxury Villa Projects",
+              "description": "Premium villa construction projects in Nagercoil"
+            }
+          },
+          {
+            "@type": "ListItem", 
+            "position": 2,
+            "item": {
+              "@type": "CreativeWork",
+              "name": "Residential Home Projects",
+              "description": "Custom home construction projects across Tamil Nadu"
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "item": {
+              "@type": "CreativeWork", 
+              "name": "Commercial Building Projects",
+              "description": "Commercial construction and development projects"
+            }
+          }
+        ]
+      }
+    }
   },
 
   package: {
@@ -112,19 +165,40 @@ const seo = {
       images: ["/twitter-package.jpg"],
     },
     robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-video-preview': -1, 'max-image-preview': 'large', 'max-snippet': -1 } },
-    icons: {
-      icon: [
-        { url: "/favicon/favicon.ico" },
-        { url: "/favicon/favicon-16x16.png", sizes: "16x16", type: "image/png" },
-        { url: "/favicon/favicon-32x32.png", sizes: "32x32", type: "image/png" },
-      ],
-      apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
-      other: [{ rel: "mask-icon", url: "/safari-pinned-tab.svg", color: "#F05A29" }],
-    },
-    manifest: "/manifest.webmanifest",
+ 
     authors: [{ name: "Varghese Construction" }],
     category: "Construction",
-      
+    schema: {
+      "@type": "OfferCatalog",
+      "name": "Construction Packages & Pricing",
+      "description": "Transparent construction packages for various budgets and requirements in Nagercoil",
+      "provider": {
+        "@id": "https://www.vargheseconstruction.com/#organization"
+      },
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "name": "Standard Construction Package",
+          "description": "Basic construction package with quality materials and timely completion",
+          "priceCurrency": "INR",
+          "category": "Construction"
+        },
+        {
+          "@type": "Offer",
+          "name": "Premium Construction Package", 
+          "description": "Premium package with high-end materials, modern finishes and expert workmanship",
+          "priceCurrency": "INR",
+          "category": "Construction"
+        },
+        {
+          "@type": "Offer",
+          "name": "Luxury Villa Package",
+          "description": "Complete luxury villa construction package with premium amenities",
+          "priceCurrency": "INR", 
+          "category": "Construction"
+        }
+      ]
+    }
   },
 
   reviews: {
@@ -152,19 +226,40 @@ const seo = {
       images: ["/twitter-reviews.jpg"],
     },
     robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-video-preview': -1, 'max-image-preview': 'large', 'max-snippet': -1 } },
-    icons: {
-      icon: [
-        { url: "/favicon/favicon.ico" },
-        { url: "/favicon/favicon-16x16.png", sizes: "16x16", type: "image/png" },
-        { url: "/favicon/favicon-32x32.png", sizes: "32x32", type: "image/png" },
-      ],
-      apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
-      other: [{ rel: "mask-icon", url: "/safari-pinned-tab.svg", color: "#F05A29" }],
-    },
-    manifest: "/manifest.webmanifest",
+
     authors: [{ name: "Varghese Construction" }],
     category: "Construction",
-      
+    schema: {
+      "@type": "CollectionPage", 
+      "name": "Customer Reviews & Testimonials",
+      "description": "Authentic customer reviews and testimonials for Varghese Construction services",
+      "mainEntity": {
+        "@type": "ItemList",
+        "numberOfItems": 150,
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "item": {
+              "@type": "Review",
+              "reviewRating": {
+                "@type": "Rating",
+                "ratingValue": 5,
+                "bestRating": 5
+              },
+              "author": {
+                "@type": "Person",
+                "name": "Satisfied Customer"
+              },
+              "reviewBody": "Excellent construction quality and professional team",
+              "itemReviewed": {
+                "@id": "https://www.vargheseconstruction.com/#organization"
+              }
+            }
+          }
+        ]
+      }
+    }
   },
 
   partners: {
@@ -192,19 +287,45 @@ const seo = {
       images: ["/twitter-partners.jpg"],
     },
     robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-video-preview': -1, 'max-image-preview': 'large', 'max-snippet': -1 } },
-    icons: {
-      icon: [
-        { url: "/favicon/favicon.ico" },
-        { url: "/favicon/favicon-16x16.png", sizes: "16x16", type: "image/png" },
-        { url: "/favicon/favicon-32x32.png", sizes: "32x32", type: "image/png" },
-      ],
-      apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
-      other: [{ rel: "mask-icon", url: "/safari-pinned-tab.svg", color: "#F05A29" }],
-    },
-    manifest: "/manifest.webmanifest",
     authors: [{ name: "Varghese Construction" }],
     category: "Construction",
-      
+    schema: {
+      "@type": "CollectionPage",
+      "name": "Our Trusted Partners",
+      "description": "Network of trusted partners and collaborators in construction industry",
+      "mainEntity": {
+        "@type": "ItemList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "item": {
+              "@type": "Organization",
+              "name": "Material Suppliers",
+              "description": "Trusted construction material suppliers"
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "item": {
+              "@type": "Organization", 
+              "name": "Architecture Firms",
+              "description": "Collaborating architecture and design partners"
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "item": {
+              "@type": "Organization",
+              "name": "Engineering Consultants",
+              "description": "Structural and civil engineering partners"
+            }
+          }
+        ]
+      }
+    }
   },
 
   contact: {
@@ -232,44 +353,52 @@ const seo = {
       images: ["/twitter-contact.jpg"],
     },
     robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-video-preview': -1, 'max-image-preview': 'large', 'max-snippet': -1 } },
-    icons: {
-      icon: [
-        { url: "/favicon/favicon.ico" },
-        { url: "/favicon/favicon-16x16.png", sizes: "16x16", type: "image/png" },
-        { url: "/favicon/favicon-32x32.png", sizes: "32x32", type: "image/png" },
-      ],
-      apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
-      other: [{ rel: "mask-icon", url: "/safari-pinned-tab.svg", color: "#F05A29" }],
-    },
-    manifest: "/manifest.webmanifest",
+   
     authors: [{ name: "Varghese Construction" }],
     category: "Construction",
-      
+    schema: {
+      "@type": "ContactPage",
+      "name": "Contact Varghese Construction",
+      "description": "Get in touch with Varghese Construction for construction projects and consultations",
+      "mainEntity": {
+        "@type": "Organization",
+        "@id": "https://www.vargheseconstruction.com/#organization",
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": "+91-9629695979",
+          "contactType": "customer service",
+          "areaServed": "IN",
+          "availableLanguage": ["English", "Tamil", "Malayalam"]
+        }
+      }
+    }
   },
 };
 
-
 export async function generateMetadata({ params }) {
-  const { section } = await params;   // ✅ Await params
+  const { section } = await params;
   const meta = seo[section];
 
-  if (!meta) return {}; // fallback or trigger notFound()
+  if (!meta) return {};
 
+  // Create page-specific schema using the unique schema for each page
   const jsonLd = {
     "@context": "https://schema.org",
-    "@type": "WebPage",
-    "name": meta.title,
-    "description": meta.description,
-    "url": meta.openGraph.url,
-    "publisher": {
-      "@type": "Organization",
-      "name": "Varghese Construction",
-      "logo": { "@type": "ImageObject", "url": "/logo.png" }
-    },
+    ...meta.schema, // This spreads the unique schema type for each page
+    "url": meta.openGraph.url
   };
 
   return {
     ...meta,
+       icons: {
+        icon: [
+          { url: "/favicon/favicon.ico" },
+          { url: "/favicon/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+          { url: "/favicon/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+        ],
+        apple: [{ url: "/apple-touch-icon.png", sizes: "180x180" }],
+      },
+      manifest: "/manifest.webmanifest",
     other: {
       "application/ld+json": JSON.stringify(jsonLd),
     },

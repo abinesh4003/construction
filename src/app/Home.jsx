@@ -19,18 +19,33 @@ export default function Home({ scrollTo }) {
   let pathname=usePathname();
 
   // Scroll to section when loaded
-  useEffect(() => {
+useEffect(() => {
   if (!scrollTo) return;
 
-  const el = document.getElementById(scrollTo);
+  const scrollIntoView = () => {
+    const el = document.getElementById(scrollTo);
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
 
-  if (el) {
-    // Delay slightly to ensure layout is ready
-    setTimeout(() => {
-      el.scrollIntoView({ behavior: "smooth" });
-    }, 100);
-  }
+  // Try once immediately
+  scrollIntoView();
+
+  // Retry after layout stabilizes
+  const timeout1 = setTimeout(scrollIntoView, 400);
+  const timeout2 = setTimeout(scrollIntoView, 800);
+
+  // Extra fix for iOS Safari — scroll after images/fonts load
+  window.addEventListener("load", scrollIntoView);
+
+  return () => {
+    clearTimeout(timeout1);
+    clearTimeout(timeout2);
+    window.removeEventListener("load", scrollIntoView);
+  };
 }, [scrollTo, pathname]);
+
   return (
     <div className="max-w-screen relative overflow-x-hidden">
       <Navbar />

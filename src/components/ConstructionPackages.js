@@ -163,7 +163,7 @@ export default function ConstructionPackages() {
               </motion.div>
 
               {/* Features */}
-              <ul className="space-y-2 mb-6 text-center">
+              <ul className="space-y-2 mb-6">
                 {pkg.features.map((f, i) => (
                   <motion.li
                     key={f}
