@@ -1,0 +1,19 @@
+{
+  "redirects": [
+    {
+      "source": "http://vargheseconstruction.com/:path*",
+      "destination": "https://www.vargheseconstruction.com/:path*",
+      "permanent": true
+    },
+    {
+      "source": "https://vargheseconstruction.com/:path*",
+      "destination": "https://www.vargheseconstruction.com/:path*",
+      "permanent": true
+    },
+    {
+      "source": "http://www.vargheseconstruction.com/:path*",
+      "destination": "https://www.vargheseconstruction.com/:path*",
+      "permanent": true
+    }
+  ]
+}

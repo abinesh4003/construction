@@ -15,7 +15,7 @@ import Home from './Home';
   },
   metadataBase: new URL("https://www.vargheseconstruction.com"),
   alternates: {
-    canonical: "/",
+    canonical: "",
   },
   openGraph: {
     title: "Luxury Home Builders in Nagercoil | Varghese Construction",
