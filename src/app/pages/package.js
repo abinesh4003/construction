@@ -14,9 +14,36 @@ import Footer from '@/components/Footer';
 import { Toast } from '@/components/ui/toast';
 import { useDialog } from '@/components/DialogProvider';
 import { usePathname } from 'next/navigation';
-export default function Home() {
+export default function Package() {
   const { isDialogOpen, closeDialog } = useDialog();
+  let pathname=usePathname();
 
+  // Scroll to section when loaded
+useEffect(() => {
+
+  const scrollIntoView = () => {
+    const el = document.getElementById('package');
+    if (el) {
+      const yOffset = -80; // if navbar is fixed
+      const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
+      window.scrollTo({ top: y, behavior: "smooth" });
+    }
+  };
+
+  // Retry a few times for mobile layout delays
+  const timeouts = [
+    setTimeout(scrollIntoView, 200),
+    setTimeout(scrollIntoView, 600),
+    setTimeout(scrollIntoView, 1000),
+  ];
+
+  window.addEventListener("load", scrollIntoView);
+
+  return () => {
+    timeouts.forEach(clearTimeout);
+    window.removeEventListener("load", scrollIntoView);
+  };
+}, [pathname]);
 
 
   return (

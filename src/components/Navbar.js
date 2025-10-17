@@ -6,11 +6,13 @@ import { Menu, X } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useDialog } from './DialogProvider';
+import { usePathname } from 'next/navigation';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const { openDialog } = useDialog();
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -28,11 +30,12 @@ export default function Navbar() {
     { name: 'Partners', href: '/partners' },
   ];
 
-  // Dynamic logo/text color based on scroll
-  const logoColor = scrolled ? '#F05A29' : 'white';
+  // Dynamic color styles
   const linkColor = scrolled
     ? 'text-gray-700 hover:text-[#F05A29]'
     : 'text-white hover:text-[#FFD580]';
+
+  const activeBorderColor = scrolled ? 'border-[#FFD580]' : 'border-[#FFD580]';
 
   return (
     <nav
@@ -41,10 +44,10 @@ export default function Navbar() {
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 sm:px-10 flex justify-between items-center h-20">
-        {/* Logo / Brand */}
+        {/* Logo */}
         <Link
           href="/"
-          className={`text-2xl md:text-3xl font-serif italic font-bold transition-colors duration-300`}
+          className="text-2xl md:text-3xl font-serif italic font-bold transition-colors duration-300"
         >
           <Image
             src={scrolled ? '/logo.png' : '/logo1.png'}
@@ -57,24 +60,34 @@ export default function Navbar() {
 
         {/* Desktop Menu */}
         <div className="hidden md:flex items-center space-x-8">
-          {navItems.map((item, idx) => (
-            <Link
-              key={idx}
-              href={item.href}
-              className={`${linkColor} transition-all font-medium`}
-            >
-              {item.name}
-            </Link>
-          ))}
-          <button
-                onClick={() => {
-                  setIsOpen(false);
-                  openDialog();
-                }}
-                className="px-6 py-2 rounded-full bg-gradient-to-r from-[#F5B041] to-[#FFD580] text-black font-semibold hover:scale-105 transition"
+          {navItems.map((item, idx) => {
+            const isActive =
+              pathname === item.href ||
+              (pathname.startsWith(item.href) && item.href !== '/');
+            return (
+              <Link
+                key={idx}
+                href={item.href}
+                className={`${linkColor} relative transition-all font-medium pb-1`}
               >
-                Contact Us
-              </button>
+                {item.name}
+                {isActive && (
+                  <span
+                    className={`absolute left-0 bottom-0 w-full h-[2px] ${activeBorderColor} border-b-2 transition-all duration-300`}
+                  />
+                )}
+              </Link>
+            );
+          })}
+          <button
+            onClick={() => {
+              setIsOpen(false);
+              openDialog();
+            }}
+            className="px-6 py-2 rounded-full bg-gradient-to-r from-[#F5B041] to-[#FFD580] text-black font-semibold hover:scale-105 transition"
+          >
+            Contact Us
+          </button>
         </div>
 
         {/* Mobile Hamburger */}
@@ -99,16 +112,25 @@ export default function Navbar() {
             className="md:hidden bg-white/95 backdrop-blur-md w-full shadow-lg"
           >
             <div className="flex flex-col items-center py-6 space-y-4">
-              {navItems.map((item, idx) => (
-                <Link
-                  key={idx}
-                  href={item.href}
-                  onClick={() => setIsOpen(false)}
-                  className="text-gray-700 hover:text-[#F05A29] text-lg font-medium transition-all"
-                >
-                  {item.name}
-                </Link>
-              ))}
+              {navItems.map((item, idx) => {
+                const isActive =
+                  pathname === item.href ||
+                  (pathname.startsWith(item.href) && item.href !== '/');
+                return (
+                  <Link
+                    key={idx}
+                    href={item.href}
+                    onClick={() => setIsOpen(false)}
+                    className={`text-lg font-medium transition-all pb-1 ${
+                      isActive
+                        ? 'text-[#F05A29] border-b-2 border-[#F05A29]'
+                        : 'text-gray-700 hover:text-[#F05A29]'
+                    }`}
+                  >
+                    {item.name}
+                  </Link>
+                );
+              })}
               <button
                 onClick={() => {
                   setIsOpen(false);

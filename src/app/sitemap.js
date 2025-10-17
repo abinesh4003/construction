@@ -1,7 +1,7 @@
 // app/sitemap.js
 const baseUrl = "https://www.vargheseconstruction.com";
 
-const sections = [
+const pages = [
   { path: "", priority: 1.0, changeFreq: "monthly" }, // home
   { path: "service", priority: 0.9, changeFreq: "monthly" },
   { path: "portfolio", priority: 0.8, changeFreq: "monthly" },
@@ -14,10 +14,10 @@ const sections = [
 export default function sitemap() {
   const today = new Date();
 
-  return sections.map((section) => ({
-    url: `${baseUrl}/${section.path}`,
+  return pages.map((page) => ({
+    url: `${baseUrl}/${page.path}`,
     lastModified: today,
-    changeFrequency: section.changeFreq,
-    priority: section.priority,
+    changeFrequency: page.changeFreq,
+    priority: page.priority,
   }));
 }
