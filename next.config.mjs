@@ -11,7 +11,7 @@ const nextConfig = {
         has: [
           { type: 'host', value: 'vargheseconstruction.vercel.app' } // apex domain
         ],
-        destination: 'https://vargheseconstruction.vercel.app/:path*', // redirect to www
+        destination: 'https://www.vargheseconstruction.vercel.app/:path*', // redirect to www
         permanent: true, // 301 redirect
       },
     ];
