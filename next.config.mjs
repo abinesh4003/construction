@@ -1,21 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  trailingSlash: false,
-  images: {
-    domains: [],
-  },
-  async redirects() {
-    return [
-      {
-        source: '/:path*',
-        has: [
-          { type: 'host', value: 'vargheseconstruction.vercel.app' } // apex domain
+    images: {
+        domains: [
         ],
-        destination: 'https://www.vargheseconstruction.vercel.app/:path*', // redirect to www
-        permanent: true, // 301 redirect
-      },
-    ];
-  },
+    }
 };
 
 export default nextConfig;
