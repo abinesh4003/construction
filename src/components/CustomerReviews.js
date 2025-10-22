@@ -5,6 +5,7 @@ import { Star, Quote } from "lucide-react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
+import Link from "next/link";
 
 export default function LuxuryCustomerReviews() {
   const [currentIndex, setCurrentIndex] = useState(0);

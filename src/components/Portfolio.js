@@ -5,6 +5,7 @@ import { motion, useAnimation } from 'framer-motion';
 import { useDialog } from './DialogProvider';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
+import Link from 'next/link';
 import {
   Building2,
   FileText,
