@@ -29,6 +29,7 @@ const LuxuryFooter = () => {
         { name: "Our Services", href: "/service" },
         { name: "Projects", href: "/service" },
         { name: "Testimonials", href: "/reviews" },
+        {name : "Partners", href : "/partners" },
       ]
     },
     {

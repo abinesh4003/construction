@@ -100,6 +100,35 @@ export default function LuxuryCustomerReviews() {
               We specialize in turnkey construction solutions, modern kitchen and bathroom fittings, smart home readiness, custom woodwork,
               premium exterior finishes, and complete project management. Join our satisfied clients who recommend Varghese Construction for exceptional results.
             </p>
+                    <nav >
+          <ul>
+            <li >
+              <Link href="/">
+               Home Page
+              </Link>
+            </li>
+            <li >
+              <Link href="/service">
+               Services
+              </Link>
+            </li>
+            <li >
+              <Link href="/package">
+               Packages & Pricing
+              </Link>
+            </li>
+            <li >
+              <Link href="/portfolio">
+               Reviews
+              </Link>
+            </li>
+            <li >
+              <Link href="/partners">
+               Partners
+              </Link>
+            </li>
+          </ul>
+        </nav>
           </div>
 
           )}

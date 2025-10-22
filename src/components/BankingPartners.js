@@ -64,6 +64,35 @@ export default function BankingPartners() {
   <p>
     These strategic collaborations help us deliver luxury homes, commercial buildings, and turnkey construction projects efficiently, meeting every client’s expectations with professionalism and precision.
   </p>
+          <nav >
+          <ul>
+            <li >
+              <Link href="/">
+               Home Page
+              </Link>
+            </li>
+            <li >
+              <Link href="/service">
+               Services
+              </Link>
+            </li>
+            <li >
+              <Link href="/package">
+               Packages & Pricing
+              </Link>
+            </li>
+            <li >
+              <Link href="/reviews">
+               Reviews
+              </Link>
+            </li>
+            <li >
+              <Link href="/portfolio">
+               Partners
+              </Link>
+            </li>
+          </ul>
+        </nav>
 </div>
           ) }
           {/* Main Heading */}

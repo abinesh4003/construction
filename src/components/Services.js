@@ -6,6 +6,7 @@ import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { useDialog } from "./DialogProvider";
 import { usePathname } from "next/navigation";
+import Link from "next/link";
 
 const categories = [
   {
@@ -58,6 +59,36 @@ premium home construction, luxury villas, duplex homes, apartments, residential 
 We also specialize in renovations, interior design, turnkey solutions, modular kitchens, smart home systems, eco-friendly building solutions, landscaping, structural engineering, plumbing, electrical work, and building maintenance. 
 Our expert team ensures high-quality materials, craftsmanship, and timely delivery for every project in Nagercoil, Kanyakumari, and across Tamil Nadu.
 </p>
+
+        <nav >
+          <ul>
+            <li >
+              <Link href="/">
+               Home Page
+              </Link>
+            </li>
+            <li >
+              <Link href="/portfolio">
+               Portfolio
+              </Link>
+            </li>
+            <li >
+              <Link href="/package">
+               Packages & Pricing
+              </Link>
+            </li>
+            <li >
+              <Link href="/reviews">
+               Reviews
+              </Link>
+            </li>
+            <li >
+              <Link href="/partners">
+               Partners
+              </Link>
+            </li>
+          </ul>
+        </nav>
           </div>
 
 
