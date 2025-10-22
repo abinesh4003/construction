@@ -1,6 +1,5 @@
 import Package from "../pages/package";
 import Script from "next/script";
-import { Metadata } from "next";
 
 export const metadata = {
   title: "Affordable Construction Packages in Nagercoil | Varghese Construction",

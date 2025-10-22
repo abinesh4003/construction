@@ -65,7 +65,6 @@ export default function BankingPartners() {
   <p>
     These strategic collaborations help us deliver luxury homes, commercial buildings, and turnkey construction projects efficiently, meeting every client’s expectations with professionalism and precision.
   </p>
-          <nav >
           <ul>
             <li >
               <Link href="/">
@@ -93,7 +92,7 @@ export default function BankingPartners() {
               </Link>
             </li>
           </ul>
-        </nav>
+
 </div>
           ) }
           {/* Main Heading */}

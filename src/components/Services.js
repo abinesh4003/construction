@@ -60,7 +60,7 @@ We also specialize in renovations, interior design, turnkey solutions, modular k
 Our expert team ensures high-quality materials, craftsmanship, and timely delivery for every project in Nagercoil, Kanyakumari, and across Tamil Nadu.
 </p>
 
-        <nav >
+    
           <ul>
             <li >
               <Link href="/">
@@ -88,7 +88,6 @@ Our expert team ensures high-quality materials, craftsmanship, and timely delive
               </Link>
             </li>
           </ul>
-        </nav>
           </div>
 
 

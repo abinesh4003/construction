@@ -94,7 +94,7 @@ export default function WhyChooseUs() {
             <p>
               Explore our Portfolio to witness the craftsmanship, innovation, and reliability that make Varghese Construction a trusted choice for building luxury homes, villas, and commercial spaces in Tamil Nadu.
             </p>
-               <nav >
+            
           <ul>
             <li >
               <Link href="/">
@@ -122,7 +122,7 @@ export default function WhyChooseUs() {
               </Link>
             </li>
           </ul>
-        </nav>
+      
           </div>
 
           )}
