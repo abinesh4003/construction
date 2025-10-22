@@ -38,10 +38,6 @@ export default function ContactSection() {
           whileInView={{ opacity: 1, y: 0 }}
           className="text-center mb-10 sm:mb-12"
         >
-          {/* Heading for seo */}
-          {pathname=="/contact" && (
-            <h1 className="sr-only">Contact Varghese Construction Nagercoil Builders</h1>
-          ) }
           {/* Main Heading */}
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-3 sm:mb-4">
             Let&apos;s Build Your Dream with Varghese Construction

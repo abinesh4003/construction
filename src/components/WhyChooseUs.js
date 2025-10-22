@@ -19,12 +19,11 @@ export default function WhyChooseConstructionPremium() {
   const { openDialog } = useDialog();
 
   return (
-    <section className="relative w-full overflow-hidden" aria-labelledby="why-choose-heading">
+    <section className="relative w-full  bg-black/10 overflow-hidden" aria-labelledby="why-choose-heading">
       <h2 id="why-choose-heading" className="sr-only">
         Why Choose Our Construction | Varghese Construction
       </h2>
 
-      <div className="absolute inset-0 bg-black/10" />
 
       {/* Desktop Heading */}
       <motion.div
@@ -80,7 +79,7 @@ export default function WhyChooseConstructionPremium() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: false, amount: 0.3 }}
             transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1], delay: 0.4 }}
-            className="mt-6 sm:col-span-2 inline-block px-8 py-3 rounded-full bg-gradient-to-r from-amber-500 to-amber-300 text-black montserrat font-semibold shadow-lg hover:scale-105 transform transition text-center"
+            className="mt-6 sm:col-span-2 inline-block cursor-pointer px-8 py-3 rounded-full bg-gradient-to-r from-amber-500 to-amber-300 text-black montserrat font-semibold shadow-lg hover:scale-105 transform transition text-center"
             onClick={openDialog}
             aria-label="Book Free Consultation"
           >

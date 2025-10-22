@@ -6,6 +6,6 @@ export default function robots() {
         allow: "/",
       },
     ],
-    sitemap: "https://vargheseconstruction.com/sitemap.xml",
+    sitemap: "https://www.vargheseconstruction.com/sitemap.xml",
   };
 }

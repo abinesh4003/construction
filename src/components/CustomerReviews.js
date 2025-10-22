@@ -30,10 +30,10 @@ export default function LuxuryCustomerReviews() {
   const visibleReviews = isMobile
     ? [reviews[currentIndex % reviews.length]]
     : [
-        reviews[currentIndex % reviews.length],
-        reviews[(currentIndex + 1) % reviews.length],
-        reviews[(currentIndex + 2) % reviews.length],
-      ];
+      reviews[currentIndex % reviews.length],
+      reviews[(currentIndex + 1) % reviews.length],
+      reviews[(currentIndex + 2) % reviews.length],
+    ];
 
   useEffect(() => {
     const interval = setInterval(() => handleNext(), 8000);
@@ -86,20 +86,36 @@ export default function LuxuryCustomerReviews() {
           transition={{ duration: 0.6, ease: "easeOut" }}
           className="text-center mb-12 md:mb-20"
         >
-          {pathname === "/reviews" && <h1 className="sr-only">Customer Reviews - Varghese Construction</h1>}
+          {pathname === "/reviews" && (<div className="sr-only">
+            <h1>Customer Reviews - Varghese Construction</h1>
+            <p>
+              Varghese Construction is a trusted construction company in Nagercoil delivering high-quality villas, luxury homes, and commercial projects.
+              Our customers consistently praise our professionalism, timely delivery, quality materials, and meticulous attention to detail.
+            </p>
+            <p>
+              Read authentic reviews from homeowners, ISRO scientists, business owners, and professionals who have entrusted us with their dream homes.
+              Our team ensures transparent pricing, expert craftsmanship, and a stress-free construction experience.
+            </p>
+            <p>
+              We specialize in turnkey construction solutions, modern kitchen and bathroom fittings, smart home readiness, custom woodwork,
+              premium exterior finishes, and complete project management. Join our satisfied clients who recommend Varghese Construction for exceptional results.
+            </p>
+          </div>
+
+          )}
           <motion.h2 className="text-3xl md:text-5xl font-bold text-amber-400 font-playfair mb-4 md:mb-6"
-          initial={{ opacity: 0, x: 300 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: false }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
+            initial={{ opacity: 0, x: 300 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: false }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
           >
             <span className="font-inter text-gray-900">Our Happy </span> Customers
           </motion.h2>
           <motion.p className="text-base md:text-lg text-gray-700 max-w-3xl mx-auto px-4 inter"
-           initial={{ opacity: 0,scale:0.8  }}
-          whileInView={{ opacity: 1, scale:1  }}
-          viewport={{ once: false }}
-          transition={{ duration: 0.6, ease: "easeOut" }}>
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: false }}
+            transition={{ duration: 0.6, ease: "easeOut" }}>
             Hear from homeowners and businesses who have experienced our quality craftsmanship firsthand.
           </motion.p>
         </motion.div>

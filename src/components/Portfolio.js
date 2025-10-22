@@ -67,7 +67,7 @@ export default function WhyChooseUs() {
       </div>
 
       <div className={`relative z-10 max-w-7xl mx-auto ${isMobile ? 'py-16 px-4' : isTablet ? 'py-20 px-6' : 'py-28 px-6'}`}>
-        
+
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -76,8 +76,25 @@ export default function WhyChooseUs() {
           transition={{ duration: 0.8, ease: 'easeOut' }}
           className="text-center relative"
         >
-          {pathname === "/portfolio" && (
-            <h1 className="sr-only">About Varghese Construction Trusted Builders in Nagercoil</h1>
+          {pathname === "/portfolio" && (<div className="sr-only">
+            <h1>About Varghese Construction Trusted Builders in Nagercoil</h1>
+            <p>
+              Varghese Construction Portfolio showcases our premium construction projects, including luxury villas, residential homes, and commercial buildings across Nagercoil and Tamil Nadu.
+              Each project reflects our commitment to quality, safety, and timely delivery, ensuring client satisfaction at every stage.
+            </p>
+            <p>
+              Our villa projects highlight elegant design, modern construction methods, and attention to detail, while our residential home projects offer customized solutions for individual client needs.
+              Commercial building projects demonstrate our expertise in large-scale construction, project management, and adherence to industry standards.
+            </p>
+            <p>
+              The portfolio includes over 150 completed projects, with floor plans, construction workers, and total build-up area documented to showcase our experience and capability.
+              Our projects span multiple cities, including Nagercoil, Kanyakumari, Marthandam, Thuckalay, and nearby areas, delivering exceptional construction services across the region.
+            </p>
+            <p>
+              Explore our Portfolio to witness the craftsmanship, innovation, and reliability that make Varghese Construction a trusted choice for building luxury homes, villas, and commercial spaces in Tamil Nadu.
+            </p>
+          </div>
+
           )}
           <h2 className={`mb-4 leading-tight ${isMobile ? 'text-3xl' : isTablet ? 'text-4xl' : 'text-5xl'}`}>
             <span className="text-gray-900 Montserrat font-bold">You Made the </span>
@@ -234,7 +251,7 @@ function CountUp({ value = 0, duration = 3000, suffix = '' }) {
       ([entry]) => {
         if (entry.isIntersecting && !hasAnimated) {
           setHasAnimated(true);
-          
+
           let start = 0;
           const end = Number(value);
           const range = end - start;

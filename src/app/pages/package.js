@@ -55,6 +55,23 @@ useEffect(() => {
         <WhyChooseUs />
         <Portfolio />
         <ConstructionPackages />
+        {/* SEO Hidden Text for Packages */}
+<div className="sr-only">
+  <p>
+    Varghese Construction offers affordable and premium construction packages in Nagercoil tailored for every budget and home type. 
+    Choose from Basic, Classic, Premium, and Royal packages to build villas, duplexes, apartments, or luxury homes. 
+  </p>
+  <p>
+    Our packages include high-quality materials, branded steel and cement, floor tiles, teak wood doors and windows, 
+    modern kitchen and bathroom fittings, smart home readiness, and eco-friendly finishes. 
+  </p>
+  <p>
+    Additional services include structural engineering consultation, turnkey solutions, modular kitchens, 
+    custom architectural designs, landscaping, plumbing, electrical work, and full project management. 
+    We ensure timely delivery, premium craftsmanship, and transparent pricing for every construction project.
+  </p>
+</div>
+
         <CustomerReviews />
         <BankingPartners />
         <ContactUsSection />

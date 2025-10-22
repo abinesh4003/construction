@@ -51,8 +51,20 @@ export default function BankingPartners() {
           className="text-center mb-12"
         >
           {/* Heading for seo */}
-          {pathname === "/partners" && (
-            <h1 className="sr-only">Our Partners - Varghese Construction</h1>
+          {pathname === "/partners" && (<div className="sr-only">
+   <h1 className="sr-only">Our Partners - Varghese Construction</h1>
+  <p>
+    Varghese Construction works with trusted partners across Nagercoil and Kanyakumari, including top banking institutions, material suppliers, architecture firms, and engineering consultants. 
+    Our collaborators ensure timely project delivery, premium construction quality, and seamless client experiences.
+  </p>
+  <p>
+    Our banking partners like HDFC, SBI, ICICI, Kotak, PNB, Axis, and IDBI provide smooth financial transactions for our clients. 
+    We carefully select architecture and engineering partners to maintain high standards in design, structural safety, and project management.
+  </p>
+  <p>
+    These strategic collaborations help us deliver luxury homes, commercial buildings, and turnkey construction projects efficiently, meeting every client’s expectations with professionalism and precision.
+  </p>
+</div>
           ) }
           {/* Main Heading */}
           <h2 className="text-3xl md:text-5xl font-extrabold mb-4 animate-gradient-x">

@@ -46,9 +46,21 @@ export default function PremiumServices() {
         className="text-center px-6 mb-10"
       >
         {pathname === "/service" && (
-          <h1 className="sr-only">
-            Construction Services in Nagercoil Homes, Villas & Commercial
-          </h1>
+          <div className="sr-only">
+           <h1 className="sr-only">Construction Services in Nagercoil Homes, Villas & Commercial</h1> 
+           <p className="sr-only">Residential construction: luxury homes, apartments, and villas with modern architecture.</p>
+<p className="sr-only">Commercial projects: offices, shops, complexes, and industrial buildings with professional project management.</p>
+<p className="sr-only">Renovation & interiors: turnkey solutions, modular kitchens, smart home systems, and eco-friendly designs.</p>
+<p className="sr-only">Additional services: landscaping, plumbing, electrical work, building maintenance, and structural engineering consultation.</p>
+<p className="sr-only">
+Varghese Construction in Nagercoil offers a full range of construction services for residential, commercial, and industrial projects. Our services include: 
+premium home construction, luxury villas, duplex homes, apartments, residential buildings, commercial complexes, offices, schools, hotels, PG/rental accommodations, and industrial buildings. 
+We also specialize in renovations, interior design, turnkey solutions, modular kitchens, smart home systems, eco-friendly building solutions, landscaping, structural engineering, plumbing, electrical work, and building maintenance. 
+Our expert team ensures high-quality materials, craftsmanship, and timely delivery for every project in Nagercoil, Kanyakumari, and across Tamil Nadu.
+</p>
+          </div>
+
+
         )}
         <motion.h2
           initial={{ opacity: 0, y: 40 }}
