@@ -31,10 +31,10 @@ export default function LuxuryCustomerReviews() {
   const visibleReviews = isMobile
     ? [reviews[currentIndex % reviews.length]]
     : [
-      reviews[currentIndex % reviews.length],
-      reviews[(currentIndex + 1) % reviews.length],
-      reviews[(currentIndex + 2) % reviews.length],
-    ];
+        reviews[currentIndex % reviews.length],
+        reviews[(currentIndex + 1) % reviews.length],
+        reviews[(currentIndex + 2) % reviews.length],
+      ];
 
   useEffect(() => {
     const interval = setInterval(() => handleNext(), 8000);

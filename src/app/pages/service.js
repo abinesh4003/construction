@@ -5,11 +5,13 @@ import Navbar from '@/components/Navbar';
 import Services from '@/components/Services';
 import WhyChooseUs from '@/components/WhyChooseUs';
 import Portfolio from '@/components/Portfolio';
+import ServiceGallery from '@/components/ServiceGallery';
 import ConstructionPackages from '@/components/ConstructionPackages';
 import CustomerReviews from '@/components/CustomerReviews';
 import BankingPartners from '@/components/BankingPartners';
 import ContactUsSection from '@/components/ContactUsSection';
 import ContactDialog from '@/components/ContactDialog';
+import { motion } from 'framer-motion';
 import Footer from '@/components/Footer';
 import { Toast } from '@/components/ui/toast';
 import { useDialog } from '@/components/DialogProvider';
@@ -52,6 +54,8 @@ useEffect(() => {
       <main>
         <Hero />
         <Services />
+       
+        <ServiceGallery/>
         <WhyChooseUs />
         <Portfolio />
         <ConstructionPackages />

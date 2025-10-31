@@ -68,7 +68,7 @@ export default function WhyChooseUs() {
       </div>
 
       <div className={`relative z-10 max-w-7xl mx-auto ${isMobile ? 'py-16 px-4' : isTablet ? 'py-20 px-6' : 'py-28 px-6'}`}>
-
+        
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}

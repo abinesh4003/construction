@@ -154,7 +154,7 @@ Our expert team ensures high-quality materials, craftsmanship, and timely delive
             initial={{ opacity: 0, y: 25 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, ease: [0.25, 0.1, 0.25, 1] }}
-            className="text-3xl md:text-5xl font-bold text-white drop-shadow-xl font-[Montserrat] block"
+            className="text-3xl md:text-5xl font-bold text-white drop-shadow-xl montserrat block"
           >
             {categories[active].title}
           </motion.span>
@@ -250,7 +250,8 @@ Our expert team ensures high-quality materials, craftsmanship, and timely delive
         transition={{ duration: 1, ease: [0.25, 0.1, 0.25, 1], delay: 0.3 }}
         className="flex justify-center mt-12"
       >
-        <motion.button
+      {pathname !== "/service" && (
+           <motion.button
           onClick={openDialog}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
@@ -259,7 +260,10 @@ Our expert team ensures high-quality materials, craftsmanship, and timely delive
         >
           Get Started today
         </motion.button>
+        )}
       </motion.div>
+
+
     </section>
   );
 }

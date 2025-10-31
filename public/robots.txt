@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Host
-Host: https://vargheseconstruction.com
+Host: https://www.vargheseconstruction.com
 
 # Sitemaps
-Sitemap: https://vargheseconstruction.com/sitemap.xml
+Sitemap: https://www.vargheseconstruction.com/sitemap.xml

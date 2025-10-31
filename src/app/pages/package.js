@@ -56,6 +56,7 @@ useEffect(() => {
         <Portfolio />
         <ConstructionPackages />
         {/* SEO Hidden Text for Packages */}
+         <h1 className="sr-only">Affordable Construction Packages in Nagercoil | Varghese Construction</h1>
 <div className="sr-only">
   <p>
     Varghese Construction offers affordable and premium construction packages in Nagercoil tailored for every budget and home type. 
