@@ -79,7 +79,7 @@ const services = [
     },
 ];
 
-  
+
 
 export default function ServicesSection() {
 
@@ -120,7 +120,7 @@ export default function ServicesSection() {
                                 x: 0,
                             }}
                             delay={0}
-                         
+
                             viewport={{ once: false }}
                             className={`relative overflow-hidden shadow-lg group cursor-pointer border border-slate-200/50 bg-white/5 hover:shadow-2xl hover:shadow-amber-100/50 transition-all duration-300 min-h-[200px] md:min-h-[250px] ${service.layout}`}
                             tabIndex={0}
@@ -194,7 +194,7 @@ export default function ServicesSection() {
                     </h3>
 
                     <p className="text-slate-600 text-base sm:text-lg lg:text-xl mb-8 sm:mb-10 max-w-2xl mx-auto leading-relaxed px-2">
-                        Let's discuss your project and bring your construction dreams to life with our expert team and premium services.
+                        Let&apos;s discuss your project and bring your construction dreams to life with our expert team and premium services.
                     </p>
 
                     <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
