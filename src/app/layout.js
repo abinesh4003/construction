@@ -89,7 +89,7 @@ export const metadata = {
   verification: {
     google: "qPXGbHMkRjHCvd8gn2RhqkM_sWb7e43inQQIV_u3j50",
   },
-  metadataBase: new URL("https://www.vargheseconstruction.com"),
+  metadataBase: new URL("https://vargheseconstruction.vercel.app"),
   alternates: {
     canonical: "/",
   },
@@ -114,11 +114,11 @@ export const metadata = {
   openGraph: {
     title: "Luxury Home Builders in Nagercoil | Varghese Construction",
     description: "Varghese Construction, trusted builders in Kanyakumari district. We deliver quality homes, villas & projects with transparent pricing and timely completion.",
-    url: "https://www.vargheseconstruction.com",
+    url: "https://vargheseconstruction.vercel.app",
     siteName: "Varghese Construction",
     images: [
       {
-        url: "/og-image.jpg",
+        url: "https://vargheseconstruction.vercel.app/og-image.jpg",
         width: 1200,
         height: 630,
         alt: "Varghese Construction - Luxury Home Builders in Kanyakumari & Nagercoil, Tamil Nadu",
@@ -133,7 +133,7 @@ export const metadata = {
     creator: "@vargheseconst",
     title: "Luxury Home Builders in Nagercoil | Varghese Construction",
     description: "Varghese Construction, trusted builders in Kanyakumari district. We deliver quality homes, villas & projects with transparent pricing and timely completion.",
-    images: ["/twitter-image.jpg"],
+    images: ["https://vargheseconstruction.vercel.app/twitter-image.jpg"],
   },
   robots: {
     index: true,
@@ -172,9 +172,9 @@ export default function RootLayout({ children }) {
               "@context": "https://schema.org",
               "@type": "ConstructionBusiness",
               "name": "Varghese Construction",
-              "url": "https://www.vargheseconstruction.com",
-              "logo": "https://www.vargheseconstruction.com/logo.png",
-              "image": "https://www.vargheseconstruction.com/og-image.jpg",
+              "url": "https://vargheseconstruction.vercel.app",
+              "logo": "https://vargheseconstruction.vercel.app/logo.png",
+              "image": "https://vargheseconstruction.vercel.app/og-image.jpg",
               "description": "Premier construction company specializing in luxury villas, custom homes, and commercial projects in Kanyakumari & Nagercoil, Tamil Nadu.",
               "address": {
                 "@type": "PostalAddress",

@@ -13,7 +13,7 @@ export const metadata = {
       description: "Showcasing our completed projects and premium construction work.",
       url: "https://www.vargheseconstruction.com/portfolio",
       siteName: "Varghese Construction",
-      images: [{ url: "/og-portfolio.jpg", width: 1200, height: 630, alt: "Portfolio - Varghese Construction" }],
+      images: [{ url: "https://www.vargheseconstruction.com/og-portfolio.jpg", width: 1200, height: 630, alt: "Portfolio - Varghese Construction" }],
       locale: "en_IN",
       type: "website",
     },
@@ -23,7 +23,7 @@ export const metadata = {
       creator: "@vargheseconst",
       title: "Portfolio - Varghese Construction",
       description: "Showcasing our completed projects and premium construction work.",
-      images: ["/twitter-portfolio.jpg"],
+      images: ["https://www.vargheseconstruction.com/twitter-portfolio.jpg"],
     },
     robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-video-preview': -1, 'max-image-preview': 'large', 'max-snippet': -1 } },
   
