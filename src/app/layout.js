@@ -78,14 +78,14 @@ export const viewport = {
 };
 
 
- export const metadata = {
+export const metadata = {
   title: "Luxury Home Builders in Nagercoil | Varghese Construction",
   description: "Build luxury villas & homes in Nagercoil with Varghese Construction. Trusted builders with 10+ years of experience in premium residential & commercial projects.",
   keywords: [
-  " Luxury home builders Nagercoil",
-"Villa construction Tamil Nadu",
-"Best construction company Nagercoil",
-"Residential & commercial builders",],
+    " Luxury home builders Nagercoil",
+    "Villa construction Tamil Nadu",
+    "Best construction company Nagercoil",
+    "Residential & commercial builders",],
   verification: {
     google: "qPXGbHMkRjHCvd8gn2RhqkM_sWb7e43inQQIV_u3j50",
   },
@@ -93,7 +93,7 @@ export const viewport = {
   alternates: {
     canonical: "/",
   },
-   icons: {
+  icons: {
     icon: [
       { url: "/favicon/favicon.ico" },
       { url: "/favicon/favicon-16x16.png", sizes: "16x16", type: "image/png" },
@@ -105,7 +105,7 @@ export const viewport = {
     other: [
       {
         rel: "mask-icon",
-        url: "/safari-pinned-tab.svg",
+        url: "/og-image.jpg",
         color: "#F05A29",
       },
     ],
@@ -146,13 +146,13 @@ export const viewport = {
       'max-snippet': -1,
     },
   },
- 
+
   authors: [{ name: "Varghese Construction" }],
   category: "Construction",
   other: {
     "facebook-domain-verification": "your-facebook-verification-code",
   },
- };
+};
 
 
 

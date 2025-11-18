@@ -37,76 +37,45 @@ export default function PremiumServices() {
   const pathname = usePathname();
 
   return (
-    <section className="relative w-full py-12 md:py-16" id="service">
+    <section className="relative w-full py-10 md:py-16" id="service">
       {/* Section Heading */}
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: false, amount: 0.3 }}
-        transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
-        className="text-center px-6 mb-10"
+        transition={{ duration: 0.8 }}
+        className="text-center px-4 sm:px-6 mb-8"
       >
         {pathname === "/service" && (
           <div className="sr-only">
-           <h1 className="sr-only">Construction Services in Nagercoil Homes, Villas & Commercial</h1> 
-           <p className="sr-only">Residential construction: luxury homes, apartments, and villas with modern architecture.</p>
-<p className="sr-only">Commercial projects: offices, shops, complexes, and industrial buildings with professional project management.</p>
-<p className="sr-only">Renovation & interiors: turnkey solutions, modular kitchens, smart home systems, and eco-friendly designs.</p>
-<p className="sr-only">Additional services: landscaping, plumbing, electrical work, building maintenance, and structural engineering consultation.</p>
-<p className="sr-only">
-Varghese Construction in Nagercoil offers a full range of construction services for residential, commercial, and industrial projects. Our services include: 
-premium home construction, luxury villas, duplex homes, apartments, residential buildings, commercial complexes, offices, schools, hotels, PG/rental accommodations, and industrial buildings. 
-We also specialize in renovations, interior design, turnkey solutions, modular kitchens, smart home systems, eco-friendly building solutions, landscaping, structural engineering, plumbing, electrical work, and building maintenance. 
-Our expert team ensures high-quality materials, craftsmanship, and timely delivery for every project in Nagercoil, Kanyakumari, and across Tamil Nadu.
-</p>
-
-    
-          <ul>
-            <li >
-              <Link href="/">
-               Home Page
-              </Link>
-            </li>
-            <li >
-              <Link href="/portfolio">
-               Portfolio
-              </Link>
-            </li>
-            <li >
-              <Link href="/package">
-               Packages & Pricing
-              </Link>
-            </li>
-            <li >
-              <Link href="/reviews">
-               Reviews
-              </Link>
-            </li>
-            <li >
-              <Link href="/partners">
-               Partners
-              </Link>
-            </li>
-          </ul>
+            <h1>Construction Services in Nagercoil Homes, Villas & Commercial</h1>
+            <p>Residential construction: luxury homes, apartments, and villas with modern architecture.</p>
+            <p>Commercial projects: offices, shops, complexes, and industrial buildings with professional project management.</p>
+            <p>Renovation & interiors: turnkey solutions, modular kitchens, smart home systems, and eco-friendly designs.</p>
+            <p>Additional services: landscaping, plumbing, electrical work, building maintenance, and structural engineering consultation.</p>
+            <ul>
+              <li><Link href="/">Home Page</Link></li>
+              <li><Link href="/portfolio">Portfolio</Link></li>
+              <li><Link href="/package">Packages & Pricing</Link></li>
+              <li><Link href="/reviews">Reviews</Link></li>
+              <li><Link href="/partners">Partners</Link></li>
+            </ul>
           </div>
-
-
         )}
+
         <motion.h2
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false, amount: 0.3 }}
-          transition={{ duration: 0.9, ease: [0.25, 0.1, 0.25, 1] }}
-          className="text-4xl md:text-5xl font-bold montserrat bg-gradient-to-r from-amber-500 to-orange-400 bg-clip-text text-transparent"
+          transition={{ duration: 0.9 }}
+          className="text-3xl sm:text-4xl md:text-5xl font-bold montserrat bg-gradient-to-r from-amber-500 to-orange-400 bg-clip-text text-transparent"
         >
           Our Services
         </motion.h2>
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false, amount: 0.3 }}
-          transition={{ duration: 1, ease: [0.25, 0.1, 0.25, 1] }}
-          className="mt-4 text-lg text-gray-600 max-w-2xl mx-auto font-[Inter]"
+          transition={{ duration: 1 }}
+          className="mt-3 text-base sm:text-lg text-gray-600 max-w-2xl mx-auto font-[Inter]"
         >
           Discover our premium construction services tailored for homes and businesses.
         </motion.p>
@@ -116,9 +85,8 @@ Our expert team ensures high-quality materials, craftsmanship, and timely delive
       <motion.div
         initial={{ opacity: 0, scale: 0.97, y: 30 }}
         whileInView={{ opacity: 1, scale: 1, y: 0 }}
-        viewport={{ once: false, amount: 0.3 }}
-        transition={{ duration: 1, ease: [0.25, 0.1, 0.25, 1] }}
-        className="relative w-full h-[60vh] md:h-[70vh] overflow-hidden shadow-2xl rounded-xl"
+        transition={{ ease: "easeInOut" }}
+        className="relative w-full h-[45vh] sm:h-[55vh] md:h-[70vh] overflow-hidden shadow-2xl rounded-xl"
       >
         <Image
           src={categories[active].image}
@@ -127,34 +95,16 @@ Our expert team ensures high-quality materials, craftsmanship, and timely delive
           priority
           className="object-cover scale-105"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+        {/* black overlay */}
+        <div className="absolute inset-0 bg-black/40 md:bg-black/50" />
 
-        {/* Floating Shapes */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          animate={{ y: [0, -10, 0] }}
-          viewport={{ once: false }}
-          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-10 left-10 w-20 h-20 bg-amber-400/20 rounded-full blur-2xl"
-        />
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          animate={{ y: [0, 15, 0] }}
-          viewport={{ once: false }}
-          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute bottom-10 right-10 w-32 h-32 bg-white/10 rounded-full blur-3xl"
-        />
-
-        {/* Banner Content */}
-        <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
+        <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-3 sm:px-6">
           <motion.span
             key={categories[active].title}
             initial={{ opacity: 0, y: 25 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, ease: [0.25, 0.1, 0.25, 1] }}
-            className="text-3xl md:text-5xl font-bold text-white drop-shadow-xl montserrat block"
+            transition={{ duration: 0.9 }}
+            className="text-2xl sm:text-3xl md:text-5xl font-bold text-white drop-shadow-xl montserrat block"
           >
             {categories[active].title}
           </motion.span>
@@ -163,8 +113,8 @@ Our expert team ensures high-quality materials, craftsmanship, and timely delive
             key={categories[active].subtitle}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, ease: [0.25, 0.1, 0.25, 1] }}
-            className="mt-3 text-lg md:text-xl text-gray-200 max-w-xl font-[Inter]"
+            transition={{ duration: 1 }}
+            className="mt-2 sm:mt-3 text-sm sm:text-base md:text-xl text-gray-200 max-w-md sm:max-w-xl font-[Inter]"
           >
             {categories[active].subtitle}
           </motion.p>
@@ -175,16 +125,15 @@ Our expert team ensures high-quality materials, craftsmanship, and timely delive
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: false, amount: 0.3 }}
-        transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
-        className="flex justify-center gap-6 mt-6 flex-wrap"
+        transition={{ duration: 0.8 }}
+        className="flex justify-center gap-4 sm:gap-6 mt-5 sm:mt-6 flex-wrap px-2"
       >
         {categories.map((c, i) => (
           <button
             key={i}
             onClick={() => setActive(i)}
             className={cn(
-              "relative pb-2 text-lg font-semibold transition-all font-[Montserrat]",
+              "relative pb-1 sm:pb-2 text-base sm:text-lg font-semibold transition-all font-[Montserrat]",
               active === i ? "text-amber-500" : "text-gray-600 hover:text-amber-400"
             )}
           >
@@ -204,24 +153,18 @@ Our expert team ensures high-quality materials, craftsmanship, and timely delive
       <motion.div
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
-        viewport={{ once: false, amount: 0.3 }}
-        transition={{ duration: 1, ease: [0.25, 0.1, 0.25, 1] }}
-        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-10 px-6 md:px-12"
+        transition={{ duration: 1 }}
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-8 mt-8 sm:mt-10 px-4 sm:px-6 md:px-12"
       >
-        <AnimatePresence mode="wait">
+        <AnimatePresence mode="popLayout">
           {categories[active].items.map((item, idx) => (
             <motion.div
               key={item.title}
-              initial={{ opacity: 0, y: 60 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: false, amount: 0.3 }}
-              exit={{ opacity: 0 }}
-              transition={{
-                duration: 0.9,
-                ease: [0.25, 0.1, 0.25, 1],
-                delay: idx * 0.15,
-              }}
-              className="group relative rounded-md overflow-hidden shadow-lg hover:shadow-2xl transition-all h-64"
+              initial={{ opacity: 0,x:-50 }}
+              whileInView={{ opacity: 1 ,x:0}}
+              exit={{ x: 300, opacity: 0 }}
+              transition={{ duration: 0.3, delay: idx * 0.15 }}
+              className="group relative rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-all h-56 sm:h-64"
             >
               <Image
                 src={item.img}
@@ -229,41 +172,38 @@ Our expert team ensures high-quality materials, craftsmanship, and timely delive
                 fill
                 className="object-cover group-hover:scale-110 transition-transform duration-500"
               />
-              <div className="absolute inset-0 bg-black/40 group-hover:bg-black/30 transition-all flex flex-col justify-end p-6">
-                <span className="text-lg font-semibold text-white font-[Montserrat] block">
+              <div className="absolute inset-0 bg-black/40 group-hover:bg-black/30 transition-all flex flex-col justify-end p-4 sm:p-6">
+                <span className="text-base sm:text-lg font-semibold text-white font-[Montserrat] block">
                   {item.title}
                 </span>
-                <p className="text-gray-200 mt-1 text-sm font-[Inter]">
-                  {item.desc}
-                </p>
+                <p className="text-gray-200 mt-1 text-xs sm:text-sm font-[Inter]">{item.desc}</p>
               </div>
             </motion.div>
           ))}
         </AnimatePresence>
       </motion.div>
 
-      {/* CTA Button */}
+      {/* CTA */}
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: false, amount: 0.3 }}
-        transition={{ duration: 1, ease: [0.25, 0.1, 0.25, 1], delay: 0.3 }}
-        className="flex justify-center mt-12"
+        transition={{ duration: 1 }}
+        className="flex justify-center mt-10 sm:mt-12"
       >
-      {pathname !== "/service" && (
-           <motion.button
-          onClick={openDialog}
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          transition={{ type: "spring", stiffness: 250, damping: 15 }}
-          className="px-8 py-3 rounded-full bg-amber-500 text-white font-semibold text-lg shadow-lg hover:bg-amber-600 transition-all font-[Montserrat]"
-        >
-          Get Started today
-        </motion.button>
-        )}
+        {pathname !== "/service" &&(
+       <Link href="/service">
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            transition={{ type: "spring", stiffness: 250, damping: 15 }}
+            className="px-6 sm:px-8 py-2.5 sm:py-3 rounded-full bg-amber-500 text-white font-semibold text-base sm:text-lg shadow-lg hover:bg-amber-600 transition-all font-[Montserrat]"
+          >
+            View all services
+          </motion.button>
+        </Link>
+        )
+      }
       </motion.div>
-
-
     </section>
   );
 }

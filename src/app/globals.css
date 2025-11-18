@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Julee&family=Kaushan+Script&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700&family=Allerta&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600&family=Allerta&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Alkatra:wght@400..700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Mogra&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Allerta&display=swap');
@@ -186,7 +186,7 @@ body, p, li, span, a, button, input, textarea {
 
 .barlow-condensed {
   font-family: "Barlow Condensed", sans-serif;
-  font-weight: 700;
+  font-weight: 600;
   font-style: normal;
 }
 .barlow-condensed-p {
